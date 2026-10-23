@@ -1,5 +1,7 @@
 # A4 — Evidence Evaluation
 
+This first anchor batch is complemented by the four-paper gap-focused follow-up in [`a4-evidence-evaluation-second.md`](./a4-evidence-evaluation-second.md). Together they form the current ten-paper A4 map.
+
 ## Boundary with A5
 
 A4 asks whether acquired evidence is worth trusting **before it is used**:
@@ -146,17 +148,8 @@ The current evidence chain is therefore:
 
 The first link is partly developed, but the concepts must remain separate. Relevance is not support. Support is not sufficiency. A source can be relevant without entailing a claim; multiple individually weak passages can jointly form sufficient evidence; and a supported passage can still come from an unreliable or outdated source.
 
-The first batch has almost no direct A4.2 coverage. It also lacks independent human ground truth for set-level sufficiency, multi-source conflict attribution, source provenance, temporal freshness, and adversarial or fabricated evidence. The learned methods show narrow verification behaviors, but cross-domain/tool/time transfer and held-out verifier robustness remain weak.
+The first batch had almost no direct A4.2 coverage. It also lacked independent human ground truth for set-level sufficiency, multi-source conflict attribution, source provenance, temporal freshness, and adversarial or fabricated evidence. The second batch fills the measurement coverage for authority, pair-level sufficiency, and Web conflict organization, but the learned methods still show narrow verification behaviors and weak cross-domain/tool/time transfer.
 
-## Next batch boundary
+## Status after the second batch
 
-The next A4 batch should contain only six gap-focused directions:
-
-- Source credibility, authority, freshness, and provenance;
-- Human-verified set-level sufficiency and evidence gaps;
-- Multi-source contradiction detection and conflict resolution;
-- Controlled evaluations that separate relevance from support and sufficiency;
-- Direct judge-behavior transfer across domains, time, tools, and retrievers;
-- Adversarial tests for citation copying, answer leakage, verifier gaming, and reward hacking.
-
-Stop after the A4 collection reaches a compact 8–12 paper map with at least one strong anchor for each sub-direction. Do not add generic hallucination or fact-checking papers unless they directly measure or train one of these A4 behaviors.
+The A4 collection now has a compact ten-paper map with representative measurement anchors for all four sub-directions. A4.1 has the strongest training evidence; A4.2 and A4.4 have direct evaluation resources but limited post-training evidence; A4.3 has both process supervision and independent pair-level sufficiency measurement, but limited set-level ground truth. Broad A4 collection is now closed. Add more papers only for controlled perturbation, held-out verifier robustness, or direct cross-environment post-training transfer.

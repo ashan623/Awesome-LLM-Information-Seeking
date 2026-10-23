@@ -80,6 +80,16 @@ For every method, record whether its signal directly matches the claimed capabil
 
 Use `Direct`, `Partial`, `Indirect`, or `Not Applicable` in the paper table, with one sentence of justification.
 
+## A4-specific diagnostic fields
+
+For A4 papers, add three fields that prevent relevance, support, sufficiency, and source authority from collapsing into one score:
+
+- **Judgment Target:** record whether the model judges a `Query–Document`, `Claim–Evidence`, `Evidence Set`, or `Source`.
+- **Ground Truth Quality:** record whether the target is `Human-verified`, `Expert`, `Synthetic`, `LLM-generated`, or `Weak Label`, and whether it is independent of the final answer or downstream reward.
+- **Controlled Perturbation:** record whether the evaluation controls source authority, conflict ratio, evidence order, temporal change, retrieval noise, formatting, citation fabrication, or answer leakage. If none are controlled, write `Not Tested` rather than inferring robustness from a new dataset.
+
+For A4, a high final QA score cannot compensate for weak ground truth or missing controlled perturbations. Source authority must be separated from factual correctness: a famous source can be outdated or wrong, while an obscure first-party source can be accurate.
+
 ## Second-round priority and stop rule
 
 The next search should focus on four connected pools:
@@ -106,6 +116,9 @@ Method Effectiveness
 Capability Isolation
 Generalization Evidence
 Generalization Regime
+Judgment Target
+Ground Truth Quality
+Controlled Perturbation
 Epistemic Objective
 Update Target
 Limitation
