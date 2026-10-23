@@ -7,8 +7,8 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-15-blue.svg)](./papers/a1-search-necessity.md)
-[![Status](https://img.shields.io/badge/Status-Round%202%20A1%20Search%20Necessity-orange.svg)](./notes/search-log-2026-10-23-round-2-a1.md)
+[![Papers](https://img.shields.io/badge/Papers-19-blue.svg)](./papers/a1-retrieval-utility.md)
+[![Status](https://img.shields.io/badge/Status-Round%202%20A1%20Retrieval%20Utility-orange.svg)](./notes/search-log-2026-10-23-round-2-a1-utility.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -26,6 +26,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
 - [Papers](#papers)
   - [Neighboring Surveys](#neighboring-surveys)
   - [A1 Search Necessity and Epistemic Awareness](#a1-search-necessity-and-epistemic-awareness)
+  - [A1 Retrieval Utility and Value of Information](#a1-retrieval-utility-and-value-of-information)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
@@ -132,6 +133,20 @@ Conference and publication badges use the same compact convention as the referen
 - **Adaptive Retrieval Without Self-Knowledge? Bringing Uncertainty Back Home**<br>
   *Viktor Moskvoretskii et al.* [[paper](https://aclanthology.org/2025.acl-long.319/)] [[code](https://github.com/s-nlp/AdaRAGUE)] 2025. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/ACL2025-orange.svg)
 
+### A1 Retrieval Utility and Value of Information
+
+- **LLM-Specific Utility for Retrieval-Augmented Generation**<br>
+  *Hengran Zhang et al.* [[paper](https://arxiv.org/abs/2510.11358)] [[code](https://github.com/Trustworthy-Information-Access/LLM_specific_utility)] 2025/2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/CIKM2026-orange.svg)
+
+- **When Knowledge Is Not Free: Cost-Aware Evidence Selection in Retrieval-Augmented Generation**<br>
+  *Mingyan Wu et al.* [[paper](https://arxiv.org/abs/2606.02245v1)] [[code](https://github.com/Mignonmy/Cost-Aware)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/Cost--Aware-9c755f.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+
+- **Value of Information: A Framework for Human–Agent Communication**<br>
+  *Yijiang River Dong et al.* [[paper](https://aclanthology.org/2026.acl-long.1987/)] [[code](https://github.com/dong-river/VOI_communication)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+- **Redefining Retrieval Evaluation in the Era of LLMs**<br>
+  *Giovanni Trappolini et al.* [[paper](https://aclanthology.org/2026.eacl-long.391/)] [[code](https://github.com/GiovanniTRA/UDCG)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/EACL2026-orange.svg)
+
 ### Retrieval Necessity and Evidence Critique
 
 - **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**<br>
@@ -161,7 +176,7 @@ Conference and publication badges use the same compact convention as the referen
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md) and the new [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), and the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -177,11 +192,12 @@ This bibliography is intentionally built in rounds rather than through one exhau
 
 1. **Round 1 — Field map:** neighboring surveys and a small seed set of methods/evaluation papers.
 2. **Round 2A — A1 Search Necessity:** knowledge boundaries, retrieval triggering, uncertainty, and self-knowledge evaluation.
-3. **Round 2B — A1 alignment and transfer:** value of information, counterfactual retrieval benefit, cost-sensitive triggers, and behavior transfer.
-4. **Round 3 — A4 Evidence Evaluation:** evidence sufficiency, verification, reliability, contradiction handling, and attribution.
-5. **Round 4 — Memory and state update:** reasoning integration, memory retrieval, belief update, and long-term state.
-6. **Round 5 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
-7. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
+3. **Round 2B — A1 Retrieval Utility:** value of information, counterfactual retrieval benefit, cost-sensitive evidence selection, and LLM-specific utility.
+4. **Round 2C — A1 alignment and transfer:** learnable utility-based policies, calibration, and behavior transfer.
+5. **Round 3 — A4 Evidence Evaluation:** evidence sufficiency, verification, reliability, contradiction handling, and attribution.
+6. **Round 4 — Memory and state update:** reasoning integration, memory retrieval, belief update, and long-term state.
+7. **Round 5 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
+8. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
 See the current search record in [`notes/search-log-2026-10-23-round-1.md`](./notes/search-log-2026-10-23-round-1.md).
 

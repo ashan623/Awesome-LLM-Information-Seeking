@@ -6,14 +6,17 @@
 
 The pool deliberately excludes generic RAG papers and most Search-RL variants. The five core papers below are selected because they provide a distinct signal or evaluation protocol for retrieval necessity, knowledge boundaries, or self-aware uncertainty.
 
+The follow-up sub-pool on the stricter question of whether information acquisition is worth its cost is maintained separately in [`a1-retrieval-utility.md`](./a1-retrieval-utility.md).
+
 ## Coding focus
 
 For A1, distinguish four related but non-identical targets:
 
-1. **Knowledge boundary detection:** known versus unknown, answerable versus unanswerable.
-2. **Retrieval triggering:** whether to call an external retriever or search tool.
-3. **Expected information value:** whether retrieval is likely to improve the answer enough to justify its cost.
-4. **Uncertainty calibration:** whether the confidence or internal uncertainty signal tracks actual answerability and downstream retrieval benefit.
+1. **Answerability-based:** whether the model can answer independently, including known versus unknown and answerable versus unanswerable.
+2. **Uncertainty-based:** whether confidence, entropy, hidden states, or sampling variation indicate that external information may be needed.
+3. **Complexity-based:** whether the task is complex enough to justify deeper or iterative retrieval; this is a useful routing baseline but is not automatically epistemic awareness.
+4. **Utility-based:** whether retrieval is likely to improve the answer enough to justify its cost.
+5. **Calibration:** whether the decision signal tracks actual answerability, downstream retrieval benefit, and behavior transfer.
 
 A paper can improve retrieval triggering without proving that the LLM has a calibrated knowledge boundary. It can also improve final QA accuracy without learning any of these behaviors.
 
@@ -123,11 +126,11 @@ This paper is useful as a supporting routing baseline, but it is not part of the
 
 ## A1 synthesis
 
-The five core papers form three signal families:
+The five papers form two decision-signal families plus a separate evaluation track:
 
 1. **Answerability / weak-label signals:** When to Retrieve and KBM use answer correctness, consistency, or evaluator-derived labels to approximate whether the model knows enough.
 2. **Internal uncertainty signals:** DRAGIN and SeaKR use entropy, attention, hidden states, or multi-sample variation to trigger retrieval at inference time.
-3. **Evaluation-first signals:** Adaptive Retrieval Without Self-Knowledge separates final answer quality from self-knowledge and retrieval efficiency, making it possible to test whether a trigger is actually calibrated.
+3. **Evaluation track, not a decision-signal family:** Adaptive Retrieval Without Self-Knowledge separates final answer quality from self-knowledge and retrieval efficiency, making it possible to test whether a trigger is actually calibrated. It should not be grouped with the two signal families above.
 
 The shared conclusion is not that one trigger is best. It is that **retrieval necessity is currently represented by proxies**. Existing signals usually measure answerability, uncertainty, or task complexity, but rarely measure the counterfactual quantity the survey ultimately cares about:
 
