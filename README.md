@@ -7,8 +7,8 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-10-blue.svg)](./papers/information-seeking-seed.md)
-[![Status](https://img.shields.io/badge/Status-Round%201%20Field%20Map-orange.svg)](./notes/search-log-2026-10-23-round-1.md)
+[![Papers](https://img.shields.io/badge/Papers-15-blue.svg)](./papers/a1-search-necessity.md)
+[![Status](https://img.shields.io/badge/Status-Round%202%20A1%20Search%20Necessity-orange.svg)](./notes/search-log-2026-10-23-round-2-a1.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -25,6 +25,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
 - [Keywords Convention](#keywords-convention)
 - [Papers](#papers)
   - [Neighboring Surveys](#neighboring-surveys)
+  - [A1 Search Necessity and Epistemic Awareness](#a1-search-necessity-and-epistemic-awareness)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
@@ -114,6 +115,23 @@ Conference and publication badges use the same compact convention as the referen
 - **Deep Research: A Survey of Autonomous Research Agents**<br>
   *Wenlin Zhang et al.* [[paper](https://arxiv.org/html/2508.12752v1)] 2025. ![Survey](https://img.shields.io/badge/Survey-4c78a8.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
+### A1 Search Necessity and Epistemic Awareness
+
+- **When to Retrieve: Teaching LLMs to Utilize Information Retrieval Effectively**<br>
+  *Tiziano Labruna et al.* [[paper](https://aclanthology.org/2025.ranlp-1.73/)] [[code](https://github.com/tLabruna/Adapt-LLM)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/RANLP2025-orange.svg)
+
+- **KBM: Delineating Knowledge Boundary for Adaptive Retrieval in Large Language Models**<br>
+  *Zhen Zhang et al.* [[paper](https://arxiv.org/abs/2411.06207)] 2024/2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/EMNLP2025-orange.svg)
+
+- **DRAGIN: Dynamic Retrieval Augmented Generation based on the Real-time Information Needs of Large Language Models**<br>
+  *Weihang Su et al.* [[paper](https://aclanthology.org/2024.acl-long.702/)] [[code](https://github.com/oneal2000/DRAGIN)] 2024. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/ACL2024-orange.svg)
+
+- **SeaKR: Self-aware Knowledge Retrieval for Adaptive Retrieval Augmented Generation**<br>
+  *Zijun Yao et al.* [[paper](https://aclanthology.org/2025.acl-long.1312/)] [[code](https://github.com/THU-KEG/SeaKR)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/ACL2025-orange.svg)
+
+- **Adaptive Retrieval Without Self-Knowledge? Bringing Uncertainty Back Home**<br>
+  *Viktor Moskvoretskii et al.* [[paper](https://aclanthology.org/2025.acl-long.319/)] [[code](https://github.com/s-nlp/AdaRAGUE)] 2025. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/ACL2025-orange.svg)
+
 ### Retrieval Necessity and Evidence Critique
 
 - **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**<br>
@@ -143,7 +161,7 @@ Conference and publication badges use the same compact convention as the referen
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md) and the new [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -158,11 +176,12 @@ The current round has surfaced five working hypotheses:
 This bibliography is intentionally built in rounds rather than through one exhaustive crawl:
 
 1. **Round 1 — Field map:** neighboring surveys and a small seed set of methods/evaluation papers.
-2. **Round 2 — A1 + A4:** epistemic awareness, retrieval necessity, uncertainty, evidence sufficiency, verification, reliability, and contradiction handling.
-3. **Round 3 — A2 + A3 + A6:** query planning, source navigation, search policy, stopping, retry, and budget-aware control.
-4. **Round 4 — A5 and state update:** reasoning integration, memory retrieval, belief update, and long-term state.
-5. **Round 5 — C1–C6:** transfer, robustness, environment shift, budget generalization, and cross-domain evaluation.
-6. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
+2. **Round 2A — A1 Search Necessity:** knowledge boundaries, retrieval triggering, uncertainty, and self-knowledge evaluation.
+3. **Round 2B — A1 alignment and transfer:** value of information, counterfactual retrieval benefit, cost-sensitive triggers, and behavior transfer.
+4. **Round 3 — A4 Evidence Evaluation:** evidence sufficiency, verification, reliability, contradiction handling, and attribution.
+5. **Round 4 — Memory and state update:** reasoning integration, memory retrieval, belief update, and long-term state.
+6. **Round 5 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
+7. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
 See the current search record in [`notes/search-log-2026-10-23-round-1.md`](./notes/search-log-2026-10-23-round-1.md).
 
