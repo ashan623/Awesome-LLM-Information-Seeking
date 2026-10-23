@@ -1,64 +1,175 @@
-# Learning Information-Seeking in LLMs
+<div align="center">
 
-This repository collects papers for the survey:
+# Beyond Retrieval
 
-> **Beyond Retrieval: Learning Information-Seeking Capabilities in Large Language Models**
+### Learning Information-Seeking Capabilities in Large Language Models
 
-The survey is organized around three questions:
+A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
+
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Papers](https://img.shields.io/badge/Papers-10-blue.svg)](./papers/information-seeking-seed.md)
+[![Status](https://img.shields.io/badge/Status-Round%201%20Field%20Map-orange.svg)](./notes/search-log-2026-10-23-round-1.md)
+[![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
+
+</div>
+
+## Content
+
+- [Research Questions](#research-questions)
+- [Taxonomy](#taxonomy)
+  - [Capability: What to Learn](#capability-what-to-learn)
+  - [Learning: How to Learn](#learning-how-to-learn)
+  - [Generalization: Does It Transfer](#generalization-does-it-transfer)
+  - [Auxiliary Labels](#auxiliary-labels)
+- [Keywords Convention](#keywords-convention)
+- [Papers](#papers)
+  - [Neighboring Surveys](#neighboring-surveys)
+  - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
+  - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
+  - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
+- [Reading Notes](#reading-notes)
+- [Search Protocol](#search-protocol)
+- [Contributing](#contributing)
+
+## Research Questions
+
+This collection is built around three questions:
 
 1. **What to Learn?** What information-seeking capabilities should a foundation model acquire?
-2. **How to Learn?** How do pre-training, supervised fine-tuning, behavior learning, reinforcement learning, process supervision, distillation, and joint optimization teach these capabilities?
+2. **How to Learn?** How do data construction, SFT, behavior learning, process supervision, RL, distillation, and joint optimization teach these capabilities?
 3. **Does It Generalize?** Does the model learn transferable information-seeking behavior, or only benchmark-specific tool-use patterns?
 
-## Current taxonomy
+The central distinction is between **using a search tool** and **learning how to seek information**. A successful model should know when information is missing, formulate a useful information need, navigate sources, evaluate evidence, integrate it into reasoning or memory, and stop or recover adaptively.
 
-Each paper is annotated with one or more of the following fields.
+## Taxonomy
 
-### Capability: what the model learns
+### Capability: What to Learn
 
-- **A1 Epistemic Awareness** — recognizing missing knowledge, uncertainty, retrieval necessity, and value of information.
-- **A2 Information Need Formulation** — query reformulation, question decomposition, query planning, and goal-conditioned search.
-- **A3 Source Navigation** — source/tool selection, web navigation, multi-source exploration, and search-environment interaction.
-- **A4 Evidence Evaluation** — relevance, authority, support, sufficiency, contradiction detection, and verification.
-- **A5 Evidence Integration** — using evidence in reasoning, generation, memory, belief update, and downstream decisions.
-- **A6 Adaptive Control** — deciding whether to continue, retry, verify, change source, stop, or trade off search quality against cost.
+| Code | Capability | Guiding question |
+|:---:|---|---|
+| **A1** | **Epistemic Awareness** | Does the model know what it does not know, when retrieval is necessary, and when search has value? |
+| **A2** | **Information Need Formulation** | Can it turn a task goal and knowledge gap into a query, sub-question, or search plan? |
+| **A3** | **Source Navigation** | Can it choose sources/tools and explore an information space across multiple steps? |
+| **A4** | **Evidence Evaluation** | Can it judge relevance, authority, support, sufficiency, contradiction, and reliability? |
+| **A5** | **Evidence Integration** | Can it use evidence to update reasoning, memory, beliefs, generation, or decisions? |
+| **A6** | **Adaptive Control** | Can it continue, retry, verify, change source, stop, or trade off utility against cost? |
 
-### Learning: how the capability is acquired
+### Learning: How to Learn
 
-- **B1 Data / Trajectory Construction**
-- **B2 Behavior Learning** — SFT, imitation learning, behavior priming, and trajectory distillation.
-- **B3 Reward / Feedback Design** — outcome, process, evidence, preference, information-gain, cost, and risk feedback.
-- **B4 Policy Optimization** — RL, GRPO/PPO/REINFORCE-style optimization, and test-time policy learning.
-- **B5 Credit Assignment** — attributing downstream success or failure to multi-turn search actions.
-- **B6 Joint Optimization** — retriever–agent, reasoner–retriever, verifier–policy, memory–policy, or system-level co-training.
+| Code | Mechanism | Typical signals or objects |
+|:---:|---|---|
+| **B1** | **Data / Trajectory Construction** | Search trajectories, success/failure pairs, synthetic environments, curriculum rollouts |
+| **B2** | **Behavior Learning** | SFT, imitation learning, behavior priming, trajectory distillation |
+| **B3** | **Reward / Feedback Design** | Outcome, process, evidence, preference, information gain, cost, and risk feedback |
+| **B4** | **Policy Optimization** | RL, GRPO, PPO, REINFORCE, and test-time policy optimization |
+| **B5** | **Credit Assignment** | Attributing downstream success or failure to multi-turn search actions |
+| **B6** | **Joint Optimization** | Retriever–agent, reasoner–retriever, verifier–policy, memory–policy, and system co-training |
 
-### Generalization and auxiliary labels
+### Generalization: Does It Transfer?
 
-- **C1 Task Transfer**
-- **C2 Domain Transfer**
-- **C3 Tool / Search-Engine Transfer**
-- **C4 Corpus / Environment Shift**
-- **C5 Budget Generalization**
-- **C6 Behavioral Robustness**
+| Code | Transfer axis | What to test |
+|:---:|---|---|
+| **C1** | **Task Transfer** | QA to reasoning, planning, coding, research, recommendation, or decision tasks |
+| **C2** | **Domain Transfer** | Web to scientific, medical, enterprise, e-commerce, or other specialized domains |
+| **C3** | **Tool Transfer** | New search engines, APIs, retrievers, browsers, databases, or memory backends |
+| **C4** | **Corpus / Environment Shift** | New documents, temporal updates, web layouts, noise, source conflicts, or adversarial content |
+| **C5** | **Budget Generalization** | Different token, latency, API-call, memory, or monetary budgets |
+| **C6** | **Behavioral Robustness** | Error recovery, calibrated stopping, refusal under insufficient evidence, and safe search |
 
-- **D Epistemic Objective** — grounding/acquisition, verification/disambiguation, exploration/discovery, decision/action support, or learning/update.
-- **E Update Target** — context/belief, plan/policy state, memory/index, retriever/verifier, LLM policy, or joint system.
+### Auxiliary Labels
 
-A paper may have multiple capability and learning labels, but every entry should identify a **primary capability**, a **learning target**, and the strength of evidence for generalization.
+- **D — Epistemic Objective:** grounding/acquisition, verification/disambiguation, exploration/discovery, decision/action support, or learning/update.
+- **E — Update Target:** context/belief, plan/policy state, memory/index, retriever/verifier, LLM policy, or joint system.
+- **Role:** `Core`, `Supporting`, `Background`, or `Evaluation`.
+- **Evidence Strength:** `Strong`, `Medium`, or `Limited`, based on direct behavior measurement and transfer evidence rather than claims alone.
 
-## Repository structure
+## Keywords Convention
 
-- [`papers/information-seeking-seed.md`](papers/information-seeking-seed.md): first-round seed papers and annotations.
-- [`notes/search-log-2026-10-23-round-1.md`](notes/search-log-2026-10-23-round-1.md): scope, queries, inclusion decisions, and next search boundary.
+![Survey](https://img.shields.io/badge/Survey-4c78a8.svg)
+![Method](https://img.shields.io/badge/Method-59a14f.svg)
+![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg)
+![A1 Awareness](https://img.shields.io/badge/A1%20Awareness-2a9d8f.svg)
+![A2 Need Formulation](https://img.shields.io/badge/A2%20Need%20Formulation-457b9d.svg)
+![A3 Navigation](https://img.shields.io/badge/A3%20Navigation-f4a261.svg)
+![A4 Evidence](https://img.shields.io/badge/A4%20Evidence-e76f51.svg)
+![A5 Integration](https://img.shields.io/badge/A5%20Integration-8d5a97.svg)
+![A6 Control](https://img.shields.io/badge/A6%20Control-6c757d.svg)
 
-## Search protocol
+Conference and publication badges use the same compact convention as the reference Awesome list, for example `Arxiv2025`, `ICLR2024`, and `ACL2026`.
 
-The literature collection is intentionally incremental:
+## Papers
 
-1. Establish the field map with neighboring surveys.
-2. Verify a small set of seed methods and evaluation papers.
-3. Expand by capability × learning mechanism.
-4. Snowball references and citing papers from high-value seeds.
-5. Search for missing areas, especially memory, evidence evaluation, cross-tool transfer, and domain generalization.
+### Neighboring Surveys
 
-The current round is **not** intended to be exhaustive. It establishes the initial map and the coding scheme before expanding the corpus.
+- **A Survey of LLM-based Deep Search Agents: Paradigm, Optimization, Evaluation, and Challenges**<br>
+  *Yunjia Xi et al.* [[paper](https://arxiv.org/html/2508.05668v3)] 2025. ![Survey](https://img.shields.io/badge/Survey-4c78a8.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **A Comprehensive Survey on Reinforcement Learning-based Agentic Search: Foundations, Roles, Optimizations, Evaluations, and Applications**<br>
+  *Minhua Lin et al.* [[paper](https://arxiv.org/html/2510.16724)] 2025. ![Survey](https://img.shields.io/badge/Survey-4c78a8.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **Deep Research: A Survey of Autonomous Research Agents**<br>
+  *Wenlin Zhang et al.* [[paper](https://arxiv.org/html/2508.12752v1)] 2025. ![Survey](https://img.shields.io/badge/Survey-4c78a8.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+### Retrieval Necessity and Evidence Critique
+
+- **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**<br>
+  *Akari Asai et al.* [[paper](https://arxiv.org/html/2310.11511)] [[code](https://github.com/akariasai/self-rag)] 2023. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/ICLR2024-orange.svg)
+
+- **Beneficial Reasoning Behaviors in Agentic Search and Effective Training Methods to Obtain Them**<br>
+  *Jiahe Jin, Abhijay Sai Paladugu, Chenyan Xiong* [[paper](https://aclanthology.org/2026.findings-acl.1400/)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+### Search Policy and Reinforcement Learning
+
+- **Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning**<br>
+  *Bowen Jin et al.* [[paper](https://arxiv.org/html/2503.09516v5)] [[code](https://github.com/PeterGriffinJin/Search-R1)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning**<br>
+  *Hao Song et al.* [[paper](https://arxiv.org/html/2503.05592v2)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **ZeroSearch: Incentivize the Search Capability of LLMs without Searching**<br>
+  *Hao Sun et al.* [[paper](https://arxiv.org/html/2505.04588v2)] [[code](https://github.com/Alibaba-NLP/ZeroSearch)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+### Retriever–Agent Coupling and Evaluation
+
+- **Agentic-R: Learning to Retrieve for Agentic Search**<br>
+  *Wenhan Liu et al.* [[paper](https://aclanthology.org/2026.findings-acl.785/)] [[code](https://github.com/8421BCD/Agentic-R)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+- **Rethinking Reasoning-Intensive Retrieval: Evaluating and Advancing Retrievers in Agentic Search Systems**<br>
+  *Yilun Zhao et al.* [[paper](https://aclanthology.org/2026.acl-long.1705/)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+## Reading Notes
+
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md). Each entry records the research problem, primary and secondary capabilities, learning mechanism, learning target, supervision, evaluation, generalization evidence, limitations, and research opportunities.
+
+The current round has surfaced five working hypotheses:
+
+1. **Tool use is not capability.** Calling a search tool more often does not by itself demonstrate learned information-seeking.
+2. **Outcome reward is scalable but coarse.** It often improves final QA scores while providing weak credit assignment over multi-turn search behavior.
+3. **Evidence quality is downstream-dependent.** Local query–passage relevance does not guarantee utility for reasoning or final answer generation.
+4. **Environment shift is central.** Simulated search, fixed retrievers, and benchmark-specific APIs require explicit simulator-to-real and cross-tool tests.
+5. **Capability isolation is missing.** Many papers optimize a full search–reasoning loop without separately measuring search necessity, query quality, source choice, evidence sufficiency, and stopping.
+
+## Search Protocol
+
+This bibliography is intentionally built in rounds rather than through one exhaustive crawl:
+
+1. **Round 1 — Field map:** neighboring surveys and a small seed set of methods/evaluation papers.
+2. **Round 2 — A1 + A4:** epistemic awareness, retrieval necessity, uncertainty, evidence sufficiency, verification, reliability, and contradiction handling.
+3. **Round 3 — A2 + A3 + A6:** query planning, source navigation, search policy, stopping, retry, and budget-aware control.
+4. **Round 4 — A5 and state update:** reasoning integration, memory retrieval, belief update, and long-term state.
+5. **Round 5 — C1–C6:** transfer, robustness, environment shift, budget generalization, and cross-domain evaluation.
+6. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
+
+See the current search record in [`notes/search-log-2026-10-23-round-1.md`](./notes/search-log-2026-10-23-round-1.md).
+
+## Contributing
+
+Contributions are welcome. Please keep entries concise and use the following format:
+
+```markdown
+- **Paper Title**<br>
+  *Authors* [[paper](URL)] [[code](URL)] YEAR. ![](TYPE_BADGE) ![](CAPABILITY_BADGE) ![](VENUE_BADGE)
+```
+
+For a new entry, also add a detailed annotation to [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md) or the relevant thematic file. At minimum, record the primary capability, learning mechanism, update target, supervision signal, evaluation evidence, generalization evidence, and one unresolved research question.
