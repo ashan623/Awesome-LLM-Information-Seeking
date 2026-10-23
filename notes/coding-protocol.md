@@ -23,8 +23,8 @@ The A1–A6 capability taxonomy remains stable, but two boundaries are explicit:
 - **A1 Epistemic Awareness:** recognizing missing information, uncertainty, retrieval necessity, and expected value of information.
 - **A2 Information Need Formulation:** translating a goal and knowledge gap into queries, sub-questions, or a search plan.
 - **A3 Information Space Exploration:** discovering paths, sources, and new information regions; navigating across an information space.
-- **A4 Evidence Evaluation:** judging relevance, authority, support, sufficiency, contradiction, reliability, and verifiability.
-- **A5 Evidence Integration:** using evidence to update reasoning, memory, beliefs, generation, or decisions.
+- **A4 Evidence Evaluation:** judging evidence quality before using it. Code four sub-directions: **A4.1 Relevance & Support** (does the evidence support the question or claim?), **A4.2 Source Reliability** (is the source credible, authoritative, current, and traceable?), **A4.3 Evidence Sufficiency** (is the set of evidence complete enough, and what is missing?), and **A4.4 Conflict & Robustness** (can the model detect contradiction, noise, or misleading evidence?).
+- **A5 Evidence Integration:** correctly using evaluated evidence to update reasoning, memory, beliefs, generation, or decisions. Do not count successful evidence use as A4 unless the paper separately measures the quality judgment itself.
 - **A6 Adaptive Search Control:** deciding when to search, how to modify the search, how to invoke or retry a tool, when to verify, and when to stop under a budget.
 
 A tool call is not automatically A3. Search invocation and stopping belong to A6 unless the paper directly studies exploration or source discovery. A paper may be marked `Not Directly Trained` when its main contribution is infrastructure, retriever optimization, or evaluation.

@@ -7,8 +7,8 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-25-blue.svg)](./papers/a1-utility-policy-learning.md)
-[![Status](https://img.shields.io/badge/Status-A1%20Final%20Verification-orange.svg)](./notes/search-log-2026-10-23-round-2-a1-final.md)
+[![Papers](https://img.shields.io/badge/Papers-31-blue.svg)](./papers/a4-evidence-evaluation.md)
+[![Status](https://img.shields.io/badge/Status-Round%203%20A4%20Anchor%20Batch-orange.svg)](./notes/search-log-2026-10-23-round-3-a4-anchor.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -28,6 +28,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [A1 Search Necessity and Epistemic Awareness](#a1-search-necessity-and-epistemic-awareness)
   - [A1 Retrieval Utility and Value of Information](#a1-retrieval-utility-and-value-of-information)
   - [A1 Utility-aware Policy Learning](#a1-utility-aware-policy-learning)
+  - [A4 Evidence Evaluation — First Anchors](#a4-evidence-evaluation--first-anchors)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
@@ -54,8 +55,8 @@ The central distinction is between **using a search tool** and **learning how to
 | **A1** | **Epistemic Awareness** | Does the model know what it does not know, when retrieval is necessary, and when search has value? |
 | **A2** | **Information Need Formulation** | Can it turn a task goal and knowledge gap into a query, sub-question, or search plan? |
 | **A3** | **Information Space Exploration** | Can it explore unknown information spaces, discover new paths, and move across sources? |
-| **A4** | **Evidence Evaluation** | Can it judge relevance, authority, support, sufficiency, contradiction, and reliability? |
-| **A5** | **Evidence Integration** | Can it use evidence to update reasoning, memory, beliefs, generation, or decisions? |
+| **A4** | **Evidence Evaluation** | Can it judge evidence quality, claim support, source credibility, sufficiency, contradiction, and reliability? |
+| **A5** | **Evidence Integration** | Can it correctly use evaluated evidence to update reasoning, memory, beliefs, generation, or decisions? |
 | **A6** | **Adaptive Search Control** | Can it decide when to search, adjust the search behavior, recover, stop, and trade off utility against cost? |
 
 ### Learning: How to Learn
@@ -168,6 +169,26 @@ Conference and publication badges use the same compact convention as the referen
 - **Self-Knowledge Guided Retrieval Augmentation for Large Language Models**<br>
   *Yile Wang et al.* [[paper](https://aclanthology.org/2023.findings-emnlp.691/)] [[code](https://github.com/THUNLP-MT/SKR)] 2023. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/EMNLP2023-orange.svg)
 
+### A4 Evidence Evaluation — First Anchors
+
+- **Corrective Retrieval Augmented Generation**<br>
+  *Shi-Qi Yan et al.* [[paper](https://arxiv.org/abs/2401.15884)] [[code](https://github.com/HuskyInSalt/CRAG)] 2024. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![](https://img.shields.io/badge/Arxiv2024-orange.svg)
+
+- **S2G-RAG: Structured Sufficiency and Gap Judging for Iterative Retrieval-Augmented QA**<br>
+  *Minghan Li et al.* [[paper](https://aclanthology.org/2026.acl-long.1185/)] [[code](https://github.com/nianaaa/S2G-RAG)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.3](https://img.shields.io/badge/A4.3-e76f51.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+- **RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models**<br>
+  *Cheng Niu et al.* [[paper](https://aclanthology.org/2024.acl-long.585/)] [[code](https://github.com/particlemedia/ragtruth)] 2024. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![A4.4](https://img.shields.io/badge/A4.4-e76f51.svg) ![](https://img.shields.io/badge/ACL2024-orange.svg)
+
+- **RAGChecker: A Fine-grained Framework for Diagnosing Retrieval-Augmented Generation**<br>
+  *Dongyu Ru et al.* [[paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/27245589131d17368cccdfa990cbf16e-Abstract-Datasets_and_Benchmarks_Track.html)] [[code](https://github.com/amazon-science/RAGChecker)] 2024. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![A4.3](https://img.shields.io/badge/A4.3-e76f51.svg) ![](https://img.shields.io/badge/NeurIPS2024-orange.svg)
+
+- **RLSeek: Evidence-Grounded Reasoning for RAG Hallucination Detection**<br>
+  *Zhaoheng Huang et al.* [[paper](https://aclanthology.org/2026.acl-long.1492/)] [[code](https://github.com/WaldenRUC/RLSeek)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+- **Evidence-Augmented Policy Optimization with Reward Co-Evolution for Long-Context Reasoning**<br>
+  *Xin Guan et al.* [[paper](https://aclanthology.org/2026.acl-long.1404/)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![A4.3](https://img.shields.io/badge/A4.3-e76f51.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
 ### Retrieval Necessity and Evidence Critique
 
 - **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**<br>
@@ -197,7 +218,7 @@ Conference and publication badges use the same compact convention as the referen
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), and the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), and the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -215,12 +236,13 @@ This bibliography is intentionally built in rounds rather than through one exhau
 2. **Round 2A — A1 Search Necessity:** knowledge boundaries, retrieval triggering, uncertainty, and self-knowledge evaluation.
 3. **Round 2B — A1 Retrieval Utility:** value of information, counterfactual retrieval benefit, cost-sensitive evidence selection, and LLM-specific utility.
 4. **Round 2C — A1 final utility-aware training check:** ex-post utility rewards, information-gain rewards, counterfactual margins, cost-aware policy learning, and historical baselines.
-5. **Round 3 — A4 Evidence Evaluation:** evidence sufficiency, verification, reliability, contradiction handling, and attribution.
-6. **Round 4 — Memory and state update:** reasoning integration, memory retrieval, belief update, and long-term state.
-7. **Round 5 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
-8. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
+5. **Round 3A — A4 anchor map:** relevance/support, source reliability, evidence sufficiency, conflict/robustness, and the A4/A5 boundary.
+6. **Round 3B — A4 gap-focused expansion:** source credibility, human-verified sufficiency, multi-source conflict, OOD verifier behavior, and reward/verifier robustness.
+7. **Round 4 — Memory and state update:** reasoning integration, memory retrieval, belief update, and long-term state.
+8. **Round 5 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
+9. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
-See the current search record in [`notes/search-log-2026-10-23-round-1.md`](./notes/search-log-2026-10-23-round-1.md).
+See the current search record in [`notes/search-log-2026-10-23-round-3-a4-anchor.md`](./notes/search-log-2026-10-23-round-3-a4-anchor.md).
 
 The search is deliberately convergent. We will not expand the bibliography with minor variants of existing Search-RL methods unless they provide new evidence about capability learning, training–capability alignment, or transfer. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 
