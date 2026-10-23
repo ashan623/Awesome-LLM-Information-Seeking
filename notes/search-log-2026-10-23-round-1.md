@@ -33,6 +33,8 @@ Representative query families:
 - The neighboring survey found in the official arXiv record is titled **A Survey of LLM-based Deep Search Agents: Paradigm, Optimization, Evaluation, and Challenges**, arXiv `2508.05668`.
 - **Agentic-R** has an official ACL Anthology page: `2026.findings-acl.785`.
 - **Rethinking Reasoning-Intensive Retrieval** has an official ACL Anthology page: `2026.acl-long.1705`.
+- The first author of **R1-Searcher** is **Huatong Song**; the current arXiv record is v2 (18 March 2025).
+- The currently readable **ZeroSearch** record is arXiv v3, revised 19 May 2026: `2505.04588v3`.
 
 ## Main observations
 
@@ -60,6 +62,12 @@ An empty capability × learning cell is not a research gap until citation snowba
 - budget-generalization and calibrated stopping;
 - adversarial or poisoned search environments.
 
+## Mainline constraint for all later searches
+
+The survey line is fixed at **capability learning → training–capability alignment → capability transfer**. New papers should be included in the core set only when they add evidence to one of these links. Minor implementation variants of Search-RL should remain outside the core set unless they introduce a new capability, a more direct training signal, a new generalization regime, or a materially different evaluation protocol.
+
+The coding protocol now separates `Contribution Type`, `Method Effectiveness`, `Capability Isolation`, and `Generalization Evidence`. It also separates A3 Information Space Exploration from A6 Adaptive Search Control and allows `Not Directly Trained` for infrastructure, retriever optimization, and evaluation papers. See [`coding-protocol.md`](./coding-protocol.md).
+
 ## Next round proposal
 
-The next round should target **A1 + A4**, because the first seed set suggests these capabilities are more directly measurable than generic “search capability.” The search should collect papers on retrieval necessity, uncertainty-aware retrieval, source reliability, evidence sufficiency, verification, contradiction handling, and citation/attribution. After that, expand into memory/state update and C1–C6 generalization.
+The next round should target four connected pools in order: **A1 Search Necessity / Awareness**, **A4 Evidence Evaluation**, **Memory and State Update**, and **Capability Evaluation / Generalization**. The search should collect retrieval necessity, uncertainty-aware retrieval, evidence sufficiency, verification, contradiction handling, memory update, behavior transfer, tool transfer, environment shift, and credit assignment. It should not begin with a broad collection of medical, e-commerce, or other application papers; those are later validation cases, not a new survey axis.

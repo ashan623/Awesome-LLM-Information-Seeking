@@ -21,7 +21,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [Capability: What to Learn](#capability-what-to-learn)
   - [Learning: How to Learn](#learning-how-to-learn)
   - [Generalization: Does It Transfer](#generalization-does-it-transfer)
-  - [Auxiliary Labels](#auxiliary-labels)
+  - [Auxiliary and Evidence Labels](#auxiliary-and-evidence-labels)
 - [Keywords Convention](#keywords-convention)
 - [Papers](#papers)
   - [Neighboring Surveys](#neighboring-surveys)
@@ -50,10 +50,10 @@ The central distinction is between **using a search tool** and **learning how to
 |:---:|---|---|
 | **A1** | **Epistemic Awareness** | Does the model know what it does not know, when retrieval is necessary, and when search has value? |
 | **A2** | **Information Need Formulation** | Can it turn a task goal and knowledge gap into a query, sub-question, or search plan? |
-| **A3** | **Source Navigation** | Can it choose sources/tools and explore an information space across multiple steps? |
+| **A3** | **Information Space Exploration** | Can it explore unknown information spaces, discover new paths, and move across sources? |
 | **A4** | **Evidence Evaluation** | Can it judge relevance, authority, support, sufficiency, contradiction, and reliability? |
 | **A5** | **Evidence Integration** | Can it use evidence to update reasoning, memory, beliefs, generation, or decisions? |
-| **A6** | **Adaptive Control** | Can it continue, retry, verify, change source, stop, or trade off utility against cost? |
+| **A6** | **Adaptive Search Control** | Can it decide when to search, adjust the search behavior, recover, stop, and trade off utility against cost? |
 
 ### Learning: How to Learn
 
@@ -68,21 +68,24 @@ The central distinction is between **using a search tool** and **learning how to
 
 ### Generalization: Does It Transfer?
 
-| Code | Transfer axis | What to test |
+| Code | Generalization regime | What to test |
 |:---:|---|---|
-| **C1** | **Task Transfer** | QA to reasoning, planning, coding, research, recommendation, or decision tasks |
-| **C2** | **Domain Transfer** | Web to scientific, medical, enterprise, e-commerce, or other specialized domains |
-| **C3** | **Tool Transfer** | New search engines, APIs, retrievers, browsers, databases, or memory backends |
-| **C4** | **Corpus / Environment Shift** | New documents, temporal updates, web layouts, noise, source conflicts, or adversarial content |
-| **C5** | **Budget Generalization** | Different token, latency, API-call, memory, or monetary budgets |
-| **C6** | **Behavioral Robustness** | Error recovery, calibrated stopping, refusal under insufficient evidence, and safe search |
+| **C1** | **In-distribution** | Training and test tasks, tools, and corpora are substantially aligned |
+| **C2** | **Task OOD** | A new task type or reasoning form |
+| **C3** | **Domain OOD** | A new knowledge domain such as science, medicine, enterprise, or e-commerce |
+| **C4** | **Tool OOD** | A different search interface, retriever, API, browser, database, or memory backend |
+| **C5** | **Environment OOD** | New or changing corpora, temporal knowledge, source conflicts, noise, or simulator-to-real shift |
+| **C6** | **Behavior Transfer** | Whether the target search behavior itself survives in a new setting |
+| **C7** | **Budget / Cost Generalization** | Different token, latency, API-call, memory, or monetary budgets |
 
-### Auxiliary Labels
+### Auxiliary and Evidence Labels
 
 - **D — Epistemic Objective:** grounding/acquisition, verification/disambiguation, exploration/discovery, decision/action support, or learning/update.
 - **E — Update Target:** context/belief, plan/policy state, memory/index, retriever/verifier, LLM policy, or joint system.
+- **Contribution Type:** `Capability Learning`, `Training Infrastructure`, `Retriever Optimization`, or `Evaluation`.
+- **Evidence Vector:** separately record `Method Effectiveness`, `Capability Isolation`, and `Generalization Evidence` as `Strong`, `Medium`, `Limited`, or `Not Tested`.
+- **Training–Capability Alignment:** record whether the training signal directly reflects the claimed capability, partially reflects it, or is only an indirect downstream proxy.
 - **Role:** `Core`, `Supporting`, `Background`, or `Evaluation`.
-- **Evidence Strength:** `Strong`, `Medium`, or `Limited`, based on direct behavior measurement and transfer evidence rather than claims alone.
 
 ## Keywords Convention
 
@@ -125,22 +128,22 @@ Conference and publication badges use the same compact convention as the referen
   *Bowen Jin et al.* [[paper](https://arxiv.org/html/2503.09516v5)] [[code](https://github.com/PeterGriffinJin/Search-R1)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
 - **R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning**<br>
-  *Hao Song et al.* [[paper](https://arxiv.org/html/2503.05592v2)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+  *Huatong Song et al.* [[paper](https://arxiv.org/html/2503.05592v2)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Search%20Invocation-8c6bb1.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
 - **ZeroSearch: Incentivize the Search Capability of LLMs without Searching**<br>
-  *Hao Sun et al.* [[paper](https://arxiv.org/html/2505.04588v2)] [[code](https://github.com/Alibaba-NLP/ZeroSearch)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+  *Hao Sun et al.* [[paper](https://arxiv.org/html/2505.04588v3)] [[code](https://github.com/Alibaba-NLP/ZeroSearch)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Training%20Infrastructure-9c755f.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
 ### Retriever–Agent Coupling and Evaluation
 
 - **Agentic-R: Learning to Retrieve for Agentic Search**<br>
-  *Wenhan Liu et al.* [[paper](https://aclanthology.org/2026.findings-acl.785/)] [[code](https://github.com/8421BCD/Agentic-R)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Wenhan Liu et al.* [[paper](https://aclanthology.org/2026.findings-acl.785/)] [[code](https://github.com/8421BCD/Agentic-R)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/Retriever%20Co--adaptation-9c755f.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **Rethinking Reasoning-Intensive Retrieval: Evaluating and Advancing Retrievers in Agentic Search Systems**<br>
   *Yilun Zhao et al.* [[paper](https://aclanthology.org/2026.acl-long.1705/)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md). Each entry records the research problem, primary and secondary capabilities, learning mechanism, learning target, supervision, evaluation, generalization evidence, limitations, and research opportunities.
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -162,6 +165,8 @@ This bibliography is intentionally built in rounds rather than through one exhau
 6. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
 See the current search record in [`notes/search-log-2026-10-23-round-1.md`](./notes/search-log-2026-10-23-round-1.md).
+
+The search is deliberately convergent. We will not expand the bibliography with minor variants of existing Search-RL methods unless they provide new evidence about capability learning, training–capability alignment, or transfer. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 
 ## Contributing
 
