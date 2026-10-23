@@ -22,6 +22,8 @@ V_{\mathrm{retrieve}}(x) =
 
 Here, \(U\) is downstream task utility, \(C\) is retrieval cost, and \(\lambda\) controls the cost–quality trade-off. This equation is an organizing framework for the survey, not a claim that all papers below optimize it directly.
 
+The final verification of utility-aware policy-learning methods is maintained in [`a1-utility-policy-learning.md`](./a1-utility-policy-learning.md). That sub-pool confirms that direct training methods already exist and focuses the remaining question on ex-ante calibration and cross-environment transfer.
+
 ## Core and supporting papers
 
 ### U1. LLM-Specific Utility for Retrieval-Augmented Generation
@@ -107,6 +109,4 @@ The evidence supports four dependencies:
 - **Task-dependent:** retrieval benefit differs across factual QA, multi-hop reasoning, medical QA, and ambiguous decision tasks.
 - **Cost-dependent:** additional retrieval is not monotonically beneficial; more evidence can increase cost and introduce distractors.
 
-The four papers do not yet establish that LLMs can learn a calibrated cost-sensitive acquisition policy. Two are primarily evaluation frameworks, one is decision-theoretic support outside document retrieval, and one is cost-aware inference-time evaluation without policy training. Therefore, the correct conclusion is a **confirmed direction for further investigation**, not a declared new research gap.
-
-The next comparison should ask whether any existing post-training method directly uses a counterfactual utility difference—rather than answerability, uncertainty, or invocation frequency—as supervision or reward, and whether that policy transfers across models, retrievers, tools, environments, and budgets.
+The four papers do not by themselves establish that LLMs can learn a calibrated cost-sensitive acquisition policy. The follow-up verification found that direct utility-aware training methods do exist; therefore, the remaining question is not whether utility-aware training exists, but whether observed gains can become an ex-ante, cost-calibrated, transferable value-of-information policy.

@@ -137,3 +137,5 @@ The shared conclusion is not that one trigger is best. It is that **retrieval ne
 > How much will acquiring external information improve the answer or decision, and is that improvement worth the retrieval cost?
 
 The principal A1 gap is therefore a **training–capability alignment gap**. A useful next benchmark should provide counterfactual or expert labels for answer-without-retrieval, answer-with-retrieval, evidence quality, expected utility, and cost. It should separately report trigger calibration, query quality, evidence integration, behavior transfer, and final task performance.
+
+The final utility-aware policy-learning extension is recorded in [`a1-utility-policy-learning.md`](./a1-utility-policy-learning.md). A1 is now closed for broad collection; the next search stage is A4 Evidence Evaluation. Further A1 work should be added only if it introduces ex-ante calibration, causal counterfactual utility estimation, or cross-environment cost transfer.
