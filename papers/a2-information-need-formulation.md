@@ -176,6 +176,33 @@ The A2-specific fields are:
 
 ---
 
+### A2-7. QREF: Improving DeepSearch Agents by Aligning Search with Reasoning via Query Refinement and Evidence Filtering
+
+- **Authors / year:** Yujia Chen, Yuhui Wang, Junzhe Wang, Shihan Dou, Di Liang, Yujiong Shen, Yuhao Zhou, Zhiheng Xi, Ming Zhang, Senjie Jin, Jiayi Chen, Dingwei Zhu, Yajie Yang, Yuan Hua, Chenyao Lu, Tao Gui, Qi Zhang, Xuanjing Huang, 2026.
+- **Venue / links:** arXiv:2610.21512, submitted 15 Oct 2026; [arXiv abstract](https://arxiv.org/abs/2610.21512) · [HTML paper](https://arxiv.org/html/2610.21512)
+- **Role / contribution:** Core / Capability Learning
+- **Primary capability:** Reasoning-conditioned query refinement with complementary batch coverage.
+- **Secondary capabilities:** Evidence filtering and ineffective-query reduction; the filter is a separate Evidence Evaluation/Integration component, not part of the Query Policy itself.
+- **Information need target:** The entities and evidence anchors required by the current reasoning step of a DeepSearch agent.
+- **Query action:** Given the original question, current reasoning context, and a candidate query batch, the Query Refiner outputs a refined query batch. It compares original and refined batches against the same web-search environment and seeks complementary coverage.
+- **Training mechanism:** SFT initialization followed by PPO in a real web-search environment. The Evidence Filter is a separate Qwen3-8B component.
+- **Learning target:** Improve evidence coverage of the current reasoning step while preserving previously retrieved entities and reducing ineffective query batches.
+- **Training signal:** Entity-level retrieval reward based on recovered, preserved, lost, and missed expected entities; invalid/empty-query penalty; SFT target behavior. The reward compares the refined batch against the original batch rather than relying only on final answer correctness.
+- **Training–capability alignment:** Medium–Strong for retrieval coverage improvement; Medium for semantic intent preservation. Entity hits in top-10 snippets are a useful fine-grained proxy, but they do not fully measure whether the rewritten query preserves user intent or retrieves reliable evidence.
+- **Retriever dependence:** Strong. Training and evaluation use a Serper web-search API and a fixed search stack. The experiments vary two DeepSearch agent backbones, WebSailor-32B and TongyiDeepResearch, but do not establish cross-Retriever transfer.
+- **Query reliance:** Medium. The reward directly compares original and refined query batches, and Query Refiner-only ablations improve both backbones. However, there is no query-only test that holds retrieved evidence fixed, and entity-hit reward is snippet/entity matching rather than a semantic query-quality judgment.
+- **Generalization evidence:** Medium for cross-agent-backbone transfer and four information-seeking benchmarks: BrowseComp, BrowseComp-ZH, GAIA, and HLE. This is not cross-Retriever transfer; both backbones use the same web-search stack.
+- **Shortcut risk:** Medium–High. Entity string matching in snippets, query-batch size, Serper-specific ranking, top-10 retrieval, Evidence Filter interaction, and benchmark/entity leakage may improve reward without guaranteeing intent preservation.
+- **Method effectiveness:** Strong.
+- **Capability isolation:** Medium.
+- **Generalization evidence:** Medium for cross-agent-backbone and benchmark transfer; Limited for retriever/tool/environment transfer.
+- **A2/A6 boundary:** A2 Core with A6-adjacent iterative refinement. The module refines queries at each search step, but the paper does not learn stopping, retry, tool switching, or verification as independent controls.
+- **Main finding:** QREF is an important exception because it directly compares original and refined query batches and uses a fine-grained retrieval-grounded reward. Its cross-backbone results should be recorded as **Agent Backbone Transfer**, not Retriever Transfer.
+- **Main limitation:** The entity-level reward establishes improved evidence coverage in a fixed web-search stack, but not semantic intent preservation, query-independent evidence quality, or transfer to an unseen retriever/tool.
+- **Decision:** Include Core as a targeted A2 exception.
+
+---
+
 ## Supporting and excluded candidates
 
 ### LESER: Learning to Expand via Search Engine-feedback Reinforcement in e-Commerce
@@ -190,9 +217,19 @@ WebDancer is a useful A6 contrast, not an A2 core paper. It trains an end-to-end
 
 ## Cross-paper synthesis
 
+### Three distinct meanings of query generalization
+
+The A2 map should not treat Retriever Independence as the only desirable endpoint. It separates three properties:
+
+1. **Semantic Intent Preservation:** does the query express the information actually needed by the task, even when surface wording changes?
+2. **Backend Adaptation:** can the policy adjust expression to the lexical, structural, and ranking preferences of a particular retriever or search interface?
+3. **Transferable Query Learning:** can the model preserve the underlying intent in a new environment and rapidly adapt its expression without relearning the entire policy?
+
+Environment-aware IR primarily measures Backend Adaptation and exposes weak cross-retriever transfer. QREF mainly measures evidence coverage within one web-search stack and transfers across Agent Backbones. Neither establishes Semantic Intent Preservation with an independent human or model-agnostic evaluation, and neither proves broad Transferable Query Learning.
+
 ### Training signal
 
-The six papers expose a useful signal hierarchy. Query Rewriting uses pseudo-query supervision filtered by frozen-reader correctness. StepSearch adds direct query-string overlap, support-document information gain, and redundancy penalties, making it the closest to process-level query/evidence credit. DeepRetrieval and Environment-aware IR directly optimize retrieval utility such as Recall/NDCG or passage ranking. ExpandSearch and ParallelSearch rely more heavily on final-answer reward or decomposition/search-count proxies.
+The seven papers expose a useful signal hierarchy. Query Rewriting uses pseudo-query supervision filtered by frozen-reader correctness. StepSearch adds direct query-string overlap, support-document information gain, and redundancy penalties, making it the closest to process-level query/evidence credit in the original six-paper map. QREF adds an important comparison-based signal: recovered, preserved, lost, and missed expected entities when replacing an original query batch with a refined batch. DeepRetrieval and Environment-aware IR directly optimize retrieval utility such as Recall/NDCG or passage ranking. ExpandSearch and ParallelSearch rely more heavily on final-answer reward or decomposition/search-count proxies.
 
 No paper provides an unambiguous human-annotated standard for “the best expression of an information need.” ChatGPT pseudo-queries, GPT-4o-generated search keys, benchmark-derived decomposition labels, and passage-level relevance all provide useful supervision, but each is a proxy. They can show that a query behavior is learnable without proving that it is semantically complete, user-aligned, or robust to a new information environment.
 
@@ -200,23 +237,23 @@ Retrieval gain should not be treated as query quality. DeepRetrieval and Environ
 
 ### Learned capability
 
-The first batch supports four learned A2 behaviors: single-query reformulation, multi-query expansion, structured parallel sub-question decomposition, and retriever-aware query formulation. StepSearch additionally shows an attempt to allocate credit at the query/evidence step rather than only at the final answer.
+The targeted A2 map supports five learned behaviors: single-query reformulation, multi-query expansion, structured parallel sub-question decomposition, retriever-aware query formulation, and reasoning-conditioned query refinement with batch-level evidence coverage. StepSearch and QREF both move beyond a single final-answer reward, but they optimize different proxies: StepSearch uses lexical search-key and support-document signals, whereas QREF compares entity coverage before and after refinement.
 
 These behaviors are not equivalent. A model that generates more queries has not necessarily learned a better information need. A model that decomposes a comparison question has not necessarily learned whether each subquery is relevant. A query that retrieves a relevant passage may still be semantically incomplete, answer-leaking, or useless under another retriever.
 
 ### Generalization
 
-Task and benchmark transfer is relatively common. Environment transfer is not. DeepRetrieval covers several tasks and backends, but mostly as separately bound training environments. Environment-aware IR explicitly demonstrates that query styles learned for one retriever may fail on another. The remaining papers are largely tied to fixed E5/Wikipedia, Bing, or a proprietary backend.
+Task and benchmark transfer is relatively common. Environment transfer is not. DeepRetrieval covers several tasks and backends, but mostly as separately bound training environments. Environment-aware IR explicitly demonstrates that query styles learned for one retriever may fail on another. QREF transfers across two Agent Backbones, but both use the same web-search stack, so this is not Retriever Transfer. The remaining papers are largely tied to fixed E5/Wikipedia, Bing, or a proprietary backend.
 
-There is almost no systematic transfer to unseen web tools, APIs, dynamic corpora, budgets, languages, or retriever mixtures. Existing “generalization” claims should therefore be coded carefully: a new QA benchmark is not sufficient evidence of a transferable Query Policy unless query behavior itself is measured in the new environment.
+There is almost no systematic transfer to unseen web tools, APIs, dynamic corpora, budgets, languages, or retriever mixtures. Existing “generalization” claims should therefore be coded carefully: a new QA benchmark or a new Agent Backbone is not sufficient evidence of a transferable Query Policy unless query behavior itself is measured in the new environment.
 
 ### A2–A6 boundary
 
-Query Rewriting and DeepRetrieval are primarily pre-retrieval, one-shot query policies. ParallelSearch and ExpandSearch include search count, multi-turn retrieval, or compression behavior, so their query gains are partly entangled with A6. StepSearch is the clearest A2–A6 boundary case because it directly rewards query/evidence alignment while also learning feedback-conditioned continuation. WebDancer belongs primarily to A6 because its query is simply one parameter of a complete web-agent action policy.
+Query Rewriting and DeepRetrieval are primarily pre-retrieval, one-shot query policies. ParallelSearch and ExpandSearch include search count, multi-turn retrieval, or compression behavior, so their query gains are partly entangled with A6. StepSearch is the clearest original A2–A6 boundary case because it directly rewards query/evidence alignment while also learning feedback-conditioned continuation. QREF is A2-primary because Query Refinement is a separately trained module, but its per-step refinement still touches A6-style feedback. WebDancer belongs primarily to A6 because its query is simply one parameter of a complete web-agent action policy.
 
 ## First-round conclusion
 
-The six-paper core map is sufficient for the first A2 round. It covers the main training signals and capability forms without expanding into generic RAG query rewriting or a long list of Search-RL variants.
+The original six-paper core map plus the targeted QREF exception is sufficient for A2 candidate collection. It covers the main training signals and capability forms without reopening a broad Search-RL crawl.
 
 The defensible stage conclusion is:
 
@@ -224,6 +261,6 @@ The defensible stage conclusion is:
 
 The central unresolved problem is not whether query generation can be improved. It is whether a model can learn a query policy whose quality remains meaningful when the task, retriever, tool, corpus, budget, and feedback regime change.
 
-The most important missing evaluation is a controlled query-only protocol: hold the task, answer generator, evidence budget, and retriever fixed; replace, delete, or semantically perturb the query; then separately measure query intent preservation, retrieval utility, evidence coverage, and downstream answer change. This should be combined with train-on-retriever-A/test-on-retriever-B and unseen-tool/environment tests.
+The most important missing evaluation is a controlled query-only protocol: hold the task, answer generator, **Retriever, Corpus, Top-k, and reasoning/search budget fixed**, allow the retrieved results to change naturally with the query, and replace, delete, or semantically perturb only the query. Then separately measure Semantic Intent Preservation, retrieval utility, evidence coverage, and downstream answer change. This should be combined with train-on-retriever-A/test-on-retriever-B, unseen-tool/environment, and rapid-adaptation tests.
 
-A2 is therefore closed for this first candidate-discovery round, not closed as a research question. The next major capability axis is A3 Information Space Exploration. A6 should be studied afterward with explicit focus on feedback-driven query modification, retry, verification, stopping, and cost control.
+A2 is therefore closed for broad candidate discovery, with QREF recorded as the one targeted exception. It is not closed as a research question. The next major capability axis is A3 Information Space Exploration. A6 should be studied afterward with explicit focus on feedback-driven query modification, retry, verification, stopping, and cost control.

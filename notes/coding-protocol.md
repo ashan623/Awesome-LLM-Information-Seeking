@@ -31,7 +31,15 @@ A2 concerns the expression of an information need: query generation, query refor
 
 For A2 papers, record **Information Need Target**, **Query Action**, **Training Signal**, **Training–Capability Alignment**, **Retriever Dependence**, **Query Reliance**, **Generalization Evidence**, **Shortcut Risk**, and **A2/A6 Boundary**. Query Reliance requires more than a downstream score: prefer query replacement, deletion, semantic perturbation, fixed-evidence, or retriever-transfer tests. Retrieval gain is evidence of backend utility, not automatically evidence of general query quality.
 
+Separate A2 generalization into three properties: **Semantic Intent Preservation** (does the query express the task’s actual information need?), **Backend Adaptation** (can the policy adjust to a retriever’s lexical, structural, and ranking preferences?), and **Transferable Query Learning** (can it preserve intent and adapt expression in a new environment without relearning the whole policy?). Cross-Agent-Backbone transfer is not cross-Retriever transfer.
+
+For a strong **Query-only Intervention**, hold the task, answer generator, Retriever, Corpus, Top-k, and reasoning/search budget fixed. Allow the changed query to alter retrieved results naturally, then separately measure intent preservation, retrieval utility, evidence coverage, and downstream answer change. Fixed-evidence tests can diagnose answer dependence, but they are not substitutes for natural retrieval-change tests.
+
 A tool call is not automatically A3. Search invocation and stopping belong to A6 unless the paper directly studies exploration or source discovery. A paper may be marked `Not Directly Trained` when its main contribution is infrastructure, retriever optimization, or evaluation.
+
+For A3, code three objects separately: **Source / Tool Selection** (which information channel is chosen), **Exploration / Coverage** (which complementary or unresolved evidence regions are visited), and **Unseen-Environment Navigation** (whether useful paths can be discovered under a changed source inventory, corpus, tool API, or knowledge structure). Generic browser automation or tool calling is not A3 without one of these targets.
+
+A3-specific fields are **Exploration Target**, **Source / Tool Choice**, **Coverage State or Unresolved Region**, **Exploration Diversity / Redundancy Signal**, **Counterfactual Source or Coverage Intervention**, **A2/A3/A6 Boundary**, and behavior-level transfer across source inventory, tool, environment, horizon, and budget. Final-answer improvement alone does not establish learned exploration.
 
 ## Orthogonal contribution type
 

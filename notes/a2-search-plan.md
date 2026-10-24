@@ -20,6 +20,12 @@ A paper may touch multiple capabilities, but its primary label should follow the
 2. **Training Alignment:** does the supervision or reward measure query quality itself, retrieval gain, evidence usefulness, downstream answer reward, or only final answer correctness? Can the signal distinguish a good information need from a lucky query or a retriever-specific shortcut?
 3. **Generalization:** does the learned Query Policy transfer across tasks, domains, retrievers, search interfaces, corpora, query languages, budgets, and information environments?
 
+For A2, generalization should be separated into three properties rather than reduced to Retriever Independence:
+
+- **Semantic Intent Preservation:** the query continues to express the information actually needed by the task;
+- **Backend Adaptation:** the policy adjusts expression to the lexical, structural, and ranking preferences of a particular retriever or interface;
+- **Transferable Query Learning:** the model preserves intent in a new environment and can adapt expression without relearning the entire policy.
+
 ## Required coding fields
 
 Every candidate should record:
@@ -48,8 +54,10 @@ The next stage after A2 is A3 Information Space Exploration, followed by A6 Adap
 
 ## First-round result
 
-The first candidate-discovery round retained six core papers: single-step query rewriting, direct retrieval-gain RL, multi-query expansion, parallel sub-question decomposition, step-wise query/evidence credit, and retriever-aware query formulation. LESER is recorded as a domain-specific e-commerce supporting candidate; WebDancer is recorded as an A6-dominant supporting contrast.
+The first candidate-discovery round retained six core papers: single-step query rewriting, direct retrieval-gain RL, multi-query expansion, parallel sub-question decomposition, step-wise query/evidence credit, and retriever-aware query formulation. A targeted exception, **QREF**, was then verified and added as A2 Core because it combines SFT+PPO with an entity-level comparison between original and refined query batches. LESER is recorded as a domain-specific e-commerce supporting candidate; WebDancer is recorded as an A6-dominant supporting contrast.
 
-The round is closed for broad candidate collection. The current evidence supports learnable query behaviors, but not a broadly transferable Query Policy. Most papers lack query-only causal interventions, independent semantic query-quality labels, train-on-retriever-A/test-on-retriever-B evaluation, unseen-tool or dynamic-environment transfer, and budget or language transfer.
+The round is closed for broad candidate collection. The current evidence supports learnable query behaviors, but not a broadly transferable Query Policy. Most papers lack query-only causal interventions, independent semantic query-quality labels, train-on-retriever-A/test-on-retriever-B evaluation, unseen-tool or dynamic-environment transfer, and budget or language transfer. Cross-Agent-Backbone transfer, as in QREF, must not be labeled cross-Retriever transfer.
+
+The required query-only intervention should hold the task, answer generator, Retriever, Corpus, Top-k, and reasoning/search budget fixed. The query may change the retrieved results naturally; the evaluation should separately measure Semantic Intent Preservation, retrieval utility, evidence coverage, and downstream answer change.
 
 The detailed map is in [`papers/a2-information-need-formulation.md`](../papers/a2-information-need-formulation.md), and the verification record is in [`notes/search-log-2026-10-24-round-6-a2-first-batch.md`](./search-log-2026-10-24-round-6-a2-first-batch.md). The next capability stage is A3 Information Space Exploration.
