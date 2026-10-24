@@ -57,4 +57,10 @@ If at least 4–6 direct-learning papers provide distinct signals and behavior-l
 
 ## Current state
 
-The three anchor papers are verified. The current evidence supports an independently meaningful A3 definition, but not yet a learned and generalizable exploration policy. The detailed anchor map is [`papers/a3-information-space-exploration.md`](../papers/a3-information-space-exploration.md).
+The three anchors and four targeted candidates are verified. MARAG-R1 and DDPO provide direct information-space learning evidence. Training Small Language Models for Transferable Tool Selection and ToolSearcher provide strong tool-repository selection/transfer evidence but are boundary contrasts because they do not measure acquisition of task-relevant information.
+
+Final decision: retain A3 as a **cross-capability dimension with a dedicated subsection**, not a full independent learning chapter and not a complete merge into A2/A6. The decisive distinction is:
+
+> **Query Diversity ≠ Evidence Diversity ≠ Information Gain ≠ Useful Coverage.**
+
+Stop broad A3 collection. Proceed to A6 Adaptive Search Control. The detailed map and decision are in [`papers/a3-information-space-exploration.md`](../papers/a3-information-space-exploration.md), and the targeted verification is in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./search-log-2026-10-24-round-6-a3-learning.md).

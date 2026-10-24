@@ -102,3 +102,90 @@ Only search for direct learning papers that add at least one of the following:
 - counterfactual source removal or coverage intervention that isolates exploration behavior from final answer quality.
 
 Do not add generic browser automation, web navigation, tool-calling, or Search-R1 variants unless they isolate one of these A3 behaviors.
+
+---
+
+## Targeted learning papers
+
+### A3-L1. MARAG-R1: Beyond Single Retriever via Reinforcement-Learned Multi-Tool Agentic Retrieval
+
+- **Authors / year:** Q. Luo et al., 2025.
+- **Links:** [arXiv abstract](https://arxiv.org/abs/2510.27569) · [arXiv HTML](https://arxiv.org/html/2510.27569v1)
+- **Role / contribution:** Core learning candidate / A3.1 Source-primitive Coordination + A3.2 Evidence Coverage.
+- **Learned behavior:** The agent coordinates four retrieval primitives: semantic retrieval, keyword retrieval, document filtering, and aggregation. It learns to collect and combine complementary evidence rather than relying on one retriever.
+- **Training:** GPT-4-generated and rejection-filtered expert trajectories for SFT, followed by RLOO reinforcement learning.
+- **Exploration objective:** The reward combines final-answer F1, document-ID F1 against gold supporting documents, and a tool-call reward that discourages excessive calls relative to expert trajectories.
+- **What is genuinely A3:** The document-coverage reward directly rewards recovering necessary supporting documents and discourages irrelevant retrieval. This is stronger than a pure final-answer reward. The tool-call term, however, measures quantity/efficiency rather than discovery of an unfamiliar source region.
+- **Capability isolation:** Medium. Removing the document reward lowers performance, and removing individual retrieval tools causes substantial degradation. These ablations show that multi-tool coordination matters, but they do not establish that the policy discovered novel information regions independently of query generation and answer reasoning.
+- **Generalization:** The model transfers from GlobalQA-style global retrieval to unseen 2WikiMultiHopQA and HotpotQA tasks. This is task transfer with the same retrieval-tool family, not unseen-tool, unseen-retriever, or unseen-corpus-structure transfer.
+- **A2/A3/A6 boundary:** A3-primary for complementary evidence acquisition and retrieval-tool coordination; A2-secondary because subqueries are generated within trajectories; A6-secondary because tool calls and search count are controlled.
+- **Main limitation:** The four tools are predefined. The paper does not learn to discover a previously unknown information source or choose among a changing tool inventory. Gold document IDs also make Coverage a supervised retrieval target rather than a fully open-ended exploration measure.
+- **Decision:** Include as A3 Core Learning Evidence, with Medium capability isolation and Limited unseen-environment transfer.
+
+### A3-L2. Restoring Exploration via Diversity-Driven Policy Optimization in Search-Based LLM Agents
+
+- **Authors / year:** Xinyue Chen et al., online article 2026; Information Processing & Management, Volume 64, Issue 2, Part A, article 105104, issue dated February 2027.
+- **Links:** [ScienceDirect abstract](https://www.sciencedirect.com/science/article/abs/pii/S0306457326004942) · [full article page](https://www.sciencedirect.com/science/article/pii/S0306457326004942)
+- **Role / contribution:** Core learning candidate / A3.2 Exploration and Coverage.
+- **Learned behavior:** Search policies are trained to avoid exploration collapse by producing semantically diverse queries that retrieve broader and less-overlapping evidence.
+- **Training:** GRPO-based RL fine-tuning with adaptive gating. No extra model or external supervision is required.
+- **Exploration objective:** A log-determinant information-gain reward jointly measures semantic diversity of queries and coverage diversity of retrieved documents. The paper explicitly distinguishes pseudo-exploration from useful retrieval diversity, where varied wording returns essentially the same evidence.
+- **Independent behavior evaluation:** Besides final EM, the paper reports search-step count, query/retrieval diversity signals, and Gold Passage Recall. It reports 52.1% average EM with Qwen2.5-7B, 1.01 average search steps on NQ with 44.8% EM, and a 6.3-point Gold Passage Recall improvement on MuSiQue.
+- **Capability isolation:** Medium. The explicit diversity and coverage metrics are closer to A3 than final QA reward alone, and the pseudo-exploration discussion is directly relevant. However, the current evidence does not provide a counterfactual source-removal test or prove that every added document represents a useful new information region.
+- **Generalization:** It spans seven knowledge-intensive single- and multi-hop QA benchmarks and two model sizes. The verified article does not establish systematic transfer to unseen Retriever, Corpus, Tool, or source-inventory conditions.
+- **A2/A3/A6 boundary:** A3-primary because exploration diversity and retrieval coverage are the explicit optimization target; A2-secondary because query semantic diversity is one component; A6-secondary because search-step efficiency is measured.
+- **Main limitation:** Query Diversity, Document Diversity, and Useful Information Gain remain distinct. Gold Passage Recall helps bridge this gap, but fixed retriever/corpus evaluation leaves open whether the policy learned exploration or only a diversity preference that works in one search environment.
+- **Publication status:** Record as an online/early-access research article whose issue metadata is dated 2027, not as a 2027-only unpublished manuscript.
+- **Decision:** Include as A3 Core Learning Evidence, with Medium capability isolation and Limited environment transfer.
+
+### A3-B1. Training Small Language Models for Transferable Tool Selection
+
+- **Authors / year:** Zhaoyi Zhou et al., 2026; arXiv:2610.31483v1 submitted 22 October 2026.
+- **Links:** [arXiv abstract](https://arxiv.org/abs/2610.31483) · [arXiv HTML](https://arxiv.org/html/2610.31483)
+- **Role / contribution:** Boundary / direct learning of tool selection, not core information-space exploration.
+- **Learned behavior:** A Qwen3 SLM is trained with SFT followed by RL to plan substeps, retrieve candidate tools, and select the gold set of APIs from large tool repositories.
+- **Training signal:** Exact-match success when the union of selected tool IDs equals the gold tool set. The workflow uses BM25 during training; the paper also tests replacing BM25 with COLT.
+- **Transfer evidence:** The model transfers from ToolBench G3 to ToolBench G2, Gorilla, CRAFT, and TaskBench, and the same G3-trained checkpoint runs with a COLT retriever without additional training. This is unusually strong Retriever and Tool-Corpus transfer evidence.
+- **Why it is not core A3:** The target is functional API selection, not acquiring task-relevant evidence from information sources. The evaluation does not require executing selected tools, measuring retrieved information coverage, identifying unresolved evidence regions, or checking whether the selected tools provide useful new information.
+- **A2/A3/A6 boundary:** A3.1-adjacent because the policy searches a tool repository; not necessarily Source Selection in the Information-Seeking sense. The plan/select workflow also touches A6, but its primary target is tool-set exact match.
+- **Decision:** Include as a boundary contrast for A3.1 and for Transferable Query/Tool Learning; do not count it as core A3 evidence.
+
+### A3-B2. ToolSearcher: Optimizing Tool Selection at Scale via Reinforcement Learning
+
+- **Authors / year:** Zhenlong Dai et al., 2026; arXiv:2609.30906v1 submitted 25 September 2026.
+- **Links:** [arXiv abstract](https://arxiv.org/abs/2609.30906) · [arXiv HTML](https://arxiv.org/html/2609.30906) · [code/data](https://github.com/zhenlongDai/ToolSearcher)
+- **Role / contribution:** Boundary / tool-repository search and event-level credit assignment.
+- **Learned behavior:** Multi-turn search over a large tool repository, category-constrained discrimination among similar tools, and selection of compatible tools for multi-tool composition.
+- **Training signal:** Event-level search modeling rewards discovery of target tools; trajectory-aligned credit assigns finer rewards to search and selection stages; ablations replace event-level rewards with trajectory-level final-outcome supervision.
+- **Why it is useful for the survey:** It gives a strong example of event-level credit assignment for exploration over a large candidate space and exposes how dense search supervision can be constructed.
+- **Why it is not core A3:** The explored space is a tool repository and the target is a gold tool set. The paper does not show that the selected tools were executed to acquire new information, nor that exploration covered complementary evidence or resolved a knowledge gap. It is general tool discovery, not yet Information Space Exploration for information seeking.
+- **Transfer evidence:** The verified paper emphasizes large-scale tool selection and composition benchmarks; the available evidence is not sufficient to claim cross-information-environment transfer.
+- **Decision:** Include as a boundary contrast, not core A3.
+
+---
+
+## A3 decision after targeted search
+
+The four targeted papers sharpen the distinction required by this survey:
+
+- **MARAG-R1** directly learns multi-tool retrieval coordination and document coverage, but its source inventory is fixed;
+- **DDPO** directly trains query and retrieved-document diversity and reports independent coverage-oriented metrics, but its environment transfer is limited;
+- **Transferable Tool Selection** and **ToolSearcher** provide strong evidence for learning and transferring tool-repository selection, but their target is functional API selection rather than acquiring new task-relevant information.
+
+The exploration objective hierarchy is now explicit:
+
+> **Query Diversity ≠ Evidence Diversity ≠ Information Gain ≠ Useful Coverage.**
+
+DDPO is strongest on Evidence Diversity and an approximation to Information Gain. MARAG-R1 is strongest on gold-document Useful Coverage within a fixed retrieval-tool family. The two tool-selection papers optimize Tool Discovery, which is adjacent to Source Selection but not equivalent to information acquisition.
+
+### Final classification decision
+
+A3 should **not be merged completely into A2/A6**, because Source Selection and Coverage of unresolved information regions are conceptually and operationally distinct from query wording and feedback control. However, it should also **not yet be promoted to a full independent learning chapter**: only two of the four targeted papers directly optimize information-space exploration, and both have limited environment-transfer evidence.
+
+For the current survey, retain A3 as a **cross-capability dimension with a dedicated subsection**, not as a fully independent vertical chapter. Compare it across A1–A6 using the same Training Signal → Capability → Generalization matrix. If the final cross-capability analysis shows that A3’s signals, evaluations, and failures explain a distinct pattern, it can be expanded into a standalone section without adding a large new literature pool.
+
+The current A3 conclusion is therefore:
+
+> **Exploration can be trained when the reward measures coverage or diversity, but current evidence does not yet show a transferable policy for discovering useful information regions in unfamiliar information spaces.**
+
+The next stage is A6 Adaptive Search Control. No further broad A3 search is needed unless a new paper directly tests unseen source inventories, counterfactual coverage, or information-gain-based source selection.

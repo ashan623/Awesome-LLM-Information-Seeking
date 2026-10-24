@@ -41,6 +41,8 @@ For A3, code three objects separately: **Source / Tool Selection** (which inform
 
 A3-specific fields are **Exploration Target**, **Source / Tool Choice**, **Coverage State or Unresolved Region**, **Exploration Diversity / Redundancy Signal**, **Counterfactual Source or Coverage Intervention**, **A2/A3/A6 Boundary**, and behavior-level transfer across source inventory, tool, environment, horizon, and budget. Final-answer improvement alone does not establish learned exploration.
 
+Do not collapse the exploration objectives: **Query Diversity ≠ Evidence Diversity ≠ Information Gain ≠ Useful Coverage**. Query or document diversity is a proxy unless the paper also tests newly recovered necessary evidence, gold-passage/document coverage, unresolved-region completion, or a counterfactual source/coverage intervention. Tool-repository discovery is an A3 boundary case and is not core Information Space Exploration unless the selected tools are used to acquire and measure task-relevant information.
+
 ## Orthogonal contribution type
 
 Record exactly one primary contribution type, with secondary types when necessary:
