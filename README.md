@@ -7,7 +7,7 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-70-blue.svg)](./papers/a6-adaptive-search-control.md)
+[![Papers](https://img.shields.io/badge/Papers-73-blue.svg)](./papers/a6-adaptive-search-control.md)
 [![Status](https://img.shields.io/badge/Status-Cross--Capability%20Analysis-orange.svg)](./notes/a6-search-plan.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
@@ -70,12 +70,10 @@ The central distinction is between **using a search tool** and **learning how to
 
 | Code | Mechanism | Typical signals or objects |
 |:---:|---|---|
-| **B1** | **Data / Trajectory Construction** | Search trajectories, success/failure pairs, synthetic environments, curriculum rollouts |
-| **B2** | **Behavior Learning** | SFT, imitation learning, behavior priming, trajectory distillation |
-| **B3** | **Reward / Feedback Design** | Outcome, process, evidence, preference, information gain, cost, and risk feedback |
-| **B4** | **Policy Optimization** | RL, GRPO, PPO, REINFORCE, and test-time policy optimization |
-| **B5** | **Credit Assignment** | Attributing downstream success or failure to multi-turn search actions |
-| **B6** | **Joint Optimization** | Retriever–agent, reasoner–retriever, verifier–policy, memory–policy, and system co-training |
+| **B1** | **Data and Learning Signals** | Demonstrations, trajectories, outcome/process/preference/teacher/utility signals |
+| **B2** | **Policy Learning and Optimization** | SFT, trajectory distillation, DPO, OPD, PPO, GRPO, REINFORCE, and hybrid methods |
+| **B3** | **Learning Targets and Optimization Loci** | LLM policy, query rewriter, verifier, retriever, reader, memory policy, critic, or joint system |
+| **B4** | **Long-horizon Credit Assignment** | Episode, turn, step, token/span, and state-transition credit |
 
 ### Generalization: Does It Transfer?
 
@@ -97,6 +95,7 @@ The central distinction is between **using a search tool** and **learning how to
 - **Evidence Vector:** separately record `Method Effectiveness`, `Capability Isolation`, and `Generalization Evidence` as `Strong`, `Medium`, `Limited`, or `Not Tested`.
 - **Training–Capability Alignment:** record whether the training signal directly reflects the claimed capability, partially reflects it, or is only an indirect downstream proxy.
 - **Role:** `Core`, `Supporting`, `Background`, or `Evaluation`.
+- **Cross-cutting diagnostics:** `Deployment Information Parity` and `Generalization` are not additional B categories; they are evaluated across A1–A6.
 
 ## Keywords Convention
 
@@ -159,10 +158,10 @@ Conference and publication badges use the same compact convention as the referen
 ### A1 Utility-aware Policy Learning
 
 - **s3: You Don’t Need That Much Data to Train a Search Agent via RL**<br>
-  *Pengcheng Jiang et al.* [[paper](https://aclanthology.org/2025.emnlp-main.1095/)] [[code](https://github.com/pat-jj/s3)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2025-orange.svg)
+  *Pengcheng Jiang et al.* [[paper](https://aclanthology.org/2025.emnlp-main.1095/)] [[code](https://github.com/pat-jj/s3)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2025-orange.svg)
 
 - **Optimizing Agentic Reasoning with Retrieval via Synthetic Semantic Information Gain Reward**<br>
-  *Senkang Hu et al.* [[paper](https://arxiv.org/abs/2602.00845v3)] [[code](https://github.com/dl-m9/InfoReasoner)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ICML2026-orange.svg)
+  *Senkang Hu et al.* [[paper](https://arxiv.org/abs/2602.00845v3)] [[code](https://github.com/dl-m9/InfoReasoner)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/ICML2026-orange.svg)
 
 - **CoBRA: Learning Tool-Use Boundaries via Counterfactual Margins**<br>
   *Wenhao Zou et al.* [[paper](https://arxiv.org/abs/2609.00967)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/Counterfactual-9c755f.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
@@ -171,7 +170,7 @@ Conference and publication badges use the same compact convention as the referen
   *Wenxuan Ding et al.* [[paper](https://arxiv.org/abs/2602.16699v3)] [[code](https://github.com/NSF-Simons-CosmicAI-Institute/CalibrateThenAct)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/Cost--Aware-9c755f.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
 
 - **IKEA: Reinforced Internal-External Knowledge Synergistic Reasoning**<br>
-  *Ziyang Huang et al.* [[paper](https://arxiv.org/abs/2505.07596)] [[code](https://github.com/hzy312/knowledge-r1)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+  *Ziyang Huang et al.* [[paper](https://arxiv.org/abs/2505.07596)] [[code](https://github.com/hzy312/knowledge-r1)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
 - **Self-Knowledge Guided Retrieval Augmentation for Large Language Models**<br>
   *Yile Wang et al.* [[paper](https://aclanthology.org/2023.findings-emnlp.691/)] [[code](https://github.com/THUNLP-MT/SKR)] 2023. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/EMNLP2023-orange.svg)
@@ -179,25 +178,25 @@ Conference and publication badges use the same compact convention as the referen
 ### A2 Information Need Formulation
 
 - **Query Rewriting in Retrieval-Augmented Large Language Models**<br>
-  *Xinbei Ma et al.* [[paper](https://aclanthology.org/2023.emnlp-main.322/)] [[code](https://github.com/xbmxb/RAG-query-rewriting)] 2023. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2023-orange.svg)
+  *Xinbei Ma et al.* [[paper](https://aclanthology.org/2023.emnlp-main.322/)] [[code](https://github.com/xbmxb/RAG-query-rewriting)] 2023. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2023-orange.svg)
 
 - **DeepRetrieval: Hacking Real Search Engines and Retrievers with Large Language Models via Reinforcement Learning**<br>
-  *Pengcheng Jiang et al.* [[paper](https://arxiv.org/abs/2503.00223)] [[code](https://github.com/pat-jj/DeepRetrieval)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/COLM2025-orange.svg)
+  *Pengcheng Jiang et al.* [[paper](https://arxiv.org/abs/2503.00223)] [[code](https://github.com/pat-jj/DeepRetrieval)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/COLM2025-orange.svg)
 
 - **Beyond the limitation of a single query: Train your LLM for query expansion with Reinforcement Learning**<br>
-  *Shu Zhao et al.* [[paper](https://arxiv.org/abs/2510.10009)] [[project](https://shuzhao.me/ExpandSearchProject/)] [[code](https://github.com/Tree-Shu-Zhao/ferret/tree/main/recipe/expand_search)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+  *Shu Zhao et al.* [[paper](https://arxiv.org/abs/2510.10009)] [[project](https://shuzhao.me/ExpandSearchProject/)] [[code](https://github.com/Tree-Shu-Zhao/ferret/tree/main/recipe/expand_search)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
 - **ParallelSearch: Train your LLMs to Decompose Query and Search Sub-queries in Parallel with Reinforcement Learning**<br>
-  *Shu Zhao et al.* [[paper](https://arxiv.org/abs/2508.09303)] [[project](https://shuzhao.me/ParallelSearchProject/)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+  *Shu Zhao et al.* [[paper](https://arxiv.org/abs/2508.09303)] [[project](https://shuzhao.me/ParallelSearchProject/)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
 - **StepSearch: Igniting LLMs Search Ability via Step-Wise Proximal Policy Optimization**<br>
-  *Xuhui Zheng et al.* [[paper](https://aclanthology.org/2025.emnlp-main.1106/)] [[code](https://github.com/Zillwang/StepSearch)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2025-orange.svg)
+  *Xuhui Zheng et al.* [[paper](https://aclanthology.org/2025.emnlp-main.1106/)] [[code](https://github.com/Zillwang/StepSearch)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2025-orange.svg)
 
 - **Understanding the Behaviors of Environment-aware Information Retrieval**<br>
-  *Ruifeng Yuan et al.* [[paper](https://aclanthology.org/2026.acl-long.2013/)] [[code](https://github.com/LCO-Embedding/Envs-aware-Information-Retrieval)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![C4](https://img.shields.io/badge/C4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Ruifeng Yuan et al.* [[paper](https://aclanthology.org/2026.acl-long.2013/)] [[code](https://github.com/LCO-Embedding/Envs-aware-Information-Retrieval)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![C4](https://img.shields.io/badge/C4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **QREF: Improving DeepSearch Agents by Aligning Search with Reasoning via Query Refinement and Evidence Filtering**<br>
-  *Yujia Chen et al.* [[paper](https://arxiv.org/abs/2610.21512)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+  *Yujia Chen et al.* [[paper](https://arxiv.org/abs/2610.21512)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
 
 ### A3 Information Space Exploration
 
@@ -211,16 +210,16 @@ Conference and publication badges use the same compact convention as the referen
   *Jingjie Ning et al.* [[paper](https://arxiv.org/abs/2601.17617)] [[logs](https://huggingface.co/datasets/cx-cmu/deepresearchgym-agentic-search-logs)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A3.2](https://img.shields.io/badge/A3.2-4f8cc9.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/SIGIR2026-orange.svg)
 
 - **MARAG-R1: Beyond Single Retriever via Reinforcement-Learned Multi-Tool Agentic Retrieval**<br>
-  *Q. Luo et al.* [[paper](https://arxiv.org/abs/2510.27569)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3.1](https://img.shields.io/badge/A3.1-4f8cc9.svg) ![A3.2](https://img.shields.io/badge/A3.2-4f8cc9.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+  *Q. Luo et al.* [[paper](https://arxiv.org/abs/2510.27569)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3.1](https://img.shields.io/badge/A3.1-4f8cc9.svg) ![A3.2](https://img.shields.io/badge/A3.2-4f8cc9.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
 
 - **Restoring Exploration via Diversity-Driven Policy Optimization in Search-Based LLM Agents**<br>
-  *Xinyue Chen et al.* [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0306457326004942)] 2026/2027. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3.2](https://img.shields.io/badge/A3.2-4f8cc9.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/IPM%202027-orange.svg)
+  *Xinyue Chen et al.* [[paper](https://www.sciencedirect.com/science/article/abs/pii/S0306457326004942)] 2026/2027. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A3.2](https://img.shields.io/badge/A3.2-4f8cc9.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/IPM%202027-orange.svg)
 
 - **Training Small Language Models for Transferable Tool Selection**<br>
-  *Zhaoyi Zhou et al.* [[paper](https://arxiv.org/abs/2610.31483)] 2026. ![Boundary](https://img.shields.io/badge/Boundary-9c755f.svg) ![A3.1](https://img.shields.io/badge/A3.1-4f8cc9.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![C4](https://img.shields.io/badge/C4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+  *Zhaoyi Zhou et al.* [[paper](https://arxiv.org/abs/2610.31483)] 2026. ![Boundary](https://img.shields.io/badge/Boundary-9c755f.svg) ![A3.1](https://img.shields.io/badge/A3.1-4f8cc9.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![C4](https://img.shields.io/badge/C4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
 
 - **ToolSearcher: Optimizing Tool Selection at Scale via Reinforcement Learning**<br>
-  *Zhenlong Dai et al.* [[paper](https://arxiv.org/abs/2609.30906)] [[code](https://github.com/zhenlongDai/ToolSearcher)] 2026. ![Boundary](https://img.shields.io/badge/Boundary-9c755f.svg) ![A3.1](https://img.shields.io/badge/A3.1-4f8cc9.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+  *Zhenlong Dai et al.* [[paper](https://arxiv.org/abs/2609.30906)] [[code](https://github.com/zhenlongDai/ToolSearcher)] 2026. ![Boundary](https://img.shields.io/badge/Boundary-9c755f.svg) ![A3.1](https://img.shields.io/badge/A3.1-4f8cc9.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
 
 ### A4 Evidence Evaluation
 
@@ -237,10 +236,10 @@ Conference and publication badges use the same compact convention as the referen
   *Dongyu Ru et al.* [[paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/27245589131d17368cccdfa990cbf16e-Abstract-Datasets_and_Benchmarks_Track.html)] [[code](https://github.com/amazon-science/RAGChecker)] 2024. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![A4.3](https://img.shields.io/badge/A4.3-e76f51.svg) ![](https://img.shields.io/badge/NeurIPS2024-orange.svg)
 
 - **RLSeek: Evidence-Grounded Reasoning for RAG Hallucination Detection**<br>
-  *Zhaoheng Huang et al.* [[paper](https://aclanthology.org/2026.acl-long.1492/)] [[code](https://github.com/WaldenRUC/RLSeek)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Zhaoheng Huang et al.* [[paper](https://aclanthology.org/2026.acl-long.1492/)] [[code](https://github.com/WaldenRUC/RLSeek)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **Evidence-Augmented Policy Optimization with Reward Co-Evolution for Long-Context Reasoning**<br>
-  *Xin Guan et al.* [[paper](https://aclanthology.org/2026.acl-long.1404/)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![A4.3](https://img.shields.io/badge/A4.3-e76f51.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Xin Guan et al.* [[paper](https://aclanthology.org/2026.acl-long.1404/)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A4.1](https://img.shields.io/badge/A4.1-e76f51.svg) ![A4.3](https://img.shields.io/badge/A4.3-e76f51.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **AuthorityBench: Benchmarking LLM Authority Perception for Reliable Retrieval-Augmented Generation**<br>
   *Zhihui Yao et al.* [[paper](https://arxiv.org/abs/2603.25092)] [[code](https://github.com/Trustworthy-Information-Access/AuthorityBench)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4.2](https://img.shields.io/badge/A4.2-e76f51.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
@@ -269,7 +268,7 @@ Conference and publication badges use the same compact convention as the referen
   *Zhengyi Zhao et al.* [[paper](https://aclanthology.org/2026.acl-long.192/)] [[paper](https://arxiv.org/abs/2604.08046)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.1](https://img.shields.io/badge/A5.1-8d5a97.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **Efficient Prior-Guided Reasoning for Robust Retrieval-Augmented Generation under Conflicts**<br>
-  *Xiaowei Yuan et al.* [[paper](https://aclanthology.org/2026.acl-long.1013/)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.1](https://img.shields.io/badge/A5.1-8d5a97.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Xiaowei Yuan et al.* [[paper](https://aclanthology.org/2026.acl-long.1013/)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.1](https://img.shields.io/badge/A5.1-8d5a97.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **How Large Language Models Balance Internal Knowledge with User and Document Assertions**<br>
   *Shuowei Li et al.* [[paper](https://aclanthology.org/2026.findings-acl.1267/)] [[code](https://github.com/shuowl/llm-source-balancing)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.1](https://img.shields.io/badge/A5.1-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
@@ -300,7 +299,7 @@ Conference and publication badges use the same compact convention as the referen
   *Yuanzhe Hu et al.* [[paper](https://proceedings.iclr.cc/paper_files/paper/2026/hash/fd1eff9dd295df50a41f2521942fa31d-Abstract-Conference.html)] [[code](https://github.com/HUST-AI-HYZ/MemoryAgentBench)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![](https://img.shields.io/badge/ICLR2026-orange.svg)
 
 - **Memory-R1: Enhancing Large Language Model Agents to Manage and Utilize Memories via Reinforcement Learning**<br>
-  *Sikuan Yan et al.* [[paper](https://aclanthology.org/2026.acl-long.583/)] [[code](https://github.com/yansikuan/memory-r1)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.1](https://img.shields.io/badge/A5.4.1-8d5a97.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![A5.4.4](https://img.shields.io/badge/A5.4.4-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Sikuan Yan et al.* [[paper](https://aclanthology.org/2026.acl-long.583/)] [[code](https://github.com/yansikuan/memory-r1)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.1](https://img.shields.io/badge/A5.4.1-8d5a97.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![A5.4.4](https://img.shields.io/badge/A5.4.4-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **MemRL: Self-Evolving Agents via Runtime Reinforcement Learning on Episodic Memory**<br>
   *Shengtao Zhang et al.* [[paper](https://arxiv.org/abs/2601.03192)] [[code](https://github.com/MemTensor/MemRL)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.3](https://img.shields.io/badge/A5.4.3-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
@@ -314,16 +313,27 @@ Conference and publication badges use the same compact convention as the referen
 ### A6 Adaptive Search Control
 
 - **AutoSearch: Adaptive Search Depth for Efficient Agentic RAG via Reinforcement Learning**<br>
-  *Jingbo Sun et al.* [[paper](https://aclanthology.org/2026.findings-acl.1399/)] [[paper](https://arxiv.org/abs/2604.17337)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.2](https://img.shields.io/badge/A6.2-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Jingbo Sun et al.* [[paper](https://aclanthology.org/2026.findings-acl.1399/)] [[paper](https://arxiv.org/abs/2604.17337)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.2](https://img.shields.io/badge/A6.2-6c7576.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **One Policy, Any Budget: Internalizing Budget-Aware Search via Reinforcement Learning**<br>
-  *Xiaowei Sun et al.* [[paper](https://arxiv.org/abs/2609.00813)] [[code](https://github.com/xwsun01/AnySearch)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.2](https://img.shields.io/badge/A6.2-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![C7](https://img.shields.io/badge/C7-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+  *Xiaowei Sun et al.* [[paper](https://arxiv.org/abs/2609.00813)] [[code](https://github.com/xwsun01/AnySearch)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.2](https://img.shields.io/badge/A6.2-6c7576.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![C7](https://img.shields.io/badge/C7-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
 
 - **CriticSearch: Fine-Grained Credit Assignment for Search Agents via a Retrospective Critic**<br>
-  *Yaocheng Zhang et al.* [[paper](https://aclanthology.org/2026.findings-acl.596/)] [[paper](https://arxiv.org/abs/2511.12159)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.1](https://img.shields.io/badge/A6.1-6c7576.svg) ![A6.3](https://img.shields.io/badge/A6.3-6c7576.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Yaocheng Zhang et al.* [[paper](https://aclanthology.org/2026.findings-acl.596/)] [[paper](https://arxiv.org/abs/2511.12159)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.1](https://img.shields.io/badge/A6.1-6c7576.svg) ![A6.3](https://img.shields.io/badge/A6.3-6c7576.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 - **Enhancing LLM-based Search Agents via Contribution Weighted Group Relative Policy Optimization**<br>
-  *Junzhe Wang et al.* [[paper](https://aclanthology.org/2026.acl-long.1462/)] [[code](https://github.com/zsxmwjz/CW-GRPO)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.1](https://img.shields.io/badge/A6.1-6c7576.svg) ![A6.3](https://img.shields.io/badge/A6.3-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+  *Junzhe Wang et al.* [[paper](https://aclanthology.org/2026.acl-long.1462/)] [[code](https://github.com/zsxmwjz/CW-GRPO)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.1](https://img.shields.io/badge/A6.1-6c7576.svg) ![A6.3](https://img.shields.io/badge/A6.3-6c7576.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+### How to Learn — Round 8 Mechanism Verification
+
+- **Beyond Outcome Rewards: Step-Level Self-Distilled Policy Optimization for Deep Search Agents**<br>
+  *Haoze Wu, Chuqiao Kuang, Tianyi Zhuang, Xiaoguang Li* [[paper](https://arxiv.org/abs/2608.12764)] 2026. ![Core Mechanism](https://img.shields.io/badge/Core%20Mechanism-59a14f.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+
+- **TRACE: Turn-level Reward Assignment via Credit Estimation for Long-Horizon Agents**<br>
+  *Leitian Tao et al.* [[paper](https://arxiv.org/abs/2607.13988)] 2026. ![Core Mechanism](https://img.shields.io/badge/Core%20Mechanism-59a14f.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+
+- **Retrieval, Reward, and Training Protocols: What Matters in Training Search Agents?**<br>
+  *Yibo Zhao et al.* [[paper](https://arxiv.org/abs/2605.27881)] 2026. ![Core Comparison](https://img.shields.io/badge/Core%20Comparison-9c755f.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
 
 ### Retrieval Necessity and Evidence Critique
 
@@ -392,12 +402,12 @@ This bibliography is intentionally built in rounds rather than through one exhau
 12. **Round 6B — A3 Information Space Exploration:** three anchors plus four targeted papers; retain as a cross-capability dimension, not yet a full independent learning chapter.
 13. **Round 6C — A6 Adaptive Search Control:** four-paper bounded map covering stopping, budget allocation, retrospective credit, and contribution-aware credit; now closed.
 14. **Round 7 — Cross-capability comparison:** active analysis phase; compare Training Signal → Learned Capability → Capability Isolation → Generalization Evidence across A1–A6.
-15. **Round 8 — Learning Mechanism Reinforcement:** one bounded pass, at most 4–6 papers, focused on signal semantics, optimization method, update target, credit assignment, and deployment information parity.
+15. **Round 8 — Learning Mechanism Verification:** closed after three P0 papers—SSPO, TRACE, and a controlled training-protocol comparison; no quota-filling expansion was needed.
 16. **Snowballing:** paused. Reopen only if the cross-capability matrix identifies a concrete unresolved cell that cannot be analyzed from the current paper pool.
 
-See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md), and the A6 first-round decision in [`notes/search-log-2026-10-24-round-6-a6-first-batch.md`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
+See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md), the A6 first-round decision in [`notes/search-log-2026-10-24-round-6-a6-first-batch.md`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md), the [`Round 8 mechanism verification`](./papers/round8-learning-mechanism-verification.md), and its [`search log`](./notes/search-log-2026-10-24-round-8-learning-mechanism.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
 
-The search is deliberately convergent. The longitudinal capability collection phase is closed. Only the bounded Learning Mechanism Reinforcement pass remains: at most 4–6 directly relevant mechanism papers, after which the bibliography is frozen again. We will not expand with minor variants of existing Search-RL methods unless a paper directly clarifies signal semantics, update locus, credit assignment, deployment information parity, or a concrete unresolved capability cell. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
+The search is deliberately convergent. The longitudinal capability collection and bounded Learning Mechanism Verification phases are now closed. The next step is Cross-Capability Synthesis and Survey writing. We will not expand with minor variants of existing Search-RL, OPD, Memory, or RAG methods unless a concrete unresolved evidence cell cannot be analyzed from the current pool. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 
 ## Contributing
 

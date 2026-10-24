@@ -114,7 +114,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 Deployment Information Parity 不作为第五个学习机制，而作为后续 Cross-Capability Analysis 中贯穿 A1、A5、A6 的 Training–Capability Alignment 诊断。核心问题是：teacher、critic 或 verifier 是否使用了部署时不可得的 privileged information，以及去除这些信息后 student 是否仍然学会在线策略。
 
-建议只做一次定向机制补强：最多核验 4–6 篇 on-policy distillation、process credit assignment、preference learning 和 controlled training comparison 工作，然后停止新增，回到 Cross-Capability Analysis。用户提供的 SSPO、TRACE 和 controlled comparison 工作先作为待核验候选，不在元数据和训练细节核验前进入核心结论。
+Round 8 的定向机制核验已经完成，只纳入三篇 P0：SSPO、TRACE 和 controlled training comparison。它们分别补强 on-policy/self-distillation、turn/state-value credit 和环境/协议混淆控制；没有为了凑足 4–6 篇而继续扩展。详细核验见 [`round8-learning-mechanism-verification.md`](../papers/round8-learning-mechanism-verification.md)。
 
 机制章节的统一表格应采用：
 

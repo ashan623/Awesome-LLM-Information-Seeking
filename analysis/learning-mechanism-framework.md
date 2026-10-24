@@ -124,22 +124,19 @@ Deployment Information Parity 不是一种 Learning Method，而是 Training–C
 - A6：retrospective critic 与 online feedback-conditioned control；
 - OPD：teacher distribution 是否编码了 student 部署时不可得的答案或未来状态。
 
-## IV. Bounded mechanism reinforcement
+## IV. Round 8 mechanism verification — closed
 
-How to Learn 只需要最后一次定向核验，不需要重新打开 A1–A6 的广泛搜集。最多补入 4–6 篇能够改变机制分类或修正现有判断的论文：
+Round 8 只核验了三篇 P0 候选，没有为了凑足六篇而继续扩展：
 
-1. **On-policy distillation / teacher-guided policy learning：** 是否提供不同于 SFT/RL 的 Search Policy 学习信号；
-2. **Process credit assignment：** turn、step、state-value credit 是否真正优于 outcome-only reward；
-3. **Preference-based learning：** preference 是否针对信息寻求行为，而不是只偏好最终答案或引用格式；
-4. **Controlled training comparison：** 是否能隔离 signal、optimizer、retriever、corpus 和 rollout budget 的收益来源。
+1. **SSPO：** 证明 step-level self-distillation 可以作为不同于纯 outcome RL 的 Search Policy supervision，但其 Evidence Anchors 仍属于训练期 privileged information；
+2. **TRACE：** 证明 Gold-answer state value 可以构造 turn-level TD credit，并在 controlled search-agent setting 中改善 RL training，但不能直接等同于 online feedback-conditioned control；
+3. **Retrieval, Reward, and Training Protocols：** 证明 corpus completeness、tool-call format、data protocol 和 budget 可能比 reward/credit algorithm 的差异更决定结果，且 outcome reward 仍是强 baseline。
 
-用户提供的 SSPO、TRACE 和 training-protocol comparison 工作可以作为候选，但在正式核验元数据、训练细节和能力隔离实验之前，不应写入核心结论。Generic OPD background 也不能直接算作 Information-Seeking Capability evidence，除非其评价真正测量 search/query/evidence/control behavior。
+详细的六字段核验、Core/Supporting/Excluded 决定和引用见 [`round8-learning-mechanism-verification.md`](../papers/round8-learning-mechanism-verification.md)。
 
-筛选标准只有一个：
+Preference/DPO 仍保留为机制维度，但当前文献池中的 GuarantRAG 更适合作为 A5 Evidence Integration 的 supporting example；它训练 evidence preference，而非直接训练 Search Policy。没有发现足以改变机制分类的 search-specific Preference/DPO 证据，因此本轮不再新增。
 
-> **这篇论文是否改变我们对“什么反馈、通过什么更新机制、能教会什么能力”的判断？**
-
-不为了凑数量而继续检索。
+Round 8 的停止标准已经满足：现有机制分类能够描述三篇核心案例，且可以明确区分 structured supervision、credit improvement、capability isolation 和 transfer evidence。后续工作应转向 Cross-Capability Synthesis，不再继续纵向搜集 Learning Mechanism 变体。
 
 ## V. Recommended chapter structure
 

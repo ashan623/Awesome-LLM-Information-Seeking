@@ -163,11 +163,11 @@ The current search should focus on four connected pools:
 1. **Closed — A2 Information Need Formulation**, including the QREF targeted exception and three-layer query generalization
 2. **Closed — A3 Information Space Exploration**, retained as a cross-capability dimension with a dedicated subsection
 3. **Closed — A6 Adaptive Search Control**, with explicit separation between search adaptation and query formulation
-4. **Active — Learning Mechanism Reinforcement**, a bounded pass on signal, optimization, update target, credit assignment, and deployment information parity
+4. **Closed — Round 8 Learning Mechanism Verification**, with SSPO, TRACE, and a controlled training-protocol comparison
 5. **Active — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
 6. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
 
-The bounded A6 pass is complete. Longitudinal capability collection remains paused while the bounded Learning Mechanism Reinforcement and cross-capability analysis are built. The mechanism pass may add only 4–6 papers that directly clarify on-policy distillation, process credit assignment, preference learning, or controlled training comparison. Only if that pass reveals a concrete unresolved capability cell that cannot be analyzed from the current pool should the search add anything else. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
+The bounded A6 pass and Round 8 mechanism verification are complete. Round 8 added only three P0 papers and established that the current four-mechanism taxonomy is sufficient; no additional paper is needed merely to fill a quota. Longitudinal capability collection remains paused while the cross-capability analysis is built. Do not expand with large numbers of Search-R1-like variants, generic OPD papers, or general Memory/RAG architecture papers. Reopen searching only if the cross-capability matrix identifies a concrete unresolved evidence cell that cannot be analyzed from the current pool. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
 ## Required annotation template
 

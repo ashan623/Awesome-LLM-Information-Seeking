@@ -149,6 +149,14 @@
 | CriticSearch | turn-level long-horizon credit | retrospective critic sees full trajectory + gold answer | reformulate after unhelpful evidence; denser action learning | hindsight credit assignment; deployment privilege gap | task OOD under fixed E5/Wikipedia/four-turn setup |
 | CW-GRPO | contribution-aware search-round credit | novelty-aware retrieval utility × reasoning correctness | concentrate learning on useful non-redundant rounds | per-round credit and human calibration; no explicit next-action intervention | multi-benchmark; Retriever/Tool/Corpus transfer absent |
 
+### Round 8 — Learning mechanism anchors
+
+| Paper | Learning Signal | Optimizer | Update Locus | Credit Assignment | Deployment Parity | Capability Evidence | Decision |
+|---|---|---|---|---|---|---|---|
+| **SSPO** | outcome reward + teacher–student disagreement / Evidence Anchors | GRPO + step-level advantage weighting | LLM search policy | step; teacher disagreement; incorrect trajectories | teacher sees privileged anchors and errors; student does not; leakage addressed but not fully eliminated | controlled GRPO comparison, step/token ablation, task transfer; direct search-behavior isolation absent | **Core Mechanism** |
+| **TRACE** | outcome reward + Gold-answer prefix state value | GRPO + turn-level TD advantage | LLM search policy; frozen reference only scores | turn / state transition; Gold Answer log-ratio value | training-only Gold Answer privilege; online policy cannot observe the same value | controlled baselines, credit ablations, closed/open-web transfer; online feedback intervention absent | **Core Mechanism** |
+| **Retrieval, Reward, and Training Protocols** | outcome/process/structural credit under controlled corpus and protocol | shared GRPO objective | LLM search policy; corpus is a controlled environment | episode, turn, branch, state comparison | corpus completeness and ground-truth dependence are explicit confounds | controlled corpus/reward/protocol comparison; capability-specific isolation indirect | **Core Mechanism — controlled comparison** |
+
 ## VI. Matrix-level conclusions
 
 ### 1. The survey is not comparing “which method is best”
