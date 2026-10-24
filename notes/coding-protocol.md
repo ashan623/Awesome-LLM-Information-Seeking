@@ -90,14 +90,31 @@ For A4 papers, add three fields that prevent relevance, support, sufficiency, an
 
 For A4, a high final QA score cannot compensate for weak ground truth or missing controlled perturbations. Source authority must be separated from factual correctness: a famous source can be outdated or wrong, while an obscure first-party source can be accurate.
 
-## Second-round priority and stop rule
+## A5-specific capability boundaries and diagnostic fields
 
-The next search should focus on four connected pools:
+A5 asks whether the model faithfully integrates acquired information into reasoning, beliefs, generation, and decisions. Keep the following distinctions explicit:
 
-1. **P0 — A1 Search Necessity / Awareness**
-2. **P0 — A4 Evidence Evaluation**
-3. **P0 — Memory and State Update**
-4. **P1 — Capability Evaluation and Generalization**, including behavior transfer and credit assignment
+- **A5.1 Knowledge Integration & Belief Revision:** can external evidence correct erroneous parametric knowledge without causing blind obedience to incorrect evidence?
+- **A5.2 Multi-evidence Composition:** can the model combine multiple passages, hops, or partial facts into a valid inference?
+- **A5.3 Faithful Evidence Utilization:** does the reasoning and conclusion actually depend on the provided evidence rather than merely quoting or co-occurring with it?
+- **A5.4 Persistent State Integration:** can acquired information be written to and consistently reused from long-term memory? Defer broad A5.4 collection until the memory-focused stage.
+
+For A5 papers, add three fields:
+
+- **Integration Target:** `Answer`, `Reasoning Chain`, `Belief`, `Memory`, or `Decision`.
+- **Evidence Reliance:** record whether controlled changes to key evidence cause an appropriate change in reasoning or output, including whether the model can correctly remain unchanged when the perturbation is irrelevant or untrustworthy.
+- **Parametric–External Balance:** record whether the model can revise wrong internal knowledge, resist false external evidence, and explain conflicts rather than following either source mechanically.
+
+Evidence Access is not Evidence Utilization, and Evidence Utilization is not Belief Update. A context that contains the answer does not prove that the model used it in its reasoning.
+
+## Current search priority and stop rule
+
+The current search should focus on four connected pools:
+
+1. **P0 — A5 Evidence Integration**
+2. **P0 — Memory and State Update**, with A5.4 Persistent State Integration deferred until this stage
+3. **P1 — Capability Evaluation and Generalization**, including behavior transfer, causal evidence reliance, and credit assignment
+4. **P1 — Domain applications**, only after a capability-level gap is established
 
 Only after these pools reveal a concrete gap should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
@@ -119,6 +136,9 @@ Generalization Regime
 Judgment Target
 Ground Truth Quality
 Controlled Perturbation
+Integration Target
+Evidence Reliance
+Parametric–External Balance
 Epistemic Objective
 Update Target
 Limitation
