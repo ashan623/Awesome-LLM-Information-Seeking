@@ -153,4 +153,4 @@ A5.1–A5.3 can now be closed for broad collection at an eleven-paper map: six f
 
 This does **not** mean that models cannot use evidence, or that existing methods provide no value. The positive evidence supports useful evidence-conditioned answer behavior, multi-document composition heuristics, structured reasoning chains, context-fidelity training, and internal attribution diagnostics. The unresolved issue is whether these behaviors are causal, calibrated, and transferable rather than benchmark-specific or reward-specific.
 
-A5.4 Persistent State Integration remains deferred to the Memory and State Update stage.
+A5.4 Persistent Information Integration & Memory Updating remains deferred to the Memory and State Update stage. The first six-paper pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md).

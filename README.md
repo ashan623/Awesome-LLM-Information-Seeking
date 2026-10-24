@@ -7,8 +7,8 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-46-blue.svg)](./papers/a5-evidence-integration-second.md)
-[![Status](https://img.shields.io/badge/Status-A5.1--A5.3%20Map%20Closed-orange.svg)](./notes/search-log-2026-10-24-round-4-a5-final.md)
+[![Papers](https://img.shields.io/badge/Papers-52-blue.svg)](./papers/a5.4-memory-updating.md)
+[![Status](https://img.shields.io/badge/Status-A5.4%20First%20Batch-orange.svg)](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -31,6 +31,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [A4 Evidence Evaluation](#a4-evidence-evaluation)
   - [A5 Evidence Integration — First Batch](#a5-evidence-integration--first-batch)
   - [A5 Evidence Integration — Second Batch](#a5-evidence-integration--second-batch)
+  - [A5.4 Persistent Information Integration and Memory Updating](#a54-persistent-information-integration-and-memory-updating)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
@@ -240,6 +241,26 @@ Conference and publication badges use the same compact convention as the referen
 - **TRACE the Evidence: Constructing Knowledge-Grounded Reasoning Chains for Retrieval-Augmented Generation**<br>
   *Jinyuan Fang et al.* [[paper](https://aclanthology.org/2024.findings-emnlp.496/)] [[code](https://github.com/jyfang6/trace)] 2024. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2024-orange.svg)
 
+### A5.4 Persistent Information Integration and Memory Updating
+
+- **LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory**<br>
+  *Di Wu et al.* [[paper](https://proceedings.iclr.cc/paper_files/paper/2025/hash/d813d324dbf0598bbdc9c8e79740ed01-Abstract-Conference.html)] [[code](https://github.com/xiaowu0162/LongMemEval)] 2025. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![](https://img.shields.io/badge/ICLR2025-orange.svg)
+
+- **MemoryAgentBench: Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions**<br>
+  *Yuanzhe Hu et al.* [[paper](https://proceedings.iclr.cc/paper_files/paper/2026/hash/fd1eff9dd295df50a41f2521942fa31d-Abstract-Conference.html)] [[code](https://github.com/HUST-AI-HYZ/MemoryAgentBench)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![](https://img.shields.io/badge/ICLR2026-orange.svg)
+
+- **Memory-R1: Enhancing Large Language Model Agents to Manage and Utilize Memories via Reinforcement Learning**<br>
+  *Sikuan Yan et al.* [[paper](https://aclanthology.org/2026.acl-long.583/)] [[code](https://github.com/yansikuan/memory-r1)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.1](https://img.shields.io/badge/A5.4.1-8d5a97.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![A5.4.4](https://img.shields.io/badge/A5.4.4-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+- **MemRL: Self-Evolving Agents via Runtime Reinforcement Learning on Episodic Memory**<br>
+  *Shengtao Zhang et al.* [[paper](https://arxiv.org/abs/2601.03192)] [[code](https://github.com/MemTensor/MemRL)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.3](https://img.shields.io/badge/A5.4.3-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+
+- **A-MEM: Agentic Memory for LLM Agents**<br>
+  *Wujiang Xu et al.* [[paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/19909c36f51abc4856b4560aff3d36d6-Abstract-Conference.html)] [[code](https://github.com/WujiangXu/A-mem-sys)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.1](https://img.shields.io/badge/A5.4.1-8d5a97.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![](https://img.shields.io/badge/NeurIPS2025-orange.svg)
+
+- **Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory**<br>
+  *Prateek Chhikara et al.* [[paper](https://doi.org/10.3233/FAIA251160)] [[code](https://github.com/mem0ai/mem0)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.1](https://img.shields.io/badge/A5.4.1-8d5a97.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![](https://img.shields.io/badge/ECAI2025-orange.svg)
+
 ### Retrieval Necessity and Evidence Critique
 
 - **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**<br>
@@ -269,7 +290,7 @@ Conference and publication badges use the same compact convention as the referen
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), and the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md), and the [`A5.4 memory-updating first batch`](./papers/a5.4-memory-updating.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -291,11 +312,12 @@ This bibliography is intentionally built in rounds rather than through one exhau
 6. **Round 3B — A4 gap-focused expansion and closure:** source credibility, human-verified sufficiency, multi-source conflict, Judgment Target, Ground Truth Quality, and Controlled Perturbation.
 7. **Round 4A — A5 Evidence Integration:** knowledge integration, belief revision, multi-evidence composition, and faithful utilization.
 8. **Round 4B — A5 gap-focused expansion and closure:** process-level evidence reliance, counterfactual interventions, reasoning-chain attribution, and parametric–external balance.
-9. **Round 5 — Memory and state update:** persistent memory retrieval, memory write correctness, state consistency, and stale-memory correction.
-10. **Round 6 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
-11. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
+9. **Round 5A — A5.4 Memory and state update:** persistent information integration, memory formation, state revision, future utility, and memory policy learning.
+10. **Round 5B — A5.4 gap-focused expansion:** operation-level correctness, causal memory utility, selective forgetting, stale/conflict correction, and cross-environment memory-policy transfer.
+11. **Round 6 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
+12. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
-See the current search record in [`notes/search-log-2026-10-24-round-4-a5-final.md`](./notes/search-log-2026-10-24-round-4-a5-final.md).
+See the current search record in [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
 
 The search is deliberately convergent. We will not expand the bibliography with minor variants of existing Search-RL methods unless they provide new evidence about capability learning, training–capability alignment, or transfer. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 

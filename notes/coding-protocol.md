@@ -97,13 +97,22 @@ A5 asks whether the model faithfully integrates acquired information into reason
 - **A5.1 Knowledge Integration & Belief Revision:** can external evidence correct erroneous parametric knowledge without causing blind obedience to incorrect evidence?
 - **A5.2 Multi-evidence Composition:** can the model combine multiple passages, hops, or partial facts into a valid inference?
 - **A5.3 Faithful Evidence Utilization:** does the reasoning and conclusion actually depend on the provided evidence rather than merely quoting or co-occurring with it?
-- **A5.4 Persistent State Integration:** can acquired information be written to and consistently reused from long-term memory? Defer broad A5.4 collection until the memory-focused stage.
+- **A5.4 Persistent Information Integration & Memory Updating:** can acquired information be selectively written, revised, forgotten, and reused across interactions without stale, conflicting, or irrelevant state accumulation?
 
 For A5 papers, add three fields:
 
 - **Integration Target:** `Answer`, `Reasoning Chain`, `Belief`, `Memory`, or `Decision`.
 - **Evidence Reliance:** split the diagnosis into three levels: `Output Reliance` (does the final answer change appropriately after key evidence is replaced?), `Compositional Reliance` (does deleting a necessary passage break the corresponding multi-hop conclusion?), and `Process-level Reliance` (does the reasoning process itself depend on the key evidence rather than producing a plausible post-hoc explanation?). Output changes establish behavioral sensitivity, but alone do not prove causal faithfulness of the reasoning chain.
 - **Parametric–External Balance:** record whether the model can revise wrong internal knowledge, resist false external evidence, and explain conflicts rather than following either source mechanically.
+
+A5.4 papers should be cross-coded along four dimensions:
+
+- **A5.4.1 Memory Formation:** whether the system learns what information is worth writing rather than storing everything.
+- **A5.4.2 State Revision:** whether new information correctly overwrites, updates, reconciles, or expires old state under temporal change and conflict.
+- **A5.4.3 Future Memory Utility:** whether stored information measurably improves later tasks, decisions, or reasoning rather than merely being retrieved.
+- **A5.4.4 Memory Policy Learning:** whether SFT, RL, feedback, or another learning signal teaches transferable write, update, delete, no-op, and utilization behavior.
+
+For A5.4, also record **Persistence Target** (`External Memory`, `Context State`, `Policy`, or `LLM Parameters`), **Temporal Consistency** under stale information, preference changes, and conflict, and **Future Utility Attribution** distinguishing memory-caused gains from fresh retrieval, context leakage, or parametric knowledge. Use failure labels `Write Failure`, `Update Failure`, `Retrieval Failure`, and `Utilization Failure` rather than collapsing all errors into memory retrieval.
 
 Evidence Access is not Evidence Utilization, and Evidence Utilization is not Belief Update. A context that contains the answer does not prove that the model used it in its reasoning.
 
@@ -142,6 +151,10 @@ Parametric–External Balance
 Output Reliance
 Compositional Reliance
 Process-level Reliance
+Persistence Target
+Temporal Consistency
+Future Utility Attribution
+Memory Failure Type
 Epistemic Objective
 Update Target
 Limitation

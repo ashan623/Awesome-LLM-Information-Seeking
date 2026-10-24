@@ -26,7 +26,7 @@ This round covers A5.1–A5.3:
 
 - **A5.3 Faithful Evidence Utilization:** ensuring that the reasoning and conclusion genuinely depend on the supplied evidence.
 
-A5.4 Persistent State Integration is deferred to the dedicated Memory and State Update stage.
+A5.4 **Persistent Information Integration & Memory Updating** is deferred to the dedicated Memory and State Update stage. Its scope is learned selective writing, revision, forgetting, and reuse across interactions, not a general survey of all agent-memory architectures. The first six-paper A5.4 pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md).
 
 Every entry records the following A5-specific fields:
 
@@ -238,7 +238,7 @@ ClashEval, FaithfulRAG, and Belief-R demonstrate useful inference-time integrati
 
 ### Preliminary conclusion, not a field-wide claim
 
-Within this six-paper first batch, **A5 measurement appears more developed for answer-level parametric–external conflict than for learned, reasoning-level, transferable evidence utilization**. This is a working observation about the selected representative set, not a definitive conclusion about the entire field. The next A5 search should test whether additional multi-hop, process-supervised, attribution-based, and counterfactual training studies materially change this diagnosis.
+Within the selected A5 batches, **direct measurement evidence is richer for answer-level parametric–external conflict than for learned, reasoning-level, transferable evidence utilization**. This describes the evidence available in the selected representative papers; it is not a ranking of the models' actual capability strength and not a definitive conclusion about the entire field.
 
 The three questions for the next batch are:
 
@@ -248,4 +248,4 @@ The three questions for the next batch are:
 
 1. **Generalization:** Does learned integration survive source replacement, evidence order changes, new domains, new tools, temporal change, and misleading external evidence?
 
-A5.4 Persistent State Integration remains outside this first batch. It should be studied later with explicit memory-write correctness, state consistency, retrieval-time reuse, and stale-memory correction tests.
+A5.4 Persistent Information Integration & Memory Updating remains outside these A5.1–A5.3 batches. It should be studied with explicit memory-write correctness, state consistency, retrieval-time reuse, future utility attribution, and stale-memory correction tests.
