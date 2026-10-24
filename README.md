@@ -7,8 +7,8 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-52-blue.svg)](./papers/a5.4-memory-updating.md)
-[![Status](https://img.shields.io/badge/Status-A5.4%20First%20Batch-orange.svg)](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md)
+[![Papers](https://img.shields.io/badge/Papers-58-blue.svg)](./papers/a2-information-need-formulation.md)
+[![Status](https://img.shields.io/badge/Status-A3%20Next%20Stage-orange.svg)](./notes/a2-search-plan.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -28,10 +28,11 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [A1 Search Necessity and Epistemic Awareness](#a1-search-necessity-and-epistemic-awareness)
   - [A1 Retrieval Utility and Value of Information](#a1-retrieval-utility-and-value-of-information)
   - [A1 Utility-aware Policy Learning](#a1-utility-aware-policy-learning)
+  - [A2 Information Need Formulation](#a2-information-need-formulation)
   - [A4 Evidence Evaluation](#a4-evidence-evaluation)
   - [A5 Evidence Integration — First Batch](#a5-evidence-integration--first-batch)
   - [A5 Evidence Integration — Second Batch](#a5-evidence-integration--second-batch)
-  - [A5.4 Persistent Information Integration and Memory Updating](#a54-persistent-information-integration-and-memory-updating)
+  - [A5.4 Cross-turn Information Persistence and State Updating](#a54-cross-turn-information-persistence-and-state-updating)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
@@ -172,6 +173,26 @@ Conference and publication badges use the same compact convention as the referen
 - **Self-Knowledge Guided Retrieval Augmentation for Large Language Models**<br>
   *Yile Wang et al.* [[paper](https://aclanthology.org/2023.findings-emnlp.691/)] [[code](https://github.com/THUNLP-MT/SKR)] 2023. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A1](https://img.shields.io/badge/A1-2a9d8f.svg) ![](https://img.shields.io/badge/EMNLP2023-orange.svg)
 
+### A2 Information Need Formulation
+
+- **Query Rewriting in Retrieval-Augmented Large Language Models**<br>
+  *Xinbei Ma et al.* [[paper](https://aclanthology.org/2023.emnlp-main.322/)] [[code](https://github.com/xbmxb/RAG-query-rewriting)] 2023. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2023-orange.svg)
+
+- **DeepRetrieval: Hacking Real Search Engines and Retrievers with Large Language Models via Reinforcement Learning**<br>
+  *Pengcheng Jiang et al.* [[paper](https://arxiv.org/abs/2503.00223)] [[code](https://github.com/pat-jj/DeepRetrieval)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/COLM2025-orange.svg)
+
+- **Beyond the limitation of a single query: Train your LLM for query expansion with Reinforcement Learning**<br>
+  *Shu Zhao et al.* [[paper](https://arxiv.org/abs/2510.10009)] [[project](https://shuzhao.me/ExpandSearchProject/)] [[code](https://github.com/Tree-Shu-Zhao/ferret/tree/main/recipe/expand_search)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **ParallelSearch: Train your LLMs to Decompose Query and Search Sub-queries in Parallel with Reinforcement Learning**<br>
+  *Shu Zhao et al.* [[paper](https://arxiv.org/abs/2508.09303)] [[project](https://shuzhao.me/ParallelSearchProject/)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **StepSearch: Igniting LLMs Search Ability via Step-Wise Proximal Policy Optimization**<br>
+  *Xuhui Zheng et al.* [[paper](https://aclanthology.org/2025.emnlp-main.1106/)] [[code](https://github.com/Zillwang/StepSearch)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2025-orange.svg)
+
+- **Understanding the Behaviors of Environment-aware Information Retrieval**<br>
+  *Ruifeng Yuan et al.* [[paper](https://aclanthology.org/2026.acl-long.2013/)] [[code](https://github.com/LCO-Embedding/Envs-aware-Information-Retrieval)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![C4](https://img.shields.io/badge/C4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
 ### A4 Evidence Evaluation
 
 - **Corrective Retrieval Augmented Generation**<br>
@@ -241,7 +262,7 @@ Conference and publication badges use the same compact convention as the referen
 - **TRACE the Evidence: Constructing Knowledge-Grounded Reasoning Chains for Retrieval-Augmented Generation**<br>
   *Jinyuan Fang et al.* [[paper](https://aclanthology.org/2024.findings-emnlp.496/)] [[code](https://github.com/jyfang6/trace)] 2024. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2024-orange.svg)
 
-### A5.4 Persistent Information Integration and Memory Updating
+### A5.4 Cross-turn Information Persistence and State Updating
 
 - **LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory**<br>
   *Di Wu et al.* [[paper](https://proceedings.iclr.cc/paper_files/paper/2025/hash/d813d324dbf0598bbdc9c8e79740ed01-Abstract-Conference.html)] [[code](https://github.com/xiaowu0162/LongMemEval)] 2025. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![](https://img.shields.io/badge/ICLR2025-orange.svg)
@@ -290,7 +311,7 @@ Conference and publication badges use the same compact convention as the referen
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md), and the [`A5.4 memory-updating first batch`](./papers/a5.4-memory-updating.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A2 Information Need Formulation core map`](./papers/a2-information-need-formulation.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md), the [`A5.4 cross-turn information persistence first batch`](./papers/a5.4-memory-updating.md), and the [`A2 first-round search plan`](./notes/a2-search-plan.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -312,12 +333,15 @@ This bibliography is intentionally built in rounds rather than through one exhau
 6. **Round 3B — A4 gap-focused expansion and closure:** source credibility, human-verified sufficiency, multi-source conflict, Judgment Target, Ground Truth Quality, and Controlled Perturbation.
 7. **Round 4A — A5 Evidence Integration:** knowledge integration, belief revision, multi-evidence composition, and faithful utilization.
 8. **Round 4B — A5 gap-focused expansion and closure:** process-level evidence reliance, counterfactual interventions, reasoning-chain attribution, and parametric–external balance.
-9. **Round 5A — A5.4 Memory and state update:** persistent information integration, memory formation, state revision, future utility, and memory policy learning.
-10. **Round 5B — A5.4 gap-focused expansion:** operation-level correctness, causal memory utility, selective forgetting, stale/conflict correction, and cross-environment memory-policy transfer.
-11. **Round 6 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
-12. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
+9. **Round 5A — A5.4 Cross-turn Information Persistence:** six-paper bounded map; Memory is an implementation substrate, not an independent survey axis.
+10. **Round 5B — A5.4 targeted exceptions only:** direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation.
+11. **Round 6A — A2 Information Need Formulation:** six-paper core map covering query rewriting, retrieval-gain RL, multi-query expansion, parallel decomposition, process credit, and retriever-aware formulation.
+12. **Round 6B — A3 Information Space Exploration:** exploration, source discovery, navigation, and information-space transfer.
+13. **Round 6C — A6 Adaptive Search Control:** feedback-driven query modification, retry, verification, stopping, and cost control.
+14. **Round 7 — Cross-capability comparison:** compare Training Signal → Learned Capability → Generalization Evidence across A1–A6.
+15. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
-See the current search record in [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
+See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md) and the verification record in [`notes/search-log-2026-10-24-round-6-a2-first-batch.md`](./notes/search-log-2026-10-24-round-6-a2-first-batch.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
 
 The search is deliberately convergent. We will not expand the bibliography with minor variants of existing Search-RL methods unless they provide new evidence about capability learning, training–capability alignment, or transfer. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 

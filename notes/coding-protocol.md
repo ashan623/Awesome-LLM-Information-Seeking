@@ -27,6 +27,10 @@ The A1–A6 capability taxonomy remains stable, but two boundaries are explicit:
 - **A5 Evidence Integration:** correctly using evaluated evidence to update reasoning, memory, beliefs, generation, or decisions. Do not count successful evidence use as A4 unless the paper separately measures the quality judgment itself.
 - **A6 Adaptive Search Control:** deciding when to search, how to modify the search, how to invoke or retry a tool, when to verify, and when to stop under a budget.
 
+A2 concerns the expression of an information need: query generation, query reformulation, sub-question decomposition, and search-plan construction. A6 concerns feedback-driven control after observing search or tool outcomes: modifying, continuing, verifying, retrying, switching tools, and stopping. A query generated as one action inside an adaptive loop is not automatically an A2 contribution; code the capability that the training signal and evaluation isolate.
+
+For A2 papers, record **Information Need Target**, **Query Action**, **Training Signal**, **Training–Capability Alignment**, **Retriever Dependence**, **Query Reliance**, **Generalization Evidence**, **Shortcut Risk**, and **A2/A6 Boundary**. Query Reliance requires more than a downstream score: prefer query replacement, deletion, semantic perturbation, fixed-evidence, or retriever-transfer tests. Retrieval gain is evidence of backend utility, not automatically evidence of general query quality.
+
 A tool call is not automatically A3. Search invocation and stopping belong to A6 unless the paper directly studies exploration or source discovery. A paper may be marked `Not Directly Trained` when its main contribution is infrastructure, retriever optimization, or evaluation.
 
 ## Orthogonal contribution type
@@ -97,7 +101,7 @@ A5 asks whether the model faithfully integrates acquired information into reason
 - **A5.1 Knowledge Integration & Belief Revision:** can external evidence correct erroneous parametric knowledge without causing blind obedience to incorrect evidence?
 - **A5.2 Multi-evidence Composition:** can the model combine multiple passages, hops, or partial facts into a valid inference?
 - **A5.3 Faithful Evidence Utilization:** does the reasoning and conclusion actually depend on the provided evidence rather than merely quoting or co-occurring with it?
-- **A5.4 Persistent Information Integration & Memory Updating:** can acquired information be selectively written, revised, forgotten, and reused across interactions without stale, conflicting, or irrelevant state accumulation?
+- **A5.4 Cross-turn Information Persistence & State Updating:** can acquired information be selectively persisted, revised, forgotten, and reused across interactions without stale, conflicting, or irrelevant state accumulation? Memory is an implementation substrate, not the survey object.
 
 For A5 papers, add three fields:
 
@@ -107,10 +111,10 @@ For A5 papers, add three fields:
 
 A5.4 papers should be cross-coded along four dimensions:
 
-- **A5.4.1 Memory Formation:** whether the system learns what information is worth writing rather than storing everything.
-- **A5.4.2 State Revision:** whether new information correctly overwrites, updates, reconciles, or expires old state under temporal change and conflict.
-- **A5.4.3 Future Memory Utility:** whether stored information measurably improves later tasks, decisions, or reasoning rather than merely being retrieved.
-- **A5.4.4 Memory Policy Learning:** whether SFT, RL, feedback, or another learning signal teaches transferable write, update, delete, no-op, and utilization behavior.
+- **A5.4.1 Selective Information Persistence:** whether the system learns what acquired information is worth retaining rather than storing everything.
+- **A5.4.2 Cross-turn State Revision:** whether new information correctly overwrites, updates, reconciles, or expires prior state under temporal change and conflict.
+- **A5.4.3 Future Information Utility:** whether persisted information measurably improves later tasks, decisions, or reasoning rather than merely being retrieved.
+- **A5.4.4 Persistence Policy Learning:** whether SFT, RL, feedback, or another learning signal teaches transferable write, update, delete, no-op, and utilization behavior.
 
 For A5.4, also record **Persistence Target** (`External Memory`, `Context State`, `Policy`, or `LLM Parameters`), **Temporal Consistency** under stale information, preference changes, and conflict, and **Future Utility Attribution** distinguishing memory-caused gains from fresh retrieval, context leakage, or parametric knowledge. Use failure labels `Write Failure`, `Update Failure`, `Retrieval Failure`, and `Utilization Failure` rather than collapsing all errors into memory retrieval.
 
@@ -120,12 +124,13 @@ Evidence Access is not Evidence Utilization, and Evidence Utilization is not Bel
 
 The current search should focus on four connected pools:
 
-1. **P0 — Memory and State Update**, including A5.4 Persistent State Integration
-2. **P1 — Capability Evaluation and Generalization**, including behavior transfer, causal evidence reliance, and credit assignment
-3. **P1 — Domain applications**, only after a capability-level gap is established
-4. **P2 — Targeted A5 follow-up**, only for genuinely new controlled interventions or process-level transfer evidence
+1. **P0 — A2 Information Need Formulation**, beginning with query learning, training alignment, and cross-task/retriever/environment transfer
+2. **P0 — A3 Information Space Exploration**, after A2's first-round map is closed
+3. **P0 — A6 Adaptive Search Control**, with explicit separation between search adaptation and query formulation
+4. **P1 — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
+5. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
 
-Only after these pools reveal a concrete gap should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
+Only after these capability pools reveal a concrete gap should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
 ## Required annotation template
 
