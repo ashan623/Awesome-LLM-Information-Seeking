@@ -63,6 +63,20 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 按 Task、Domain、Retriever、Tool、Corpus/Environment、Budget/Cost、Temporal Shift、Behavior Transfer 分开报告。`Not Tested` 和 `Tested but Failed` 必须严格区分。
 
+## Frozen top-level manuscript structure
+
+为避免 `Capability Taxonomy → How to Learn → A1–A6` 造成重复，最终论文只保留以下七个顶层章节。A1–A6 是 **Section 3 — What to Learn** 的能力子节，不再作为与 Taxonomy 平行的第二套分类。
+
+1. **Introduction：** 问题定义、范围、中心问题和三个贡献；
+2. **Scope and Related Surveys：** 文献选择方法、相邻 Survey 对比和边界；
+3. **What to Learn：** A1–A6 能力定义、边界、局部学习证据；A3 作为横向探索能力小节，A5.4 保持为 A5 的 bounded subdirection；
+4. **How to Learn：** 四个学习机制维度；
+5. **What Was Actually Learned?：** Training–Capability Alignment、Capability Isolation、Deployment Information Parity、四类 Claim 和跨环境迁移；
+6. **Evaluation Principles and Open Problems：** 可复用的 intervention/transfer checklist 与未解决问题；
+7. **Conclusion：** 核心发现和研究议程。
+
+后文的详细 A1–A6 结构是 Section 3–5 的写作映射，不应再被排版成额外的顶层章节。
+
 ## Recommended chapter outline
 
 ### 1. Introduction
@@ -73,12 +87,11 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 - 为什么“能调用检索工具”不等于“学会了信息寻求”；
 - 为什么需要从 post-training signal、behavior isolation 和 transfer evidence 重新审视现有工作。
 
-本章提出 central question 和三条贡献：
+本章提出 central question 和三项贡献：
 
-1. 一个 capability-centered taxonomy；
-2. 一个 Training Signal → Behavior → Isolation → Generalization 的统一分析 protocol；
-3. 一个与 A1–A6 正交的 How-to-Learn mechanism taxonomy；
-4. 四类跨论文 training–capability misalignment taxonomy。
+1. **Capability Taxonomy：** 定义 A1–A6 Information-Seeking Capabilities 及其边界；
+2. **Learning Mechanism Synthesis：** 以四维 post-training mechanism 解释训练信号、优化、更新对象和 credit assignment 如何塑造行为；
+3. **Capability Evidence and Generalization：** 通过行为测量、受控干预、特权监督、policy-input leakage、部署行为证据和迁移审查 What Was Actually Learned。四类跨论文 misalignment patterns 是第三项贡献的分析结果，而不是额外分类。
 
 ### 2. Scope and conceptual framework
 
@@ -340,6 +353,7 @@ Deployment Information Parity 与 Generalization 是统一的横向诊断维度�
 
 ## Existing analysis artifacts
 
+- [Related-Survey Comparison](./related-survey-comparison.md)
 - [Final Cross-Paper Evidence Matrix](./final-cross-paper-evidence-matrix.md)
 - [Earlier Capability-Level Matrix](./cross-paper-evidence-matrix.md)
 - [Claim–Evidence Matrix](./claim-evidence-matrix.md)

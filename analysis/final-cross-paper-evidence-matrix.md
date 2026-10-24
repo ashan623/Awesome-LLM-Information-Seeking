@@ -11,6 +11,7 @@
 ### Evidence vocabulary
 
 - **Evidence Role:** `Learning`、`Inference-only`、`Evaluation`、`Mechanism`、`Boundary` 区分直接训练目标、推理时策略、评价资源、训练机制比较和边界对照。`Boundary` 只表示论文不属于该能力章节的核心证据，不表示没有 SFT/RL、没有参数更新或不涉及部署行为。
+- **Evidence Role and Update Locus are orthogonal:** `Mechanism` 论文可能更新 Search Policy，`Boundary` 论文也可能更新 Retriever 与 Agent；Evidence Role 不能替代 Update Locus。
 - **Behavior Measurement:** 记录论文实际测量了什么行为；它不等于证明了该能力。
 - **Controlled Intervention:** 记录是否有固定组件、反事实、替换、删除、预算或 feedback intervention，以及干预强度。
 - **Privileged Supervision:** 单独记录 Gold Answer、oracle evidence、未来轨迹、teacher 或 realized branch outcome 是否进入训练信号；使用 Gold 不自动等于 policy-input leakage。
@@ -139,8 +140,8 @@ A paper can be strong on `Method Effectiveness` and weak on `Capability Isolatio
 
 ```text
 Training–Capability Alignment
-Capability Isolation = Behavior Measurement + Controlled Intervention
-Deployment Information Parity = Privileged Supervision + Policy-input Leakage + Deployment Behavior Evidence
+Capability Isolation is assessed through Behavior Measurement and Controlled Intervention
+Deployment Information Parity is assessed through Privileged Supervision, Policy-input Leakage, and Deployment Behavior Evidence
 Generalization Regime
 Behavior Transfer
 ```
