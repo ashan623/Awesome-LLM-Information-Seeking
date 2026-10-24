@@ -39,6 +39,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
 - [Reading Notes](#reading-notes)
+- [Analysis Outputs](#analysis-outputs)
 - [Search Protocol](#search-protocol)
 - [Contributing](#contributing)
 
@@ -363,6 +364,15 @@ The current round has surfaced five working hypotheses:
 4. **Environment shift is central.** Simulated search, fixed retrievers, and benchmark-specific APIs require explicit simulator-to-real and cross-tool tests.
 5. **Capability isolation is missing.** Many papers optimize a full search–reasoning loop without separately measuring search necessity, query quality, source choice, evidence sufficiency, and stopping.
 
+## Analysis Outputs
+
+The bibliography has now entered the analysis phase. No new longitudinal paper collection is planned unless the cross-capability comparison reveals a concrete empty cell that cannot be resolved from the current pool.
+
+- [`Cross-Paper Evidence Matrix`](./analysis/cross-paper-evidence-matrix.md): six capability rows plus representative paper-level coding using Learning Target → Training Signal → Observed Behavior → Capability Isolation → Generalization Evidence.
+- [`Training–Capability Misalignment Taxonomy`](./analysis/training-capability-misalignment.md): Objective–Capability Misalignment, Outcome–Behavior Confounding, Hindsight–Deployment Gap, and Environment-conditioned Learning vs Transferable Capability.
+- [`Generalization & Intervention Audit`](./analysis/generalization-intervention-audit.md): separates Task, Domain, Retriever, Tool, Corpus/Environment, Budget, Temporal Shift, and Behavior Transfer, while distinguishing Not Tested from Tested but Failed.
+- [`Survey Structure`](./analysis/survey-structure.md): the proposed title, central question, chapter organization, contribution claims, and future evaluation protocol.
+
 ## Search Protocol
 
 This bibliography is intentionally built in rounds rather than through one exhaustive crawl:
@@ -380,12 +390,12 @@ This bibliography is intentionally built in rounds rather than through one exhau
 11. **Round 6A — A2 Information Need Formulation:** seven-paper map covering query rewriting, retrieval-gain RL, multi-query expansion, parallel decomposition, process credit, retriever-aware formulation, and QREF’s original-versus-refined evidence-coverage reward.
 12. **Round 6B — A3 Information Space Exploration:** three anchors plus four targeted papers; retain as a cross-capability dimension, not yet a full independent learning chapter.
 13. **Round 6C — A6 Adaptive Search Control:** four-paper bounded map covering stopping, budget allocation, retrospective credit, and contribution-aware credit; now closed.
-14. **Round 7 — Cross-capability comparison:** compare Training Signal → Learned Capability → Capability Isolation → Generalization Evidence across A1–A6.
-15. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
+14. **Round 7 — Cross-capability comparison:** active analysis phase; compare Training Signal → Learned Capability → Capability Isolation → Generalization Evidence across A1–A6.
+15. **Snowballing:** paused. Reopen only if the cross-capability matrix identifies a concrete unresolved cell that cannot be analyzed from the current paper pool.
 
 See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md), and the A6 first-round decision in [`notes/search-log-2026-10-24-round-6-a6-first-batch.md`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
 
-The search is deliberately convergent. We will not expand the bibliography with minor variants of existing Search-RL methods unless they provide new evidence about capability learning, training–capability alignment, or transfer. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
+The search is deliberately convergent. The longitudinal collection phase is closed. We will not expand the bibliography with minor variants of existing Search-RL methods unless the cross-capability analysis identifies a concrete unresolved evidence cell. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 
 ## Contributing
 

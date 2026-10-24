@@ -142,11 +142,11 @@ The current search should focus on four connected pools:
 
 1. **Closed — A2 Information Need Formulation**, including the QREF targeted exception and three-layer query generalization
 2. **Closed — A3 Information Space Exploration**, retained as a cross-capability dimension with a dedicated subsection
-3. **P0 — A6 Adaptive Search Control**, with explicit separation between search adaptation and query formulation
-4. **Next — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
+3. **Closed — A6 Adaptive Search Control**, with explicit separation between search adaptation and query formulation
+4. **Active — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
 5. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
 
-After the bounded A6 pass, stop longitudinal capability collection and begin the cross-capability analysis. Only if that comparison reveals a concrete unresolved cell should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
+The bounded A6 pass is complete. Longitudinal capability collection is paused while the cross-capability analysis is built. Only if that comparison reveals a concrete unresolved cell that cannot be analyzed from the current pool should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
 ## Required annotation template
 
