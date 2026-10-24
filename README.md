@@ -371,7 +371,7 @@ The bibliography has now entered the analysis phase. No new longitudinal paper c
 - [`Cross-Paper Evidence Matrix`](./analysis/cross-paper-evidence-matrix.md): six capability rows plus representative paper-level coding using Learning Target → Training Signal → Observed Behavior → Capability Isolation → Generalization Evidence.
 - [`Training–Capability Misalignment Taxonomy`](./analysis/training-capability-misalignment.md): Objective–Capability Misalignment, Outcome–Behavior Confounding, Hindsight–Deployment Gap, and Environment-conditioned Learning vs Transferable Capability.
 - [`Generalization & Intervention Audit`](./analysis/generalization-intervention-audit.md): separates Task, Domain, Retriever, Tool, Corpus/Environment, Budget, Temporal Shift, and Behavior Transfer, while distinguishing Not Tested from Tested but Failed.
-- [`How to Learn Information-Seeking Capabilities`](./analysis/learning-mechanism-framework.md): adds the orthogonal Learning Signal × Optimization Method × Update Target × Credit Granularity × Deployment Availability axis without changing A1–A6.
+- [`How to Learn Information-Seeking Capabilities`](./analysis/learning-mechanism-framework.md): adds four orthogonal mechanism dimensions—Data/Signals, Optimization, Update Locus, and Credit Assignment—while keeping Deployment Information Parity as a cross-capability diagnostic and leaving A1–A6 unchanged.
 - [`Survey Structure`](./analysis/survey-structure.md): the proposed title, central question, chapter organization, contribution claims, and future evaluation protocol.
 
 ## Search Protocol

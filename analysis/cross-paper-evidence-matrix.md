@@ -38,17 +38,16 @@
 
 ## III. Orthogonal learning-mechanism axis
 
-能力矩阵还需要一条正交的 **How to Learn** 轴。不能把 `Learning Signal`、`Optimization Method` 和 `Learning Target` 合并成一个“训练方法”字段：
+能力矩阵还需要一条正交的 **How to Learn** 轴，但章节层面只保留四个学习机制维度：
 
 | Dimension | Core question | Typical values | What must remain separate |
 |---|---|---|---|
-| **Learning Signal** | 从什么反馈中学习？ | outcome、process、preference、teacher distribution、counterfactual utility、state/value | signal 的语义不等于能力本身 |
-| **Optimization Method** | 如何把反馈转成参数更新？ | SFT、DPO、OPD、PPO、GRPO、REINFORCE、hybrid | GRPO 不代表 outcome reward；OPD 不自动等于 reward-based RL |
-| **Learning Target / Update Locus** | 哪个组件被更新？ | search policy、query rewriter、verifier、retriever、reader、memory、critic、joint system | retriever 或系统增益不能自动归因于 LLM capability |
-| **Credit Granularity** | 成功/失败归因到何种粒度？ | episode、turn、step、token/span、state transition | 更细 credit 不自动意味着更真实的因果 credit |
-| **Deployment Information Parity** | 训练时的信息部署时是否可得？ | state-only、feedback、future trajectory、gold answer、oracle evidence | teacher/critic 的 hindsight privilege 必须单独记录 |
+| **Data and Learning Signals** | 模型看到什么轨迹、从什么反馈学习？ | demonstrations、rollouts、outcome、process、preference、teacher distribution、utility | 数据/信号语义不等于能力本身 |
+| **Policy Learning and Optimization** | 如何把反馈转成参数更新？ | SFT、offline distillation、DPO、OPD、PPO、GRPO、REINFORCE、hybrid | GRPO 不代表 outcome reward；OPD 不自动等于 reward-based RL |
+| **Learning Targets and Optimization Loci** | 哪个组件被更新？ | search policy、query rewriter、verifier、retriever、reader、memory、critic、joint system | retriever 或系统增益不能自动归因于 LLM capability |
+| **Long-horizon Credit Assignment** | 成功/失败归因到何种粒度？ | episode、turn、step、token/span、state transition | 更细 credit 不自动意味着更真实的因果 credit |
 
-因此，代表性论文表中的 `Training Signal` 只能回答一部分问题；完整编码应同时记录 `Optimization Method`、`Update Target`、`Credit Granularity` 和 `Deployment Availability`。详细字段和 B1–B7 定义见 [`learning-mechanism-framework.md`](./learning-mechanism-framework.md)。
+`Deployment Information Parity` 和 `Generalization` 不属于第五、第六种学习机制，而是贯穿这些机制的 Training–Capability Alignment 与 Cross-Capability Evaluation 诊断维度。代表性论文表中的 `Training Signal` 只能回答一部分问题；完整编码还要记录 `Optimization Method`、`Update Target`、`Credit Granularity` 和 `Deployment Availability`。详细定义见 [`learning-mechanism-framework.md`](./learning-mechanism-framework.md)。
 
 ## IV. Mechanism × capability cross-check
 

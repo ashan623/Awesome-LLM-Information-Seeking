@@ -103,29 +103,22 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 ### 4. How to Learn Information-Seeking Capabilities
 
-这一章不新增 capability，也不扩展成通用 RL Survey，而是把训练机制拆成正交维度：
+这一章不新增 capability，也不扩展成通用 RL Survey，只保留四个机制小节：
 
-1. **Learning Signal：** outcome、process、preference、teacher distribution、counterfactual utility、state/value；
-2. **Optimization Method：** offline SFT、trajectory distillation、on-policy distillation、DPO/IPO、PPO/GRPO/REINFORCE、hybrid optimization；
-3. **Learning Target / Update Locus：** search policy、query rewriter、verifier、retriever、reader、memory policy、critic 或 joint system；
-4. **Credit Assignment：** episode、turn、step、token/span、state transition；
-5. **Data & Trajectory Construction：** expert/self-rollout、simulator、negative trace、counterfactual branch；
-6. **Deployment Information Parity：** state-only、observed feedback、future trajectory、gold answer、oracle evidence。
+1. **Data and Learning Signals：** demonstrations、trajectories、outcome、process、preference、teacher distribution、counterfactual utility；
+2. **Policy Learning and Optimization：** offline SFT/distillation、DPO/IPO、PPO/GRPO/REINFORCE、OPD 和 hybrid methods；
+3. **Learning Targets and Optimization Loci：** LLM search/reasoning policy、query rewriter、retriever、verifier、reader、memory policy 和 joint optimization；
+4. **Long-horizon Credit Assignment：** episode、turn、step、token/span、state-transition credit，以及 outcome/process credit 的差异。
 
 必须明确：GRPO 是优化方法，不代表使用 outcome reward；OPD 是 teacher–student 学习机制，不自动等于传统 reward-based RL；process reward 的存在也不等于模型获得了 process-level capability。
 
-本章建议回答四个问题：
-
-- 结构化监督究竟改善了 credit assignment，还是改变了模型真正学会的行为？
-- teacher、critic 或 verifier 是否使用了部署时不可得的 privileged information？
-- 更新的是 LLM search policy，还是 retriever、verifier、reader 或 memory system？
-- 更细的 reward 是否带来了更好的 capability isolation 和 transfer，而不只是更高的 final QA？
+Deployment Information Parity 不作为第五个学习机制，而作为后续 Cross-Capability Analysis 中贯穿 A1、A5、A6 的 Training–Capability Alignment 诊断。核心问题是：teacher、critic 或 verifier 是否使用了部署时不可得的 privileged information，以及去除这些信息后 student 是否仍然学会在线策略。
 
 建议只做一次定向机制补强：最多核验 4–6 篇 on-policy distillation、process credit assignment、preference learning 和 controlled training comparison 工作，然后停止新增，回到 Cross-Capability Analysis。用户提供的 SSPO、TRACE 和 controlled comparison 工作先作为待核验候选，不在元数据和训练细节核验前进入核心结论。
 
 机制章节的统一表格应采用：
 
-`Learning Signal × Optimization Method × Update Target × Credit Granularity × Deployment Availability`
+`Learning Signal × Optimization Method × Update Target × Credit Granularity`
 
 完整定义见 [`How to Learn Information-Seeking Capabilities`](./learning-mechanism-framework.md)。
 
@@ -274,6 +267,12 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 正面证据说明某个行为在某些条件下可被训练；负面证据说明该行为在改变 retriever/tool/corpus/feedback 后未被证明或发生退化。两者都应进入矩阵。
 
+#### 10.5 Deployment Information Parity and Generalization
+
+Deployment Information Parity 与 Generalization 是统一的横向诊断维度，而不是新的 Learning Method。需要记录：训练时可见的信息、部署时可见的信息、是否存在 gold/future/oracle privilege、去除 privilege 后的行为保持情况，以及目标行为在新 task/domain/retriever/tool/corpus/budget 中是否迁移。
+
+这一区分避免把“使用了 Gold Answer 的训练”简单判为错误，也避免把 teacher-guided learning 的结果直接解释成在线策略学习。真正需要验证的是：特权信息是否泄漏进 student 的行动目标，以及 student 是否能够在当前观察下做出正确决策。
+
 ### 12. Evaluation protocol for future work
 
 提出跨能力最小实验套件：
@@ -313,7 +312,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 1. 现有 Retrieval/RAG/Search-Agent survey 多按 pipeline、architecture、optimization 或 application 分类；本 Survey 改为 capability-centered comparison；
 2. 统一了 training signal、observed behavior、capability isolation、generalization evidence 四个层次；
 3. 提出了四类可由现有论文支持的 misalignment patterns，而不是简单声称“泛化不足”；
-4. 将 How to Learn 与 What to Learn 正交化，区分 signal、optimizer、update target、credit 和 information privilege；
+4. 将 How to Learn 与 What to Learn 正交化，压缩为 signal、optimization、update locus 和 credit assignment 四个机制维度，并把 information privilege 放入横向诊断；
 5. 将 A3 明确为横向探索能力，将 A5.4 限制为持久信息整合子方向，避免分类发散；
 6. 给出了跨能力的 intervention and transfer audit，可作为未来 post-training information-seeking 工作的最低证据协议。
 

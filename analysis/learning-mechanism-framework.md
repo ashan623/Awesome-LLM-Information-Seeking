@@ -2,199 +2,174 @@
 
 ## Role of this chapter
 
-本章不是新增第七类 Information-Seeking Capability，也不是 PPO/GRPO 变体综述。它是与 A1–A6 正交的第二条主轴，用来回答：
+本章不是新增第七类 Information-Seeking Capability，也不是通用 LLM Post-training 或 RL Survey。它是与 A1–A6 正交的第二条主轴，用来回答：
 
-> **What feedback does the model learn from, how is that feedback converted into parameter updates, which component is updated, and what capability can the resulting evidence actually support?**
+> **What feedback teaches information-seeking policies, how is that feedback converted into updates, which component is updated, and how is long-horizon behavior supervised?**
 
-现有能力章节回答 **What to Learn**；本章回答 **How to Learn**。二者的交叉才是 Survey 的核心分析单位。
+A1–A6 回答 **What to Learn**；本章回答 **How to Learn**。至于训练时的特权信息是否能迁移到部署，以及能力能否跨环境保持，属于后面的统一诊断维度，不作为新的学习机制章节。
 
-## I. Three orthogonal questions that must not be collapsed
+## I. Four learning-mechanism dimensions
 
-### 1. Learning Signal — 从什么反馈中学习？
+### 3.1 Data and Learning Signals
 
-记录监督或反馈的语义来源：
+这一节同时讨论“模型看到什么数据”与“从什么反馈中学习”，但不把每一种 reward 写成独立方法。
 
-- **Outcome Reward：** 最终答案、任务成功、EM/F1、工具调用后效用；
-- **Process Reward：** token、step、turn 或 evidence span 的中间质量；
-- **Preference Signal：** pairwise preference、DPO/IPO 类偏好、source-balancing preference；
-- **Teacher Distribution / Distillation Signal：** teacher logits、teacher action distribution、on-policy teacher–student difference；
+#### Data and trajectory regime
+
+- demonstrations / expert trajectories；
+- self-rollouts and on-policy trajectories；
+- simulator-generated interactions；
+- negative or failed traces；
+- counterfactual branches，例如 no-tool/tool、evidence replacement、actual/oracle state；
+- mixed trajectories with query, tool, evidence and answer states。
+
+数据和轨迹分布决定模型实际会遇到哪些信息缺口、失败模式和搜索路径。专家轨迹也可能包含学生部署时不可得的未来信息，因此应与 Deployment Information Parity 一起审计。
+
+#### Learning signal
+
+- **Outcome Reward：** 最终答案、任务成功、EM/F1、工具调用后的终局效用；
+- **Process Reward：** token、step、turn、evidence span 或中间状态的质量；
+- **Preference Signal：** pairwise preference、DPO/IPO、source balancing 或证据偏好；
+- **Teacher Distribution：** teacher logits、teacher action distribution、on-policy teacher–student difference；
 - **Counterfactual / Utility Signal：** no-tool/tool、actual/oracle、evidence replacement 或 cost-adjusted utility；
-- **State/Value Signal：** state value change、advantage、critic estimate 或 future memory utility。
+- **State / Value Signal：** state value change、advantage、critic estimate 或 future memory utility。
 
-信号的名字不能直接推出能力。例如，process reward 只说明监督粒度更细，不说明模型已经学会 process-level capability。
+核心问题不是哪种 reward 名字更复杂，而是：
 
-### 2. Optimization Method — 如何把反馈转化为参数更新？
+1. 信号真正测量了哪一种行为；
+2. 哪些 shortcut 也能得到相同反馈；
+3. 信号是否与声称的 capability 对齐；
+4. 信号是否依赖部署时不可得的 gold、future 或 oracle information。
 
-记录更新算法，而不是把算法名称当作训练目标：
+### 3.2 Policy Learning and Optimization
 
-- Offline SFT / behavior cloning；
-- trajectory distillation；
-- on-policy distillation / teacher–student policy optimization；
-- preference optimization，例如 DPO/IPO；
-- policy-gradient RL，例如 REINFORCE、PPO、GRPO、RLOO；
-- hybrid optimization，例如 SFT → RL、DPO → joint decoding、process reward + outcome reward；
-- test-time or runtime learning，若基础 LLM 参数不更新，则必须与 parameter post-training 分开。
+这一节只解释优化方法如何利用信号，不做算法推导或 PPO/GRPO 变体的百科式罗列。
 
-`GRPO` 是优化方法，不代表一定使用 outcome reward；`OPD` 是 teacher–student on-policy learning 机制，不应被自动归为传统 reward-based RL。
+- **Offline SFT / Behavior Cloning：** 从 demonstrations 或 expert trajectories 学习 query、tool、evidence 和 control behavior；
+- **Offline Trajectory Distillation：** 模仿已有搜索轨迹，需审计 teacher coverage 和 privileged information；
+- **Preference Optimization：** DPO/IPO 等从相对偏好中学习答案、证据或行动选择；
+- **RL Policy Optimization：** REINFORCE、PPO、GRPO、RLOO 等将 outcome/process/utility 信号转为 policy update；
+- **On-policy Distillation：** student 在自身状态分布上获得 teacher distribution 或 advantage-like supervision；它是独立机制，但不自动等于 reward-based RL；
+- **Hybrid Methods：** SFT → RL、DPO → joint decoding、process reward + outcome reward 等组合。
 
-### 3. Learning Target — 究竟更新哪个组件？
+必须保持以下区分：
 
-记录参数更新或学习状态的对象：
+- GRPO 是 optimization method，不代表一定使用 outcome reward；
+- OPD 是 teacher–student policy learning mechanism，不代表一定使用 reward；
+- process supervision 是 signal granularity，不代表模型获得了 process-level capability；
+- 更复杂的 optimization protocol 不等于更强的 capability transfer。
 
-- **Search Policy：** 何时调用搜索、继续、改写、切换、验证、停止；
-- **Query Rewriter / Planner：** query、sub-question、search plan；
-- **Evidence Evaluator / Verifier：** relevance、support、sufficiency、authority、conflict；
-- **Retriever / Retrieval Interface：** retriever、reranker、query–retriever coupling；
-- **Reader / Reasoning Policy：** evidence integration、belief revision、answer generation；
-- **Memory Policy / External Memory State：** ADD、UPDATE、DELETE、NOOP、memory utility；
-- **Critic / Value Model：** action value、turn credit、state progress；
+### 3.3 Learning Targets and Optimization Loci
+
+这一节判断一篇论文究竟是不是直接的 Information-Seeking Capability Learning evidence。
+
+- **LLM Search / Reasoning Policy：** 学习何时搜索、如何继续、如何使用证据和何时停止；
+- **Query Rewriter / Planner：** 学习 query、sub-question 或 search plan；
+- **Verifier / Evidence Judge：** 学习 relevance、support、sufficiency、authority 或 conflict；
+- **Retriever / Retrieval Interface：** 更新 retriever、reranker 或 query–retriever coupling；
+- **Reader / Integration Policy：** 学习 evidence integration、belief revision、answer generation；
+- **Memory Policy / External State：** 学习 ADD、UPDATE、DELETE、NOOP 或 future memory utility；
+- **Critic / Value Model：** 学习 action value、turn credit 或 state progress；
 - **Joint System：** retriever、policy、verifier、reader 或 memory manager 联合更新。
 
-同一个训练算法更新不同对象时，能力含义完全不同。一个 retriever 优化结果不能直接写成 LLM 学会了 information-seeking capability。
+同一个 PPO、GRPO 或 DPO，当它更新不同组件时，能力含义完全不同。Retriever 或 verifier 的改进不能自动归因于 LLM policy；联合优化带来的下游收益也不能自动证明某一个 capability 被隔离地学会。
 
-## II. Extended learning-mechanism taxonomy
+### 3.4 Long-horizon Credit Assignment
 
-保留原有 B1–B6 主干，但重新定义每一类的对象，避免把 data、signal、optimizer 和 target 混写。
+这一节讨论最终反馈如何分配给搜索过程，而不是简单地把所有 process reward 归为一类。
 
-| Dimension | Core question | Typical values | Main analysis risk |
+| Credit level | What is assigned | Typical interpretation | Main limitation |
 |---|---|---|---|
-| **B1 Data & Trajectory Construction** | 模型看到什么交互和失败案例？ | expert trajectories、self-rollouts、simulator、negative/failed traces、counterfactual branches | 数据分布限制能力；专家轨迹可能包含部署时不可得的信息 |
-| **B2 Learning Signal** | 从什么反馈学习？ | outcome、process、preference、teacher distribution、utility/value | 信号语义与声称能力不一致；奖励可被 shortcut |
-| **B3 Optimization Method** | 反馈如何更新参数？ | SFT、DPO、OPD、PPO、GRPO、REINFORCE、hybrid | 算法名称掩盖真正监督对象；不同优化器结果不可直接比较 |
-| **B4 Learning Target / Update Locus** | 哪个组件被更新？ | policy、query rewriter、verifier、retriever、reader、memory、critic | 系统增益被错误归因给 LLM capability |
-| **B5 Credit Assignment** | 成功/失败归因到什么粒度？ | episode、turn、step、token、evidence、state transition | 更细粒度信用不等于更真实的因果信用；hindsight privilege 可能泄漏 |
-| **B6 Joint Optimization & Coupling** | 哪些模块共同变化？ | retriever–agent、verifier–policy、reader–retriever、memory–answer agent | 联合优化提高结果但难以隔离单个能力 |
-| **B7 Deployment Information Parity** | 训练时看到的信息部署时是否可得？ | state-only、partial feedback、full trajectory、gold answer、oracle evidence | teacher/critic 可能拥有 privileged information，产生 hindsight–deployment gap |
+| **Episode-level** | entire trajectory or final answer | outcome-based search policy learning | 无法定位 useful query、evidence 或 control step |
+| **Turn-level** | one search/tool call | turn contribution or retrospective critic | 可能依赖完整未来轨迹、Gold Answer 或 LLM judge |
+| **Step-level** | query/action/evidence step | process reward、search-key 或 evidence progress | step reward 可能只是 proxy，或依赖 teacher privilege |
+| **Token / Span-level** | search key、citation span、reasoning token | lexical/evidence alignment | matching 不证明 semantic intent 或 causal evidence reliance |
+| **State-transition-level** | value/progress change after an action | action contribution from state improvement | value model 可能误校准，且 action effect 与 retriever/generator 混杂 |
 
-B7 是跨所有训练机制的诊断字段，而不是新的优化方法。
+Credit assignment 还要记录来源：`current state`、`observed feedback`、`future trajectory`、`gold answer`、`oracle evidence` 或 `LLM judge`。
 
-## III. Mechanism × capability matrix
+本节的核心判断是：
 
-| Capability | Dominant learning targets | Direct signals in current pool | Common optimization routes | Main learning–capability risk |
-|---|---|---|---|---|
-| **A1 Epistemic Awareness** | search policy、router、value/utility predictor | answerability、uncertainty、counterfactual utility、cost | SFT trigger、RL、cost-aware policy、calibration interface | ex-post utility 改善被解释成 ex-ante value calibration |
-| **A2 Information Need Formulation** | query rewriter、planner、retriever–query coupling | pseudo-query、Recall/NDCG、entity coverage、search-key、answer utility | SFT、PPO/GRPO、query preference、process reward | backend dialect/词面命中被解释成 semantic intent |
-| **A3 Information Space Exploration** | multi-tool policy、source selector、coverage planner | document coverage、Gold Passage Recall、diversity、information gain | SFT+RL、diversity reward、coverage reward | diversity 或 gold-document matching 被解释成 unfamiliar-space exploration |
-| **A4 Evidence Evaluation** | verifier、sufficiency judge、source ranker | support/refute、authority、sufficiency/gap、noise robustness | SFT、LoRA、GRPO、evaluation-only diagnostics | benchmark/verifier 适配被解释成 general evidence judgment |
-| **A5 Evidence Integration** | reader/reasoning policy、belief update、memory policy | answer reward、citation/span、evidence preference、supporting facts | SFT、DPO、GRPO/RLVR、joint decoding | evidence-conditioned output 被解释成 process-level causal reliance |
-| **A6 Adaptive Search Control** | search policy、critic、value model、budget controller | stopping/depth、budget、turn credit、contribution utility | PPO/GRPO、critic-guided RL、advantage reweighting、OPD | credit assignment 改善被解释成 feedback-conditioned next-action control |
+> **Better credit assignment does not necessarily imply better online control.**
 
-## IV. Signal progression is not a capability ranking
+更细的 credit 只有在它能够减少错误归因、且没有把部署时不可得的 hindsight information 直接泄漏给 policy 时，才真正增强 capability-learning 证据。
 
-当前文献常呈现如下信号演进：
+## II. Compact mechanism × capability matrix
 
-`Outcome Reward → Process/Step Reward → Preference / Evidence Reward → Teacher Distribution / On-policy Distillation → Counterfactual Utility or State Progress`
+| Capability | Signal examples | Optimization examples | Update locus | Credit focus | Key gap |
+|---|---|---|---|---|---|
+| **A1 Epistemic Awareness** | answerability、uncertainty、counterfactual utility、cost | SFT trigger、SFT/RL、cost-aware policy | router / search policy / utility predictor | outcome / action | ex-ante value calibration |
+| **A2 Information Need Formulation** | pseudo-query、retrieval gain、coverage、search-key | SFT、PPO/GRPO、preference、process reward | query policy / planner / retriever coupling | query / step | semantic intent transfer |
+| **A3 Information Space Exploration** | diversity、document coverage、information gain | SFT+RL、coverage/diversity optimization | exploration policy / source selector | search action | useful coverage in unfamiliar spaces |
+| **A4 Evidence Evaluation** | support/refute、authority、sufficiency、noise robustness | SFT、LoRA、GRPO、evaluation-only diagnostics | verifier / judge / source ranker | span / claim / set | generalizable evidence judgment |
+| **A5 Evidence Integration** | answer/evidence reward、citation、supporting facts | SFT、DPO、GRPO/RLVR、joint decoding | reader / reasoning policy / memory policy | evidence / outcome | causal evidence reliance |
+| **A6 Adaptive Search Control** | budget、stopping、turn contribution、state progress | PPO/GRPO、critic-guided RL、OPD、advantage reweighting | search policy / critic / budget controller | turn / step / episode | online feedback adaptation |
 
-这不应写成简单的“越后面越先进”。每种信号只解决不同的监督问题：
+这张矩阵只保留每类能力最有区分度的机制变量，不重复列出全部论文。具体论文仍放在完整 Cross-Paper Evidence Matrix 中。
 
-- Outcome reward 提供可扩展的端到端目标，但信用粗；
-- Process reward 提供更局部的学习信号，但标签可能是 proxy 或 noisy；
-- Preference/evidence reward 可表达相对偏好，但可能学习 verifier 偏见；
-- Teacher distribution 能提供动作级行为信息，但 teacher 可能拥有 privileged information；
-- Counterfactual utility 更接近决策价值，但估计方差、分支质量和部署可获得性必须单独审计。
+## III. Deployment Information Parity is a cross-cutting diagnostic
 
-因此，论文必须同时记录：
+Deployment Information Parity 不是一种 Learning Method，而是 Training–Capability Alignment 的诊断维度。训练时使用 Gold Answer、完整轨迹或 oracle evidence 本身不构成方法缺陷；真正需要检查的是：
 
-`Signal Semantics × Optimization Method × Update Target × Credit Granularity × Deployment Availability`。
+1. teacher、critic 或 reward 是否依赖部署时不可获得的信息；
+2. 这些信息是否直接泄漏进 student 的 action input 或 output target；
+3. 去除特权信息后，student 是否仍能依据当前 observation 做出正确决策；
+4. 是否有行为干预证明 student 学到的是 online policy，而不是事后 teacher pattern；
+5. 在新 retriever、tool、corpus 或 feedback format 中，目标行为是否保持。
 
-## V. Distillation deserves an explicit separation
+因此，这一维度应贯穿 A1、A5、A6，尤其适用于：
 
-### Offline trajectory distillation
+- A1：ex-post utility reward 与 ex-ante value prediction；
+- A5：oracle evidence 与真正的 evidence integration；
+- A6：retrospective critic 与 online feedback-conditioned control；
+- OPD：teacher distribution 是否编码了 student 部署时不可得的答案或未来状态。
 
-模型模仿已经收集的 expert/search trajectory。它可以教会查询、工具调用或证据组织的表面行为，但容易受到 expert distribution、轨迹覆盖和 teacher privileged information 的限制。
+## IV. Bounded mechanism reinforcement
 
-### On-policy distillation
+How to Learn 只需要最后一次定向核验，不需要重新打开 A1–A6 的广泛搜集。最多补入 4–6 篇能够改变机制分类或修正现有判断的论文：
 
-student 先在当前 policy 分布下产生状态，再从 teacher 得到 action distribution 或 advantage-like signal。它更接近 student 将会遇到的部署状态，但仍需检查 teacher 是否利用 gold answer、未来轨迹或不可部署的证据。
+1. **On-policy distillation / teacher-guided policy learning：** 是否提供不同于 SFT/RL 的 Search Policy 学习信号；
+2. **Process credit assignment：** turn、step、state-value credit 是否真正优于 outcome-only reward；
+3. **Preference-based learning：** preference 是否针对信息寻求行为，而不是只偏好最终答案或引用格式；
+4. **Controlled training comparison：** 是否能隔离 signal、optimizer、retriever、corpus 和 rollout budget 的收益来源。
 
-### Teacher information leakage
+用户提供的 SSPO、TRACE 和 training-protocol comparison 工作可以作为候选，但在正式核验元数据、训练细节和能力隔离实验之前，不应写入核心结论。Generic OPD background 也不能直接算作 Information-Seeking Capability evidence，除非其评价真正测量 search/query/evidence/control behavior。
 
-如果 teacher 在训练时知道最终答案、完整搜索轨迹、oracle evidence 或未来状态，student 可能模仿的是“知道答案后的动作”，而不是在不确定条件下真正探索。
+筛选标准只有一个：
 
-因此，OPD/OPSD 类方法的关键问题不是“是否比 outcome reward 高”，而是：
+> **这篇论文是否改变我们对“什么反馈、通过什么更新机制、能教会什么能力”的判断？**
 
-1. teacher 在每个状态可见什么；
-2. student 在部署时可见什么；
-3. advantage 或 action target 是否需要 future/gold information；
-4. 去掉 privileged information 后，目标 information-seeking behavior 是否仍保持；
-5. transfer 到新 retriever/tool/corpus 后，student 是否仍能使用该 policy。
+不为了凑数量而继续检索。
 
-## VI. Credit assignment should be coded by both granularity and information source
+## V. Recommended chapter structure
 
-| Credit level | What is assigned | Typical evidence | Main limitation |
-|---|---|---|---|
-| **Episode-level** | entire trajectory or final answer | Search-R1-like outcome RL | cannot identify useful query/evidence/control step |
-| **Turn-level** | one search/tool call | CriticSearch, CW-GRPO | may still rely on hindsight trajectory or judge labels |
-| **Step-level** | query/action/evidence step | StepSearch, SSPO-like methods | step reward can be proxy-driven or teacher-dependent |
-| **Token/span-level** | search key, citation span, reasoning token | retrieval span, key F1, citation reward | lexical matching does not prove semantic or causal reliance |
-| **State-transition-level** | value/progress change after an action | value-difference credit, state progress | value estimator may be miscalibrated and action contribution confounded |
+建议 How to Learn 只保留四个小节：
 
-每个 credit 方法还要增加一个 `Credit Information Source` 字段：`current state`、`observed feedback`、`future trajectory`、`gold answer`、`oracle evidence` 或 `LLM judge`。
+1. **Data and Learning Signals**；
+2. **Policy Learning and Optimization**；
+3. **Learning Targets and Optimization Loci**；
+4. **Long-horizon Credit Assignment**。
 
-更细的 credit 粒度只有在 credit information source 不引入部署时不可得的 privileged information 时，才更有说服力。
-
-## VII. Minimal learning–capability alignment test
-
-对每一篇核心论文，至少检查以下五个问题：
-
-1. **Signal semantics：** reward/label 真正在测什么？
-2. **Target locus：** 哪个组件被更新？是否确实是声称的 LLM capability？
-3. **Behavioral observability：** 是否测了目标行为，而不只是最终答案？
-4. **Information parity：** 训练 signal 是否使用了部署时不可得的未来/gold/oracle information？
-5. **Transfer:** 训练后的行为是否在改变 task、domain、retriever、tool、corpus、budget 或 feedback 后保持？
-
-可用如下非综合性标记：
-
-- `Signal–Capability Alignment: Direct / Partial / Indirect / Not Applicable`
-- `Update Target: Policy / Query / Verifier / Retriever / Reader / Memory / Critic / Joint`
-- `Credit Granularity: Episode / Turn / Step / Token / State Transition`
-- `Deployment Availability: Available / Partially Privileged / Fully Privileged`
-- `Learning Evidence: Behavior Measured / Outcome Only / Evaluation Only`
-
-这些标记是诊断字段，不应合并为一个总分。
-
-## VIII. Bounded reinforcement plan
-
-本章只需要一次定向补强，不需要重新打开 A1–A6 的广泛搜集。建议最多补入 4–6 篇机制论文，按机制缺口而不是按任务场景选取：
-
-1. **On-policy distillation / teacher-guided policy learning：** 重点审计 teacher privilege、student state distribution 和 search-step advantage；
-2. **Process credit assignment：** 比较 turn-level、step-level、state-value difference 和 outcome reward；
-3. **Preference-based learning：** 检查 preference 是否针对信息寻求行为，还是只偏好最终答案/引用格式；
-4. **Controlled training comparison：** 控制 corpus、retriever、reward 和 optimization protocol，判断收益来自哪里；
-5. **Optional generic OPD background：** 仅作为优化机制背景，不能算作 Information-Seeking capability evidence，除非实验直接测 search/query/evidence/control behavior。
-
-用户提供的 SSPO、TRACE 以及 controlled training comparison 工作可以作为这一轮的 P0 核验候选；在正式核验元数据、训练细节和能力隔离实验之前，不应直接写入核心矩阵或用来支撑结论。
-
-## IX. Recommended Learning chapter
-
-建议将本章放在 capability taxonomy 之后、A1–A6 之前，作为 Survey 的“第二主轴”：
-
-1. Data & Trajectory Construction；
-2. Learning Signal；
-3. Optimization Method；
-4. Learning Target / Update Locus；
-5. Credit Assignment；
-6. Joint Optimization；
-7. Deployment Information Parity；
-8. Cross-capability mechanism comparison。
+然后把 `Deployment Information Parity` 和 `Generalization` 放到 Cross-Capability Analysis，与 Training–Capability Alignment、Capability Isolation 一起讨论。
 
 章节主问题可以写成：
 
 > **When should information-seeking policies learn from outcomes, intermediate rewards, preferences, or teacher distributions—and what capabilities does each signal actually induce?**
 
-结论不要写成“process reward 一定优于 outcome reward”，而应写成：
+推荐结论：
 
-> **More structured supervision can improve credit assignment or behavior observability, but it does not by itself establish that the induced behavior is the claimed capability, causally isolated, or transferable.**
+> **More structured supervision may improve credit assignment or behavior observability, but it does not by itself establish that the induced behavior is the claimed capability, causally isolated, or transferable.**
 
-## X. What this reinforcement adds to the survey
+## VI. What this adds to the survey
 
-补强后，Survey 的二维结构变为：
+补强后，Survey 的结构保持收敛：
 
 - **What to Learn：** A1–A6 information-seeking capabilities；
-- **How to Learn：** B1–B7 learning mechanisms and evidence conditions。
+- **How to Learn：** 四个 learning-mechanism 小节；
+- **What Was Actually Learned？** Training–Capability Alignment、Capability Isolation、Deployment Information Parity 和 Generalization。
 
-最终比较单位不是“哪种算法最好”，而是：
+最终比较单位是：
 
-> **Which signal, optimized through which method, updates which component, produces which observable behavior, under what information privilege, and with what transfer evidence?**
+> **Which signal, optimized through which method, updates which component, produces which observable behavior, and what evidence shows that the behavior is the intended and transferable capability?**
 
-这会显著增强 Survey 的机制解释力，同时不改变原有能力边界，也不会把论文扩展成通用 RL、Memory 或 RAG Survey。
+这会增强 Survey 的中心论点，而不会把它扩展成通用 post-training、Memory、RAG 或 RL Survey。

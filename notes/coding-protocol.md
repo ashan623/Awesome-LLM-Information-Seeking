@@ -51,21 +51,21 @@ When a critic or reward model uses the full future trajectory, gold answer, or p
 
 ## Orthogonal learning-mechanism fields
 
-The survey has two axes: **What to Learn** (A1–A6 capabilities) and **How to Learn** (training mechanisms). Do not collapse the following fields into a single algorithm label:
+The survey has two axes: **What to Learn** (A1–A6 capabilities) and **How to Learn** (four compact mechanism dimensions). Do not collapse the following fields into a single algorithm label:
 
-- **Learning Signal:** `Outcome Reward`, `Process Reward`, `Preference`, `Teacher Distribution`, `Counterfactual / Utility`, or `State / Value`;
-- **Optimization Method:** `SFT`, `Trajectory Distillation`, `On-policy Distillation`, `DPO / Preference Optimization`, `PPO / GRPO / REINFORCE`, or `Hybrid`;
-- **Learning Target / Update Locus:** `Search Policy`, `Query Rewriter`, `Verifier`, `Retriever`, `Reader / Reasoning Policy`, `Memory Policy`, `Critic / Value Model`, or `Joint System`;
-- **Data / Trajectory Regime:** expert, self-rollout, simulator, negative/failed trace, counterfactual branch, or mixed;
-- **Credit Granularity:** `Episode`, `Turn`, `Step`, `Token / Span`, or `State Transition`;
-- **Credit Information Source:** current state, observed feedback, future trajectory, gold answer, oracle evidence, or LLM judge;
-- **Deployment Information Parity:** whether the signal is available from the state and feedback that the deployed policy can actually observe.
+- **Data and Learning Signals:** data/trajectory regime plus `Outcome Reward`, `Process Reward`, `Preference`, `Teacher Distribution`, `Counterfactual / Utility`, or `State / Value`;
+- **Policy Learning and Optimization:** `SFT`, `Trajectory Distillation`, `On-policy Distillation`, `DPO / Preference Optimization`, `PPO / GRPO / REINFORCE`, or `Hybrid`;
+- **Learning Targets and Optimization Loci:** `Search Policy`, `Query Rewriter`, `Verifier`, `Retriever`, `Reader / Reasoning Policy`, `Memory Policy`, `Critic / Value Model`, or `Joint System`;
+- **Long-horizon Credit Assignment:** `Episode`, `Turn`, `Step`, `Token / Span`, or `State Transition`, together with its information source;
+- **Cross-cutting diagnostic:** `Deployment Information Parity`, recording whether the signal is available from the state and feedback that the deployed policy can actually observe.
 
 GRPO is an optimization method, not a reward semantics. OPD is an on-policy teacher–student mechanism, not automatically outcome-reward RL. Process supervision is a signal granularity, not proof of process-level capability. A retriever or verifier update is not automatically LLM capability post-training.
 
-For each paper, use the diagnostic tuple:
+For the four mechanism dimensions, use:
 
-`Learning Signal × Optimization Method × Update Target × Credit Granularity × Deployment Availability`
+`Learning Signal × Optimization Method × Update Target × Credit Granularity`
+
+Then record `Deployment Information Parity` separately as a Training–Capability Alignment diagnostic, not as a fifth learning method.
 
 The detailed bounded mechanism framework is [`analysis/learning-mechanism-framework.md`](../analysis/learning-mechanism-framework.md). The mechanism pass may add at most 4–6 directly relevant papers; it must not reopen broad A1–A6 collection.
 
