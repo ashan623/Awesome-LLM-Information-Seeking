@@ -49,6 +49,26 @@ A6-specific fields are **Control Action**, **Observed Feedback**, **Feedback Dep
 
 When a critic or reward model uses the full future trajectory, gold answer, or privileged evidence during training, record this as **Hindsight / Privileged Training Signal**. It may improve credit assignment while remaining different from online feedback understanding at deployment. Unseen-budget transfer is **Budget / Cost Generalization**, not Retriever, Tool, or Environment Transfer.
 
+## Orthogonal learning-mechanism fields
+
+The survey has two axes: **What to Learn** (A1–A6 capabilities) and **How to Learn** (training mechanisms). Do not collapse the following fields into a single algorithm label:
+
+- **Learning Signal:** `Outcome Reward`, `Process Reward`, `Preference`, `Teacher Distribution`, `Counterfactual / Utility`, or `State / Value`;
+- **Optimization Method:** `SFT`, `Trajectory Distillation`, `On-policy Distillation`, `DPO / Preference Optimization`, `PPO / GRPO / REINFORCE`, or `Hybrid`;
+- **Learning Target / Update Locus:** `Search Policy`, `Query Rewriter`, `Verifier`, `Retriever`, `Reader / Reasoning Policy`, `Memory Policy`, `Critic / Value Model`, or `Joint System`;
+- **Data / Trajectory Regime:** expert, self-rollout, simulator, negative/failed trace, counterfactual branch, or mixed;
+- **Credit Granularity:** `Episode`, `Turn`, `Step`, `Token / Span`, or `State Transition`;
+- **Credit Information Source:** current state, observed feedback, future trajectory, gold answer, oracle evidence, or LLM judge;
+- **Deployment Information Parity:** whether the signal is available from the state and feedback that the deployed policy can actually observe.
+
+GRPO is an optimization method, not a reward semantics. OPD is an on-policy teacher–student mechanism, not automatically outcome-reward RL. Process supervision is a signal granularity, not proof of process-level capability. A retriever or verifier update is not automatically LLM capability post-training.
+
+For each paper, use the diagnostic tuple:
+
+`Learning Signal × Optimization Method × Update Target × Credit Granularity × Deployment Availability`
+
+The detailed bounded mechanism framework is [`analysis/learning-mechanism-framework.md`](../analysis/learning-mechanism-framework.md). The mechanism pass may add at most 4–6 directly relevant papers; it must not reopen broad A1–A6 collection.
+
 ## Orthogonal contribution type
 
 Record exactly one primary contribution type, with secondary types when necessary:
@@ -143,10 +163,11 @@ The current search should focus on four connected pools:
 1. **Closed — A2 Information Need Formulation**, including the QREF targeted exception and three-layer query generalization
 2. **Closed — A3 Information Space Exploration**, retained as a cross-capability dimension with a dedicated subsection
 3. **Closed — A6 Adaptive Search Control**, with explicit separation between search adaptation and query formulation
-4. **Active — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
-5. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
+4. **Active — Learning Mechanism Reinforcement**, a bounded pass on signal, optimization, update target, credit assignment, and deployment information parity
+5. **Active — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
+6. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
 
-The bounded A6 pass is complete. Longitudinal capability collection is paused while the cross-capability analysis is built. Only if that comparison reveals a concrete unresolved cell that cannot be analyzed from the current pool should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
+The bounded A6 pass is complete. Longitudinal capability collection remains paused while the bounded Learning Mechanism Reinforcement and cross-capability analysis are built. The mechanism pass may add only 4–6 papers that directly clarify on-policy distillation, process credit assignment, preference learning, or controlled training comparison. Only if that pass reveals a concrete unresolved capability cell that cannot be analyzed from the current pool should the search add anything else. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
 ## Required annotation template
 
@@ -158,6 +179,13 @@ Secondary Capabilities
 Training Mechanism
 Learning Target
 Supervision / Reward
+Learning Signal
+Optimization Method
+Update Target / Update Locus
+Data / Trajectory Regime
+Credit Granularity
+Credit Information Source
+Deployment Information Parity
 Training–Capability Alignment
 Method Effectiveness
 Capability Isolation

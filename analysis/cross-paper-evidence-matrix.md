@@ -36,7 +36,34 @@
 | **Evidence-conditioned preference / process signal** | citation span、supporting fact、reasoning consistency、evidence contribution | A5 evidence following、A6 contribution-aware credit | 输出随证据变化不等于 process-level causal reliance；LLM judge 可能只提供后验解释 |
 | **Hindsight / counterfactual signal** | 事后分支收益、gold answer、full trajectory、actual/oracle state | A1 utility learning、A6 retrospective critic、A5 replacement tests | 训练时拥有部署时不可得的信息；改善 credit 不等于部署时知道下一步动作 |
 
-## III. Representative paper-level matrix
+## III. Orthogonal learning-mechanism axis
+
+能力矩阵还需要一条正交的 **How to Learn** 轴。不能把 `Learning Signal`、`Optimization Method` 和 `Learning Target` 合并成一个“训练方法”字段：
+
+| Dimension | Core question | Typical values | What must remain separate |
+|---|---|---|---|
+| **Learning Signal** | 从什么反馈中学习？ | outcome、process、preference、teacher distribution、counterfactual utility、state/value | signal 的语义不等于能力本身 |
+| **Optimization Method** | 如何把反馈转成参数更新？ | SFT、DPO、OPD、PPO、GRPO、REINFORCE、hybrid | GRPO 不代表 outcome reward；OPD 不自动等于 reward-based RL |
+| **Learning Target / Update Locus** | 哪个组件被更新？ | search policy、query rewriter、verifier、retriever、reader、memory、critic、joint system | retriever 或系统增益不能自动归因于 LLM capability |
+| **Credit Granularity** | 成功/失败归因到何种粒度？ | episode、turn、step、token/span、state transition | 更细 credit 不自动意味着更真实的因果 credit |
+| **Deployment Information Parity** | 训练时的信息部署时是否可得？ | state-only、feedback、future trajectory、gold answer、oracle evidence | teacher/critic 的 hindsight privilege 必须单独记录 |
+
+因此，代表性论文表中的 `Training Signal` 只能回答一部分问题；完整编码应同时记录 `Optimization Method`、`Update Target`、`Credit Granularity` 和 `Deployment Availability`。详细字段和 B1–B7 定义见 [`learning-mechanism-framework.md`](./learning-mechanism-framework.md)。
+
+## IV. Mechanism × capability cross-check
+
+| Capability | Dominant update targets | Direct signals in the current pool | Main mechanism–capability risk |
+|---|---|---|---|
+| **A1** | search policy、router、utility/value predictor | answerability、uncertainty、counterfactual utility、cost | ex-post utility 被解释成 ex-ante value calibration |
+| **A2** | query rewriter、planner、retriever–query coupling | pseudo-query、Recall/NDCG、entity coverage、search-key、answer utility | backend dialect/词面命中被解释成 semantic intent |
+| **A3** | multi-tool policy、source selector、coverage planner | document coverage、Gold Passage Recall、diversity、information gain | diversity/gold-document matching 被解释成 unfamiliar-space exploration |
+| **A4** | verifier、sufficiency judge、source ranker | support/refute、authority、sufficiency/gap、noise robustness | verifier 适配被解释成 general evidence judgment |
+| **A5** | reader/reasoning policy、belief update、memory policy | answer reward、citation/span、evidence preference、supporting facts | evidence-conditioned output 被解释成 process-level causal reliance |
+| **A6** | search policy、critic、value model、budget controller | stopping/depth、budget、turn credit、contribution utility | credit assignment 改善被解释成 feedback-conditioned control |
+
+这张交叉表不是新增分类，而是把已有六类能力与学习机制重新对齐。它应与后面的误差分类一起使用：一个方法可以在 `Optimization Method` 上很先进，但在 `Learning Target`、`Deployment Information Parity` 或 `Behavior Transfer` 上仍然证据不足。
+
+## V. Representative paper-level matrix
 
 下表只列当前文献池中能直接支撑横向论证的代表性论文。`Isolation` 和 `Transfer` 是分开的证据状态，不是综合评分。
 
@@ -123,7 +150,7 @@
 | CriticSearch | turn-level long-horizon credit | retrospective critic sees full trajectory + gold answer | reformulate after unhelpful evidence; denser action learning | hindsight credit assignment; deployment privilege gap | task OOD under fixed E5/Wikipedia/four-turn setup |
 | CW-GRPO | contribution-aware search-round credit | novelty-aware retrieval utility × reasoning correctness | concentrate learning on useful non-redundant rounds | per-round credit and human calibration; no explicit next-action intervention | multi-benchmark; Retriever/Tool/Corpus transfer absent |
 
-## IV. Matrix-level conclusions
+## VI. Matrix-level conclusions
 
 ### 1. The survey is not comparing “which method is best”
 

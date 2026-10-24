@@ -77,7 +77,8 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 1. 一个 capability-centered taxonomy；
 2. 一个 Training Signal → Behavior → Isolation → Generalization 的统一分析 protocol；
-3. 四类跨论文 training–capability misalignment taxonomy。
+3. 一个与 A1–A6 正交的 How-to-Learn mechanism taxonomy；
+4. 四类跨论文 training–capability misalignment taxonomy。
 
 ### 2. Scope and conceptual framework
 
@@ -100,7 +101,35 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 需要强调这不是一个严格线性 pipeline。A1、A2、A3、A6 会循环发生；A4/A5 作用于获取到的证据；A5.4 是 A5 的跨轮状态子方向。
 
-### 4. A1 — Epistemic Awareness: Is Information Acquisition Worthwhile?
+### 4. How to Learn Information-Seeking Capabilities
+
+这一章不新增 capability，也不扩展成通用 RL Survey，而是把训练机制拆成正交维度：
+
+1. **Learning Signal：** outcome、process、preference、teacher distribution、counterfactual utility、state/value；
+2. **Optimization Method：** offline SFT、trajectory distillation、on-policy distillation、DPO/IPO、PPO/GRPO/REINFORCE、hybrid optimization；
+3. **Learning Target / Update Locus：** search policy、query rewriter、verifier、retriever、reader、memory policy、critic 或 joint system；
+4. **Credit Assignment：** episode、turn、step、token/span、state transition；
+5. **Data & Trajectory Construction：** expert/self-rollout、simulator、negative trace、counterfactual branch；
+6. **Deployment Information Parity：** state-only、observed feedback、future trajectory、gold answer、oracle evidence。
+
+必须明确：GRPO 是优化方法，不代表使用 outcome reward；OPD 是 teacher–student 学习机制，不自动等于传统 reward-based RL；process reward 的存在也不等于模型获得了 process-level capability。
+
+本章建议回答四个问题：
+
+- 结构化监督究竟改善了 credit assignment，还是改变了模型真正学会的行为？
+- teacher、critic 或 verifier 是否使用了部署时不可得的 privileged information？
+- 更新的是 LLM search policy，还是 retriever、verifier、reader 或 memory system？
+- 更细的 reward 是否带来了更好的 capability isolation 和 transfer，而不只是更高的 final QA？
+
+建议只做一次定向机制补强：最多核验 4–6 篇 on-policy distillation、process credit assignment、preference learning 和 controlled training comparison 工作，然后停止新增，回到 Cross-Capability Analysis。用户提供的 SSPO、TRACE 和 controlled comparison 工作先作为待核验候选，不在元数据和训练细节核验前进入核心结论。
+
+机制章节的统一表格应采用：
+
+`Learning Signal × Optimization Method × Update Target × Credit Granularity × Deployment Availability`
+
+完整定义见 [`How to Learn Information-Seeking Capabilities`](./learning-mechanism-framework.md)。
+
+### 5. A1 — Epistemic Awareness: Is Information Acquisition Worthwhile?
 
 核心问题：
 
@@ -119,7 +148,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 > Retrieval necessity is evolving from proxy-based triggering toward utility-aware policy learning, but observed retrieval gains do not establish transferable ex-ante value calibration.
 
-### 5. A2 — Information Need Formulation: Can the Model Express What It Needs?
+### 6. A2 — Information Need Formulation: Can the Model Express What It Needs?
 
 核心问题：
 
@@ -138,7 +167,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 > LLMs learn useful query behaviors, but current evidence is mostly retriever- or benchmark-conditioned backend utility rather than generalizable information-need formulation.
 
-### 6. A3 — Information Space Exploration: What Has Not Been Covered?
+### 7. A3 — Information Space Exploration: What Has Not Been Covered?
 
 作为 cross-capability subsection，而非完全独立 learning chapter。
 
@@ -155,7 +184,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 > Exploration can be trained when rewards measure coverage or diversity, but evidence is insufficient for a transferable policy that discovers useful information regions in unfamiliar spaces.
 
-### 7. A4 — Evidence Evaluation: Which Acquired Information Is Worth Trusting?
+### 8. A4 — Evidence Evaluation: Which Acquired Information Is Worth Trusting?
 
 核心问题：
 
@@ -174,7 +203,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 > Measurement is ahead of post-training and cross-environment behavior transfer, especially for source reliability and conflict robustness.
 
-### 8. A5 — Evidence Integration: Does the Model Actually Use the Evidence?
+### 9. A5 — Evidence Integration: Does the Model Actually Use the Evidence?
 
 核心问题：
 
@@ -197,7 +226,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 > Current literature most reliably shows evidence access and output sensitivity, less reliably shows compositional reliance, and does not yet establish necessary process-level causal evidence reliance that transfers across environments.
 
-### 9. A6 — Adaptive Search Control: How Should the Policy React?
+### 10. A6 — Adaptive Search Control: How Should the Policy React?
 
 核心问题：
 
@@ -216,7 +245,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 > Better credit assignment does not necessarily imply better feedback-conditioned control.
 
-### 10. Cross-capability analysis: What does post-training actually teach?
+### 11. Cross-capability analysis: What does post-training actually teach?
 
 这是 Survey 的核心章节，不是附录。
 
@@ -245,7 +274,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 正面证据说明某个行为在某些条件下可被训练；负面证据说明该行为在改变 retriever/tool/corpus/feedback 后未被证明或发生退化。两者都应进入矩阵。
 
-### 11. Evaluation protocol for future work
+### 12. Evaluation protocol for future work
 
 提出跨能力最小实验套件：
 
@@ -259,7 +288,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 
 这一章的目标不是要求所有工作一次性完成全部实验，而是给出可复用的证据标准。
 
-### 12. Open problems and research agenda
+### 13. Open problems and research agenda
 
 按可检验问题写，而不是泛泛地说“需要更好的泛化”：
 
@@ -271,7 +300,7 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 - online feedback-conditioned control；
 - behavior transfer across task/domain/tool/environment/cost。
 
-### 13. Conclusion
+### 14. Conclusion
 
 收束为一句话：
 
@@ -284,8 +313,9 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 1. 现有 Retrieval/RAG/Search-Agent survey 多按 pipeline、architecture、optimization 或 application 分类；本 Survey 改为 capability-centered comparison；
 2. 统一了 training signal、observed behavior、capability isolation、generalization evidence 四个层次；
 3. 提出了四类可由现有论文支持的 misalignment patterns，而不是简单声称“泛化不足”；
-4. 将 A3 明确为横向探索能力，将 A5.4 限制为持久信息整合子方向，避免分类发散；
-5. 给出了跨能力的 intervention and transfer audit，可作为未来 post-training information-seeking 工作的最低证据协议。
+4. 将 How to Learn 与 What to Learn 正交化，区分 signal、optimizer、update target、credit 和 information privilege；
+5. 将 A3 明确为横向探索能力，将 A5.4 限制为持久信息整合子方向，避免分类发散；
+6. 给出了跨能力的 intervention and transfer audit，可作为未来 post-training information-seeking 工作的最低证据协议。
 
 ## What the survey should not claim
 
@@ -301,4 +331,5 @@ A3 保留为独立定义的横向能力维度和专门小节，但不强行扩�
 - [Cross-Paper Evidence Matrix](./cross-paper-evidence-matrix.md)
 - [Training–Capability Misalignment Taxonomy](./training-capability-misalignment.md)
 - [Generalization & Intervention Audit](./generalization-intervention-audit.md)
+- [How to Learn Information-Seeking Capabilities](./learning-mechanism-framework.md)
 - [Unified Coding Protocol](../notes/coding-protocol.md)

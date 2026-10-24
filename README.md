@@ -371,6 +371,7 @@ The bibliography has now entered the analysis phase. No new longitudinal paper c
 - [`Cross-Paper Evidence Matrix`](./analysis/cross-paper-evidence-matrix.md): six capability rows plus representative paper-level coding using Learning Target → Training Signal → Observed Behavior → Capability Isolation → Generalization Evidence.
 - [`Training–Capability Misalignment Taxonomy`](./analysis/training-capability-misalignment.md): Objective–Capability Misalignment, Outcome–Behavior Confounding, Hindsight–Deployment Gap, and Environment-conditioned Learning vs Transferable Capability.
 - [`Generalization & Intervention Audit`](./analysis/generalization-intervention-audit.md): separates Task, Domain, Retriever, Tool, Corpus/Environment, Budget, Temporal Shift, and Behavior Transfer, while distinguishing Not Tested from Tested but Failed.
+- [`How to Learn Information-Seeking Capabilities`](./analysis/learning-mechanism-framework.md): adds the orthogonal Learning Signal × Optimization Method × Update Target × Credit Granularity × Deployment Availability axis without changing A1–A6.
 - [`Survey Structure`](./analysis/survey-structure.md): the proposed title, central question, chapter organization, contribution claims, and future evaluation protocol.
 
 ## Search Protocol
@@ -391,11 +392,12 @@ This bibliography is intentionally built in rounds rather than through one exhau
 12. **Round 6B — A3 Information Space Exploration:** three anchors plus four targeted papers; retain as a cross-capability dimension, not yet a full independent learning chapter.
 13. **Round 6C — A6 Adaptive Search Control:** four-paper bounded map covering stopping, budget allocation, retrospective credit, and contribution-aware credit; now closed.
 14. **Round 7 — Cross-capability comparison:** active analysis phase; compare Training Signal → Learned Capability → Capability Isolation → Generalization Evidence across A1–A6.
-15. **Snowballing:** paused. Reopen only if the cross-capability matrix identifies a concrete unresolved cell that cannot be analyzed from the current paper pool.
+15. **Round 8 — Learning Mechanism Reinforcement:** one bounded pass, at most 4–6 papers, focused on signal semantics, optimization method, update target, credit assignment, and deployment information parity.
+16. **Snowballing:** paused. Reopen only if the cross-capability matrix identifies a concrete unresolved cell that cannot be analyzed from the current paper pool.
 
 See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md), and the A6 first-round decision in [`notes/search-log-2026-10-24-round-6-a6-first-batch.md`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
 
-The search is deliberately convergent. The longitudinal collection phase is closed. We will not expand the bibliography with minor variants of existing Search-RL methods unless the cross-capability analysis identifies a concrete unresolved evidence cell. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
+The search is deliberately convergent. The longitudinal capability collection phase is closed. Only the bounded Learning Mechanism Reinforcement pass remains: at most 4–6 directly relevant mechanism papers, after which the bibliography is frozen again. We will not expand with minor variants of existing Search-RL methods unless a paper directly clarifies signal semantics, update locus, credit assignment, deployment information parity, or a concrete unresolved capability cell. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 
 ## Contributing
 
