@@ -1,5 +1,7 @@
 # Cross-Paper Evidence Matrix
 
+> **Round 9 note:** The complete paper-level version is now [`final-cross-paper-evidence-matrix.md`](./final-cross-paper-evidence-matrix.md). This file is retained as the earlier compact capability-level matrix and Round 8 mechanism cross-check; use the final file for Claim–Evidence and synthesis work.
+
 ## Purpose and coding rule
 
 这份矩阵不是给论文做一个综合排名，而是把不同能力放到同一条证据链中：

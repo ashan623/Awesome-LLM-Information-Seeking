@@ -164,10 +164,11 @@ The current search should focus on four connected pools:
 2. **Closed — A3 Information Space Exploration**, retained as a cross-capability dimension with a dedicated subsection
 3. **Closed — A6 Adaptive Search Control**, with explicit separation between search adaptation and query formulation
 4. **Closed — Round 8 Learning Mechanism Verification**, with SSPO, TRACE, and a controlled training-protocol comparison
-5. **Active — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
-6. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
+5. **Closed — Round 9 Cross-Paper Evidence Synthesis**, with the final paper-level matrix, Claim–Evidence Matrix, and bounded synthesis draft
+6. **Active — Survey argument refinement**, with no new longitudinal paper collection unless a concrete unresolved evidence cell appears
+7. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
 
-The bounded A6 pass and Round 8 mechanism verification are complete. Round 8 added only three P0 papers and established that the current four-mechanism taxonomy is sufficient; no additional paper is needed merely to fill a quota. Longitudinal capability collection remains paused while the cross-capability analysis is built. Do not expand with large numbers of Search-R1-like variants, generic OPD papers, or general Memory/RAG architecture papers. Reopen searching only if the cross-capability matrix identifies a concrete unresolved evidence cell that cannot be analyzed from the current pool. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
+The bounded A6 pass, Round 8 mechanism verification, and Round 9 Cross-Paper Evidence Synthesis are complete. Round 9 added no papers: it converted the existing pool into a 71-row evidence matrix, four Claim–Evidence arguments, and a bounded synthesis draft. Longitudinal capability collection remains paused while the Survey argument is refined. Do not expand with large numbers of Search-R1-like variants, generic OPD papers, or general Memory/RAG architecture papers. Reopen searching only if the cross-capability matrix identifies a concrete unresolved evidence cell that cannot be analyzed from the current pool. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
 ## Required annotation template
 

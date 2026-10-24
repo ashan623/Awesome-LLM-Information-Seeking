@@ -378,7 +378,10 @@ The current round has surfaced five working hypotheses:
 
 The bibliography has now entered the analysis phase. No new longitudinal paper collection is planned unless the cross-capability comparison reveals a concrete empty cell that cannot be resolved from the current pool.
 
-- [`Cross-Paper Evidence Matrix`](./analysis/cross-paper-evidence-matrix.md): six capability rows plus representative paper-level coding using Learning Target → Training Signal → Observed Behavior → Capability Isolation → Generalization Evidence.
+- [`Final Cross-Paper Evidence Matrix`](./analysis/final-cross-paper-evidence-matrix.md): Round 9’s full core/supporting/evaluation paper coding using Capability → Learning Signal → Optimizer → Update Locus → Credit Assignment → Observed Behavior → Isolation → Deployment Parity → Generalization → Evidence Limitation.
+- [`Earlier Capability-Level Matrix`](./analysis/cross-paper-evidence-matrix.md): the prior compact capability-level matrix and Round 8 mechanism anchors.
+- [`Claim–Evidence Matrix`](./analysis/claim-evidence-matrix.md): four cross-capability claims, each separated into Supporting Evidence, Counterevidence, and Evidence Not Sufficient.
+- [`Cross-Capability Synthesis Draft`](./analysis/cross-capability-synthesis-draft.md): a bounded chapter draft answering What Was Actually Learned? without expanding into a full Survey.
 - [`Training–Capability Misalignment Taxonomy`](./analysis/training-capability-misalignment.md): Objective–Capability Misalignment, Outcome–Behavior Confounding, Hindsight–Deployment Gap, and Environment-conditioned Learning vs Transferable Capability.
 - [`Generalization & Intervention Audit`](./analysis/generalization-intervention-audit.md): separates Task, Domain, Retriever, Tool, Corpus/Environment, Budget, Temporal Shift, and Behavior Transfer, while distinguishing Not Tested from Tested but Failed.
 - [`How to Learn Information-Seeking Capabilities`](./analysis/learning-mechanism-framework.md): adds four orthogonal mechanism dimensions—Data/Signals, Optimization, Update Locus, and Credit Assignment—while keeping Deployment Information Parity as a cross-capability diagnostic and leaving A1–A6 unchanged.
@@ -401,13 +404,14 @@ This bibliography is intentionally built in rounds rather than through one exhau
 11. **Round 6A — A2 Information Need Formulation:** seven-paper map covering query rewriting, retrieval-gain RL, multi-query expansion, parallel decomposition, process credit, retriever-aware formulation, and QREF’s original-versus-refined evidence-coverage reward.
 12. **Round 6B — A3 Information Space Exploration:** three anchors plus four targeted papers; retain as a cross-capability dimension, not yet a full independent learning chapter.
 13. **Round 6C — A6 Adaptive Search Control:** four-paper bounded map covering stopping, budget allocation, retrospective credit, and contribution-aware credit; now closed.
-14. **Round 7 — Cross-capability comparison:** active analysis phase; compare Training Signal → Learned Capability → Capability Isolation → Generalization Evidence across A1–A6.
+14. **Round 7 — Cross-capability comparison:** completed as the initial six-capability and mechanism comparison.
 15. **Round 8 — Learning Mechanism Verification:** closed after three P0 papers—SSPO, TRACE, and a controlled training-protocol comparison; no quota-filling expansion was needed.
-16. **Snowballing:** paused. Reopen only if the cross-capability matrix identifies a concrete unresolved cell that cannot be analyzed from the current paper pool.
+16. **Round 9 — Cross-Paper Evidence Synthesis:** completed the final paper-level matrix, Claim–Evidence Matrix, and bounded What Was Actually Learned? chapter draft without adding papers.
+17. **Snowballing:** paused. Reopen only if the cross-capability matrix identifies a concrete unresolved cell that cannot be analyzed from the current paper pool.
 
 See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md), the A6 first-round decision in [`notes/search-log-2026-10-24-round-6-a6-first-batch.md`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md), the [`Round 8 mechanism verification`](./papers/round8-learning-mechanism-verification.md), and its [`search log`](./notes/search-log-2026-10-24-round-8-learning-mechanism.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
 
-The search is deliberately convergent. The longitudinal capability collection and bounded Learning Mechanism Verification phases are now closed. The next step is Cross-Capability Synthesis and Survey writing. We will not expand with minor variants of existing Search-RL, OPD, Memory, or RAG methods unless a concrete unresolved evidence cell cannot be analyzed from the current pool. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
+The search is deliberately convergent. The longitudinal capability collection, bounded Learning Mechanism Verification, and Round 9 Cross-Paper Evidence Synthesis phases are now complete. The next step is to refine the argument and write the Survey chapters, not to expand the bibliography. We will not add minor variants of existing Search-RL, OPD, Memory, or RAG methods unless a concrete unresolved evidence cell cannot be analyzed from the current pool. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 
 ## Contributing
 

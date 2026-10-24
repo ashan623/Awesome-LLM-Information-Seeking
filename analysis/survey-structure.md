@@ -327,7 +327,10 @@ Deployment Information Parity 与 Generalization 是统一的横向诊断维度�
 
 ## Existing analysis artifacts
 
-- [Cross-Paper Evidence Matrix](./cross-paper-evidence-matrix.md)
+- [Final Cross-Paper Evidence Matrix](./final-cross-paper-evidence-matrix.md)
+- [Earlier Capability-Level Matrix](./cross-paper-evidence-matrix.md)
+- [Claim–Evidence Matrix](./claim-evidence-matrix.md)
+- [Cross-Capability Synthesis Draft](./cross-capability-synthesis-draft.md)
 - [Training–Capability Misalignment Taxonomy](./training-capability-misalignment.md)
 - [Generalization & Intervention Audit](./generalization-intervention-audit.md)
 - [How to Learn Information-Seeking Capabilities](./learning-mechanism-framework.md)
