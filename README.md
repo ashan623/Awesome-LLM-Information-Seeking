@@ -7,8 +7,8 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-41-blue.svg)](./papers/a5-evidence-integration.md)
-[![Status](https://img.shields.io/badge/Status-A5%20First%20Batch-orange.svg)](./notes/search-log-2026-10-24-round-4-a5-first-batch.md)
+[![Papers](https://img.shields.io/badge/Papers-46-blue.svg)](./papers/a5-evidence-integration-second.md)
+[![Status](https://img.shields.io/badge/Status-A5.1--A5.3%20Map%20Closed-orange.svg)](./notes/search-log-2026-10-24-round-4-a5-final.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -30,6 +30,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [A1 Utility-aware Policy Learning](#a1-utility-aware-policy-learning)
   - [A4 Evidence Evaluation](#a4-evidence-evaluation)
   - [A5 Evidence Integration — First Batch](#a5-evidence-integration--first-batch)
+  - [A5 Evidence Integration — Second Batch](#a5-evidence-integration--second-batch)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
@@ -222,6 +223,23 @@ Conference and publication badges use the same compact convention as the referen
 - **How Large Language Models Balance Internal Knowledge with User and Document Assertions**<br>
   *Shuowei Li et al.* [[paper](https://aclanthology.org/2026.findings-acl.1267/)] [[code](https://github.com/shuowl/llm-source-balancing)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.1](https://img.shields.io/badge/A5.1-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
+### A5 Evidence Integration — Second Batch
+
+- **RAFT: Adapting Language Model to Domain Specific RAG**<br>
+  *Tianjun Zhang et al.* [[paper](https://openreview.net/forum?id=rzQGHXNReU)] [[code](https://github.com/ShishirPatil/gorilla/tree/main/raft)] 2024. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/COLM2024-orange.svg)
+
+- **BRIEF: Bridging Retrieval and Inference for Multi-hop Reasoning via Compression**<br>
+  *Yuankai Li et al.* [[paper](https://aclanthology.org/2025.findings-naacl.301/)] [[code](https://github.com/JasonForJoy/BRIEF/tree/main/BRIEF)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/NAACL2025-orange.svg)
+
+- **CARE: Improving Context Fidelity via Native Retrieval-Augmented Reasoning**<br>
+  *Suyuchen Wang et al.* [[paper](https://aclanthology.org/2025.emnlp-main.1075/)] [[code](https://github.com/FoundationAgents/CARE)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2025-orange.svg)
+
+- **MIRAGE: Model Internals-based Answer Attribution for Trustworthy Retrieval-Augmented Generation**<br>
+  *Jirui Qi et al.* [[paper](https://aclanthology.org/2024.emnlp-main.347/)] [[code](https://github.com/Betswish/MIRAGE)] 2024. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2024-orange.svg)
+
+- **TRACE the Evidence: Constructing Knowledge-Grounded Reasoning Chains for Retrieval-Augmented Generation**<br>
+  *Jinyuan Fang et al.* [[paper](https://aclanthology.org/2024.findings-emnlp.496/)] [[code](https://github.com/jyfang6/trace)] 2024. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/EMNLP2024-orange.svg)
+
 ### Retrieval Necessity and Evidence Critique
 
 - **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**<br>
@@ -251,7 +269,7 @@ Conference and publication badges use the same compact convention as the referen
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), and the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), and the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -272,12 +290,12 @@ This bibliography is intentionally built in rounds rather than through one exhau
 5. **Round 3A — A4 anchor map:** relevance/support, source reliability, evidence sufficiency, conflict/robustness, and the A4/A5 boundary.
 6. **Round 3B — A4 gap-focused expansion and closure:** source credibility, human-verified sufficiency, multi-source conflict, Judgment Target, Ground Truth Quality, and Controlled Perturbation.
 7. **Round 4A — A5 Evidence Integration:** knowledge integration, belief revision, multi-evidence composition, and faithful utilization.
-8. **Round 4B — A5 gap-focused expansion:** process-level evidence reliance, counterfactual interventions, reasoning-chain attribution, and parametric–external balance.
+8. **Round 4B — A5 gap-focused expansion and closure:** process-level evidence reliance, counterfactual interventions, reasoning-chain attribution, and parametric–external balance.
 9. **Round 5 — Memory and state update:** persistent memory retrieval, memory write correctness, state consistency, and stale-memory correction.
 10. **Round 6 — Generalization:** task, domain, tool, environment, behavior, and budget transfer.
 11. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
-See the current search record in [`notes/search-log-2026-10-24-round-4-a5-first-batch.md`](./notes/search-log-2026-10-24-round-4-a5-first-batch.md).
+See the current search record in [`notes/search-log-2026-10-24-round-4-a5-final.md`](./notes/search-log-2026-10-24-round-4-a5-final.md).
 
 The search is deliberately convergent. We will not expand the bibliography with minor variants of existing Search-RL methods unless they provide new evidence about capability learning, training–capability alignment, or transfer. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 

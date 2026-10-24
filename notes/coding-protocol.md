@@ -102,7 +102,7 @@ A5 asks whether the model faithfully integrates acquired information into reason
 For A5 papers, add three fields:
 
 - **Integration Target:** `Answer`, `Reasoning Chain`, `Belief`, `Memory`, or `Decision`.
-- **Evidence Reliance:** record whether controlled changes to key evidence cause an appropriate change in reasoning or output, including whether the model can correctly remain unchanged when the perturbation is irrelevant or untrustworthy.
+- **Evidence Reliance:** split the diagnosis into three levels: `Output Reliance` (does the final answer change appropriately after key evidence is replaced?), `Compositional Reliance` (does deleting a necessary passage break the corresponding multi-hop conclusion?), and `Process-level Reliance` (does the reasoning process itself depend on the key evidence rather than producing a plausible post-hoc explanation?). Output changes establish behavioral sensitivity, but alone do not prove causal faithfulness of the reasoning chain.
 - **Parametric–External Balance:** record whether the model can revise wrong internal knowledge, resist false external evidence, and explain conflicts rather than following either source mechanically.
 
 Evidence Access is not Evidence Utilization, and Evidence Utilization is not Belief Update. A context that contains the answer does not prove that the model used it in its reasoning.
@@ -111,10 +111,10 @@ Evidence Access is not Evidence Utilization, and Evidence Utilization is not Bel
 
 The current search should focus on four connected pools:
 
-1. **P0 — A5 Evidence Integration**
-2. **P0 — Memory and State Update**, with A5.4 Persistent State Integration deferred until this stage
-3. **P1 — Capability Evaluation and Generalization**, including behavior transfer, causal evidence reliance, and credit assignment
-4. **P1 — Domain applications**, only after a capability-level gap is established
+1. **P0 — Memory and State Update**, including A5.4 Persistent State Integration
+2. **P1 — Capability Evaluation and Generalization**, including behavior transfer, causal evidence reliance, and credit assignment
+3. **P1 — Domain applications**, only after a capability-level gap is established
+4. **P2 — Targeted A5 follow-up**, only for genuinely new controlled interventions or process-level transfer evidence
 
 Only after these pools reveal a concrete gap should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
@@ -139,6 +139,9 @@ Controlled Perturbation
 Integration Target
 Evidence Reliance
 Parametric–External Balance
+Output Reliance
+Compositional Reliance
+Process-level Reliance
 Epistemic Objective
 Update Target
 Limitation
