@@ -43,6 +43,12 @@ A3-specific fields are **Exploration Target**, **Source / Tool Choice**, **Cover
 
 Do not collapse the exploration objectives: **Query Diversity ≠ Evidence Diversity ≠ Information Gain ≠ Useful Coverage**. Query or document diversity is a proxy unless the paper also tests newly recovered necessary evidence, gold-passage/document coverage, unresolved-region completion, or a counterfactual source/coverage intervention. Tool-repository discovery is an A3 boundary case and is not core Information Space Exploration unless the selected tools are used to acquire and measure task-relevant information.
 
+For A6, code the control object separately from the training mechanism. The primary sub-directions are **A6.1 Feedback-conditioned Adaptation** (Continue, Retry, Reformulate, Switch, or Verify after observed feedback), **A6.2 Search Budget and Stopping** (allocate calls and Stop when sufficient), and **A6.3 Long-horizon Credit Assignment** (attribute outcomes to particular search-control actions).
+
+A6-specific fields are **Control Action**, **Observed Feedback**, **Feedback Dependence**, **Control Credit**, **Deployment Availability**, **Control Transfer**, and **Shortcut Risk**. The strongest Feedback Dependence evidence holds the task and completed history fixed, changes only the current retrieval feedback, and measures whether the next action changes appropriately. A final QA gain, a lower average search depth, or a better credit model is not by itself evidence of a feedback-conditioned control policy.
+
+When a critic or reward model uses the full future trajectory, gold answer, or privileged evidence during training, record this as **Hindsight / Privileged Training Signal**. It may improve credit assignment while remaining different from online feedback understanding at deployment. Unseen-budget transfer is **Budget / Cost Generalization**, not Retriever, Tool, or Environment Transfer.
+
 ## Orthogonal contribution type
 
 Record exactly one primary contribution type, with secondary types when necessary:
@@ -134,13 +140,13 @@ Evidence Access is not Evidence Utilization, and Evidence Utilization is not Bel
 
 The current search should focus on four connected pools:
 
-1. **P0 — A2 Information Need Formulation**, beginning with query learning, training alignment, and cross-task/retriever/environment transfer
-2. **P0 — A3 Information Space Exploration**, after A2's first-round map is closed
+1. **Closed — A2 Information Need Formulation**, including the QREF targeted exception and three-layer query generalization
+2. **Closed — A3 Information Space Exploration**, retained as a cross-capability dimension with a dedicated subsection
 3. **P0 — A6 Adaptive Search Control**, with explicit separation between search adaptation and query formulation
-4. **P1 — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
+4. **Next — Cross-capability Generalization**, comparing behavior transfer and credit assignment across A1–A6
 5. **P2 — Targeted A5.4 exceptions**, only for direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation
 
-Only after these capability pools reveal a concrete gap should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
+After the bounded A6 pass, stop longitudinal capability collection and begin the cross-capability analysis. Only if that comparison reveals a concrete unresolved cell should the search add a small number of medical, scientific, e-commerce, or other domain papers. Do not expand with large numbers of Search-R1-like variants or general Memory/RAG architecture papers. Stop a search branch when new papers repeat the same capability, signal, and evaluation pattern without adding a new transfer condition or a new alignment problem.
 
 ## Required annotation template
 
@@ -170,6 +176,13 @@ Persistence Target
 Temporal Consistency
 Future Utility Attribution
 Memory Failure Type
+Control Action
+Observed Feedback
+Feedback Dependence
+Control Credit
+Deployment Availability
+Control Transfer
+Shortcut Risk
 Epistemic Objective
 Update Target
 Limitation

@@ -7,8 +7,8 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-66-blue.svg)](./papers/a3-information-space-exploration.md)
-[![Status](https://img.shields.io/badge/Status-A6%20Next%20Stage-orange.svg)](./notes/a3-search-plan.md)
+[![Papers](https://img.shields.io/badge/Papers-70-blue.svg)](./papers/a6-adaptive-search-control.md)
+[![Status](https://img.shields.io/badge/Status-Cross--Capability%20Analysis-orange.svg)](./notes/a6-search-plan.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -34,6 +34,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [A5 Evidence Integration — First Batch](#a5-evidence-integration--first-batch)
   - [A5 Evidence Integration — Second Batch](#a5-evidence-integration--second-batch)
   - [A5.4 Cross-turn Information Persistence and State Updating](#a54-cross-turn-information-persistence-and-state-updating)
+  - [A6 Adaptive Search Control](#a6-adaptive-search-control)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
@@ -309,6 +310,20 @@ Conference and publication badges use the same compact convention as the referen
 - **Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory**<br>
   *Prateek Chhikara et al.* [[paper](https://doi.org/10.3233/FAIA251160)] [[code](https://github.com/mem0ai/mem0)] 2025. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.4.1](https://img.shields.io/badge/A5.4.1-8d5a97.svg) ![A5.4.2](https://img.shields.io/badge/A5.4.2-8d5a97.svg) ![](https://img.shields.io/badge/ECAI2025-orange.svg)
 
+### A6 Adaptive Search Control
+
+- **AutoSearch: Adaptive Search Depth for Efficient Agentic RAG via Reinforcement Learning**<br>
+  *Jingbo Sun et al.* [[paper](https://aclanthology.org/2026.findings-acl.1399/)] [[paper](https://arxiv.org/abs/2604.17337)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.2](https://img.shields.io/badge/A6.2-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+- **One Policy, Any Budget: Internalizing Budget-Aware Search via Reinforcement Learning**<br>
+  *Xiaowei Sun et al.* [[paper](https://arxiv.org/abs/2609.00813)] [[code](https://github.com/xwsun01/AnySearch)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.2](https://img.shields.io/badge/A6.2-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![C7](https://img.shields.io/badge/C7-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
+
+- **CriticSearch: Fine-Grained Credit Assignment for Search Agents via a Retrospective Critic**<br>
+  *Yaocheng Zhang et al.* [[paper](https://aclanthology.org/2026.findings-acl.596/)] [[paper](https://arxiv.org/abs/2511.12159)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.1](https://img.shields.io/badge/A6.1-6c7576.svg) ![A6.3](https://img.shields.io/badge/A6.3-6c7576.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
+- **Enhancing LLM-based Search Agents via Contribution Weighted Group Relative Policy Optimization**<br>
+  *Junzhe Wang et al.* [[paper](https://aclanthology.org/2026.acl-long.1462/)] [[code](https://github.com/zsxmwjz/CW-GRPO)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.1](https://img.shields.io/badge/A6.1-6c7576.svg) ![A6.3](https://img.shields.io/badge/A6.3-6c7576.svg) ![B3](https://img.shields.io/badge/B3-8d5a97.svg) ![B5](https://img.shields.io/badge/B5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
+
 ### Retrieval Necessity and Evidence Critique
 
 - **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**<br>
@@ -338,7 +353,7 @@ Conference and publication badges use the same compact convention as the referen
 
 ## Reading Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A2 Information Need Formulation core map`](./papers/a2-information-need-formulation.md), the [`A2 QREF targeted exception log`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the [`A3 Information Space Exploration map and decision`](./papers/a3-information-space-exploration.md), the [`A3 bounded search plan`](./notes/a3-search-plan.md), the [`A3 anchor verification log`](./notes/search-log-2026-10-24-round-6-a3-anchors.md), the [`A3 targeted learning log`](./notes/search-log-2026-10-24-round-6-a3-learning.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md), the [`A5.4 cross-turn information persistence first batch`](./papers/a5.4-memory-updating.md), and the [`A2 first-round search plan`](./notes/a2-search-plan.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A2 Information Need Formulation core map`](./papers/a2-information-need-formulation.md), the [`A2 QREF targeted exception log`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the [`A3 Information Space Exploration map and decision`](./papers/a3-information-space-exploration.md), the [`A3 bounded search plan`](./notes/a3-search-plan.md), the [`A3 anchor verification log`](./notes/search-log-2026-10-24-round-6-a3-anchors.md), the [`A3 targeted learning log`](./notes/search-log-2026-10-24-round-6-a3-learning.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md), the [`A5.4 cross-turn information persistence first batch`](./papers/a5.4-memory-updating.md), the [`A6 Adaptive Search Control map`](./papers/a6-adaptive-search-control.md), the [`A6 bounded search plan`](./notes/a6-search-plan.md), the [`A6 first-batch verification log`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md), and the [`A2 first-round search plan`](./notes/a2-search-plan.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
 
 The current round has surfaced five working hypotheses:
 
@@ -364,11 +379,11 @@ This bibliography is intentionally built in rounds rather than through one exhau
 10. **Round 5B — A5.4 targeted exceptions only:** direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation.
 11. **Round 6A — A2 Information Need Formulation:** seven-paper map covering query rewriting, retrieval-gain RL, multi-query expansion, parallel decomposition, process credit, retriever-aware formulation, and QREF’s original-versus-refined evidence-coverage reward.
 12. **Round 6B — A3 Information Space Exploration:** three anchors plus four targeted papers; retain as a cross-capability dimension, not yet a full independent learning chapter.
-13. **Round 6C — A6 Adaptive Search Control:** feedback-driven query modification, retry, verification, stopping, and cost control.
-14. **Round 7 — Cross-capability comparison:** compare Training Signal → Learned Capability → Generalization Evidence across A1–A6.
+13. **Round 6C — A6 Adaptive Search Control:** four-paper bounded map covering stopping, budget allocation, retrospective credit, and contribution-aware credit; now closed.
+14. **Round 7 — Cross-capability comparison:** compare Training Signal → Learned Capability → Capability Isolation → Generalization Evidence across A1–A6.
 15. **Snowballing:** references and citing papers from high-value seeds, with special attention to empty or weak cells in the capability × learning matrix.
 
-See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), and the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
+See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md), and the A6 first-round decision in [`notes/search-log-2026-10-24-round-6-a6-first-batch.md`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
 
 The search is deliberately convergent. We will not expand the bibliography with minor variants of existing Search-RL methods unless they provide new evidence about capability learning, training–capability alignment, or transfer. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
 
