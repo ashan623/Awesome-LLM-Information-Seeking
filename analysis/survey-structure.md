@@ -4,13 +4,13 @@
 
 ### Primary title
 
-**What Do LLMs Learn to Seek? A Survey of Post-training for Generalizable Information-Seeking Capabilities**
+**Beyond Retrieval: Learning Information-Seeking Capabilities in Large Language Models**
 
 ### Alternative title
 
-**Beyond Retrieval: Training, Isolating, and Generalizing Information-Seeking Capabilities in Large Language Models**
+**What Do LLMs Learn to Seek? A Survey of Post-training for Generalizable Information-Seeking Capabilities**
 
-第一版更强调研究问题，第二版更强调与已有 Retrieval/RAG/Search-Agent survey 的区分。建议主标题使用第一版，副标题可以使用第二版的后半部分。
+主标题使用 `Beyond Retrieval`，避免把文章理解成单纯的 Evidence Audit；副标题和摘要中用 `What Do LLMs Learn to Seek?` 明确研究问题。`Capability-centric, evidence-driven` 是本文的分析视角，而不是对文章范围的缩减。不要在标题中声称 `The First Systematic Survey`。
 
 ## Central research question
 
@@ -307,14 +307,13 @@ Deployment Information Parity 与 Generalization 是统一的横向诊断维度�
 
 ## Expected contribution claims
 
-最终论文可以较有把握地声称：
+最终论文可以较有把握地声称三项平衡的贡献：
 
-1. 现有 Retrieval/RAG/Search-Agent survey 多按 pipeline、architecture、optimization 或 application 分类；本 Survey 改为 capability-centered comparison；
-2. 统一了 training signal、observed behavior、capability isolation、generalization evidence 四个层次；
-3. 提出了四类可由现有论文支持的 misalignment patterns，而不是简单声称“泛化不足”；
-4. 将 How to Learn 与 What to Learn 正交化，压缩为 signal、optimization、update locus 和 credit assignment 四个机制维度，并把 information privilege 放入横向诊断；
-5. 将 A3 明确为横向探索能力，将 A5.4 限制为持久信息整合子方向，避免分类发散；
-6. 给出了跨能力的 intervention and transfer audit，可作为未来 post-training information-seeking 工作的最低证据协议。
+1. **Capability Taxonomy：** 现有 Retrieval/RAG/Search-Agent survey 多按 pipeline、architecture、optimization 或 application 分类；本 Survey 以 A1–A6 Information-Seeking Capabilities 为主要比较单位，并明确它们之间的边界；
+2. **Learning Mechanism Synthesis：** 将 data/trajectory regime、learning signal、optimization、update locus 和 credit assignment 与实际观察到的 information-seeking behavior 联系起来，而不是罗列 SFT/RL/DPO/OPD 变体；
+3. **Evidence and Generalization Framework：** 将 method effectiveness、behavior measurement、controlled intervention、privileged supervision、policy-input leakage、deployment behavior evidence 和跨环境 transfer 分开审查，并组织 Supporting、Counterevidence、Partial Mitigation 和 Not Established 四类证据。
+
+四类 Training–Capability Misalignment patterns、How to Learn 的正交机制轴，以及跨能力 intervention/transfer audit，是第三项贡献的具体实现，而不是额外的 taxonomy。
 
 ## What the survey should not claim
 
@@ -324,6 +323,20 @@ Deployment Information Parity 与 Generalization 是统一的横向诊断维度�
 - 不要把 hindsight credit assignment 说成 online feedback control；
 - 不要把 memory architecture survey、retriever optimization survey 和本 Survey 的 capability-learning 问题混为一谈；
 - 不要为了强调新颖性而声称“完全没有类似工作”。更准确的说法是：已有 survey 讨论 Search/RAG/Agent pipeline，而本 Survey 关注 post-training 是否真正产生可迁移 information-seeking capability，以及如何证实这一点。
+
+## Positioning and next execution phase
+
+这篇 Survey 不应被定位为“第一个 Search-Agent Survey”，也不应缩减成“只有严格因果证据才纳入”的 Evaluation Survey。合适的定位是：
+
+> **A capability-centric, evidence-driven survey of what post-training actually teaches LLMs about information seeking.**
+
+其中 `evidence-driven` 是贯穿三项贡献的分析方法。Capability Learning 是核心证据；Capability Measurement 和 System/Boundary Evidence 仍然必须纳入，但不能被直接解释为证明 LLM 学会了对应能力。
+
+下一阶段按以下顺序执行：
+
+1. **完成 Related-Survey Comparison Table：** 核验相邻 Search Agent、RL-based Agentic Search、Deep Research、Agentic RAG 和通用 Agentic RL 综述，比较其 primary unit、learning axis、evidence audit 和 transfer analysis；
+2. **补写 Systematic Search Method：** 公开检索来源、检索日期、关键词簇、纳入/排除标准、去重规则、证据角色编码和更新截止日期；当前工作可以被准确称为 structured critical survey，只有完成可复查检索流程后再决定是否使用 systematic literature review 表述；
+3. **进入正式 Survey 写作：** 先写 central question、three contributions、A1–A6 capability chapters 和 What Was Actually Learned?，不再扩展 A1–A6 边界或新增第七类能力。
 
 ## Existing analysis artifacts
 
