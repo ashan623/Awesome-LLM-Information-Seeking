@@ -8,7 +8,7 @@
 
 - [Final Cross-Paper Evidence Matrix](./final-cross-paper-evidence-matrix.md) 中的论文行 ID；
 - [Claim–Evidence Matrix](./claim-evidence-matrix.md) 中的 C1–C4；
-- `Supporting Evidence`、`Counterevidence` 和 `Evidence Not Sufficient` 三种角色。
+- `Supporting Evidence`、`Counterevidence`、`Partial Mitigation` 和 `Not Established` 四种角色。
 
 本章的基本单位不是“某方法的最终分数”，而是：
 
@@ -98,7 +98,7 @@ Cross-Paper Matrix 显示，论文中的“behavior evidence”至少有三个�
 
 现有文献并非没有能力隔离。A1 的 CoBRA 固定同一 query 比较 no-tool/tool branch，能够直接观察 over-calling 与 under-calling 的变化（A1-12）。A5 的 ClashEval 和 Source-balancing 替换 answer-bearing assertions，能够检测模型是否在正确的方向上更新或保持（A5-01、A5-06）。A2 的 QREF 比较 original/refined query batch，至少将 query refiner 的覆盖收益与 final answer reward 部分区分开（A2-07）。A4 的 RAGChecker、AuthorityBench 和 Sufficient Context 则把 claim support、authority、sufficiency 和 noise/format perturbation 转化为独立的测量轴（A4-04、A4-07、A4-09）。
 
-A6 的 AnySearch 也比单纯 final QA 更接近行为证据：它报告 search count、token usage、early stopping、Tool Productivity 和 scaffold removal，并测试 unseen budgets（A6-08）。Round 8 的 controlled comparison 进一步对 corpus、backbone、format、budget 和 credit algorithm 进行统一控制（A6-13）。这些论文构成对 C2 的 Counterevidence：当前领域已经出现了 capability isolation 的局部协议，不能把整个领域描述成“只有最终答案”。
+A6 的 AnySearch 也比单纯 final QA 更接近行为证据：它报告 search count、token usage、early stopping、Tool Productivity 和 scaffold removal，并测试 unseen budgets（A6-08）。Round 8 的 controlled comparison 进一步对 corpus、backbone、format、budget 和 credit algorithm 进行统一控制（A6-13）。这些论文构成对 C2 的 Counterevidence 或 Partial Mitigation：当前领域已经出现了 capability isolation 的局部协议，不能把整个领域描述成“只有最终答案”，但局部隔离也不能被写成完整因果归因。
 
 ### 4.2.3 Why local isolation is not complete isolation
 
@@ -231,7 +231,7 @@ C6 Behavior Transfer 在六类能力中都是最关键、同时最稀缺的维�
 
 ## Writing guardrails for the final Survey
 
-- 不要把四类 Claim 写成四个先验结论；每节必须展示 Supporting、Counterevidence 和 Evidence Not Sufficient。
+- 不要把四类 Claim 写成四个先验结论；每节必须展示 Supporting、Counterevidence、Partial Mitigation 和 Not Established。
 - 不要把 `Task OOD`、`Budget Generalization` 或 `Agent Backbone Transfer` 统一写成 `Generalization`。
 - 不要把 step/turn credit 直接翻译成 process capability。
 - 不要把 output replacement 直接翻译成 process-level evidence reliance。

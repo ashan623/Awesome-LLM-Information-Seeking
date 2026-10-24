@@ -378,9 +378,9 @@ The current round has surfaced five working hypotheses:
 
 The bibliography has now entered the analysis phase. No new longitudinal paper collection is planned unless the cross-capability comparison reveals a concrete empty cell that cannot be resolved from the current pool.
 
-- [`Final Cross-Paper Evidence Matrix`](./analysis/final-cross-paper-evidence-matrix.md): Round 9’s full core/supporting/evaluation paper coding using Capability → Learning Signal → Optimizer → Update Locus → Credit Assignment → Observed Behavior → Isolation → Deployment Parity → Generalization → Evidence Limitation.
+- [`Final Cross-Paper Evidence Matrix`](./analysis/final-cross-paper-evidence-matrix.md): Round 9’s full paper coding using Evidence Role → Capability → Learning Signal → Optimizer → Update Locus → Credit Assignment → Observed Behavior → Behavior Measurement → Controlled Intervention → Privileged Supervision → Policy-input Leakage → Deployment Behavior Evidence → Generalization → Evidence Limitation.
 - [`Earlier Capability-Level Matrix`](./analysis/cross-paper-evidence-matrix.md): the prior compact capability-level matrix and Round 8 mechanism anchors.
-- [`Claim–Evidence Matrix`](./analysis/claim-evidence-matrix.md): four cross-capability claims, each separated into Supporting Evidence, Counterevidence, and Evidence Not Sufficient.
+- [`Claim–Evidence Matrix`](./analysis/claim-evidence-matrix.md): four cross-capability claims, each separated into Supporting Evidence, Counterevidence, Partial Mitigation, and Not Established.
 - [`Cross-Capability Synthesis Draft`](./analysis/cross-capability-synthesis-draft.md): a bounded chapter draft answering What Was Actually Learned? without expanding into a full Survey.
 - [`Training–Capability Misalignment Taxonomy`](./analysis/training-capability-misalignment.md): Objective–Capability Misalignment, Outcome–Behavior Confounding, Hindsight–Deployment Gap, and Environment-conditioned Learning vs Transferable Capability.
 - [`Generalization & Intervention Audit`](./analysis/generalization-intervention-audit.md): separates Task, Domain, Retriever, Tool, Corpus/Environment, Budget, Temporal Shift, and Behavior Transfer, while distinguishing Not Tested from Tested but Failed.

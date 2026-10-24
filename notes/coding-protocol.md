@@ -80,6 +80,8 @@ Record exactly one primary contribution type, with secondary types when necessar
 
 Contribution type must not be confused with A1–A6. For example, Agentic-R can be central to the survey while its primary contribution type is Retriever Optimization, not a directly trained A5 LLM capability.
 
+`Evidence Role` is a separate bibliographic/evidence label and must not be confused with Contribution Type. Use only: `Learning`, `Inference-only`, `Evaluation`, `Mechanism`, and `Boundary`. A paper may be central to a capability claim while being `Evaluation`, `Mechanism`, or `Boundary` rather than direct LLM capability learning.
+
 ## Three-dimensional evidence vector
 
 Replace a single overall evidence score with three separate fields:
@@ -91,6 +93,16 @@ Replace a single overall evidence score with three separate fields:
 | **Generalization Evidence** | A deliberate test under a changed task, domain, tool, environment, behavior, or budget |
 
 Each field takes one of: `Strong`, `Medium`, `Limited`, or `Not Tested`.
+
+For the final paper-level matrix, decompose the two most easily conflated fields:
+
+- **Behavior Measurement:** what behavior is directly observed or scored;
+- **Controlled Intervention:** whether the paper changes only the capability-relevant variable through replacement, deletion, paired branches, fixed components, budget shift, or feedback intervention;
+- **Privileged Supervision:** whether Gold Answer, oracle evidence, future trajectory, teacher, or realized branch outcome enters training supervision;
+- **Policy-input Leakage:** whether unavailable-at-deployment information enters the student’s action input or output target;
+- **Deployment Behavior Evidence:** whether the deployed policy demonstrates the target behavior using deployment-visible state and feedback.
+
+Gold-conditioned supervision is not automatically policy-input leakage. Record these fields separately and do not infer deployment behavior evidence from the existence of a deployment-time policy.
 
 ## Generalization regimes
 
@@ -183,13 +195,18 @@ Supervision / Reward
 Learning Signal
 Optimization Method
 Update Target / Update Locus
+Evidence Role
 Data / Trajectory Regime
 Credit Granularity
 Credit Information Source
-Deployment Information Parity
+Privileged Supervision
+Policy-input Leakage
+Deployment Behavior Evidence
 Training–Capability Alignment
 Method Effectiveness
 Capability Isolation
+Behavior Measurement
+Controlled Intervention
 Generalization Evidence
 Generalization Regime
 Judgment Target
