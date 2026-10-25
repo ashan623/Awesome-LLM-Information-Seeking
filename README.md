@@ -378,6 +378,7 @@ The current round has surfaced five working hypotheses:
 
 The bibliography has now entered the analysis phase. No new longitudinal paper collection is planned unless the cross-capability comparison reveals a concrete empty cell that cannot be resolved from the current pool.
 
+- [`Paper Catalog by Category`](./analysis/paper-catalog-by-category.md): complete catalog of the current 73 README entries, grouped by neighboring surveys, A1–A6 capabilities, A5.4 bounded persistence, How to Learn mechanisms, and cross-cutting anchors; also records four additional surveys used only in the related-survey comparison.
 - [`Final Cross-Paper Evidence Matrix`](./analysis/final-cross-paper-evidence-matrix.md): Round 9’s full paper coding using Evidence Role → Capability → Learning Signal → Optimizer → Update Locus → Credit Assignment → Observed Behavior → Behavior Measurement → Controlled Intervention → Privileged Supervision → Policy-input Leakage → Deployment Behavior Evidence → Generalization → Evidence Limitation.
 - [`Related-Survey Comparison`](./analysis/related-survey-comparison.md): formal comparison of seven adjacent Search Agent, Agentic Search, Deep Research, Agentic RAG, Agentic RL, and Credit Assignment surveys across Primary Unit, Learning Axis, Evidence Axis, Generalization, and Main Contribution.
 - [`Earlier Capability-Level Matrix`](./analysis/cross-paper-evidence-matrix.md): the prior compact capability-level matrix and Round 8 mechanism anchors.
