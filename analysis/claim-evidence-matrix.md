@@ -39,6 +39,10 @@ Cross-Paper Matrix answers **what each paper establishes**. This matrix answers 
 | A6-13 Controlled Training Protocols | Supporting | Supporting | Partial Mitigation | Supporting | Controls corpus, reward, optimizer and protocol simultaneously |
 | A1-12 CoBRA | Partial Mitigation | Counterevidence locally | Partial Mitigation | Partial Mitigation | Strong paired boundary isolation, but not full VOI transfer |
 | A3-06 Transferable Tool Selection | Counterevidence to “nothing transfers” | Partial Mitigation | Partial Mitigation | Counterevidence for tool-repository transfer, not information acquisition | Important boundary contrast |
+| A4-11 What Evidence Do Language Models Find Convincing? | Counterevidence | Partial Mitigation | Not Established | Not Established | Counterfactual convincingness analysis shows relevance can dominate credibility cues, but it is not post-training evidence |
+| A4-12 (D)RAGged Into a Conflict | Partial Mitigation | Partial Mitigation | Not Established | Not Established | Typed conflict taxonomy and category-aware prompting improve measurement/behavior, but do not establish transferable policy learning |
+| A5-18 FRANQ | Partial Mitigation | Counterevidence to factuality = faithfulness | Not Established | Partial Mitigation | Separates factuality and faithfulness as diagnostics; no evidence-use policy intervention |
+| A5-19 Attribution Bias in Generator-Aware RAG | Counterevidence | Counterevidence to attribution = faithfulness | Not Established | Not Established | Metadata counterfactuals expose attribution shortcuts without proving process-level evidence reliance |
 
 ## 4. What the matrix does and does not establish
 

@@ -1,15 +1,15 @@
-# Search Log — Round 5A — A5.4 Persistent Information Integration & Memory Updating
+# Search Log — Round 5A — A5.4 Cross-turn Information Persistence & State Updating
 
 ## Fixed boundary
 
-A5.4 is not a general Agent Memory survey. It studies whether LLM agents can learn to selectively persist, revise, forget, and reuse acquired information across interactions without accumulating stale, conflicting, or irrelevant state.
+A5.4 is a cross-turn Information-Seeking capability, not a general Agent Memory survey. Memory is an implementation substrate and evaluation setting. The focus is whether LLM agents can learn to selectively persist, revise, forget, and reuse acquired information across interactions without accumulating stale, conflicting, or irrelevant state.
 
 The four dimensions are:
 
-- **A5.4.1 Memory Formation**
-- **A5.4.2 State Revision**
-- **A5.4.3 Future Memory Utility**
-- **A5.4.4 Memory Policy Learning**
+- **A5.4.1 Selective Information Persistence**
+- **A5.4.2 Cross-turn State Revision**
+- **A5.4.3 Future Information Utility**
+- **A5.4.4 Persistence Policy Learning**
 
 ## Six verified papers
 
@@ -42,7 +42,7 @@ Each entry records:
 
 ## First-batch findings
 
-The complete No Memory → Actual Memory → Oracle Memory ladder is absent. LongMemEval is the closest approximation through full-history, actual retrieval, and oracle-evidence conditions, but retrieval, reader prompts, time cropping, context leakage, and parametric knowledge remain confounded.
+The complete No Persisted State → Actual Persisted State → Oracle State ladder is absent. LongMemEval is the closest approximation through full-history, actual retrieval, and oracle-evidence conditions, but retrieval, reader prompts, time cropping, context leakage, and parametric knowledge remain confounded.
 
 Memory-R1 is the only first-batch work with clear LLM/Agent Policy parameter post-training. Its ADD/UPDATE/DELETE/NOOP action space is well aligned with memory lifecycle behavior, but sparse final QA reward cannot prove that individual memory actions are correct. MemRL learns external-memory utility and retrieval ranking from runtime feedback while freezing the LLM; it addresses future utility more directly but does not learn complete memory formation or state revision.
 
@@ -61,6 +61,6 @@ Do not collapse errors into “memory retrieval failure.” Code separately:
 - **Retrieval Failure:** the correct memory exists but was not recalled;
 - **Utilization Failure:** the memory was recalled but the downstream reader, reasoner, or decision policy did not use it.
 
-## Next-batch boundary
+## Scope closure
 
-Add at most 2–4 papers that directly study learned memory updating, forgetting, counterfactual memory utility, or operation-level credit assignment. Stop once it is clear whether Memory-R1-style post-training has been tested with operation-level correctness and cross-environment transfer. Do not expand into a general Agent Memory architecture survey.
+A5.4 is closed for active expansion. Add a paper only if it directly studies LLM Policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment generalization. Do not expand into a general Agent Memory architecture survey.

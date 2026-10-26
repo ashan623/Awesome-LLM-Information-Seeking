@@ -1,6 +1,6 @@
 # A4 — Evidence Evaluation
 
-This first anchor batch is complemented by the four-paper gap-focused follow-up in [`a4-evidence-evaluation-second.md`](./a4-evidence-evaluation-second.md). Together they form the current ten-paper A4 map.
+This first anchor batch is complemented by the four-paper gap-focused follow-up in [`a4-evidence-evaluation-second.md`](./a4-evidence-evaluation-second.md) and the targeted conflict/convincingness supplement in [`a4-evidence-evaluation-third.md`](./a4-evidence-evaluation-third.md). Together they form the current twelve-paper A4 map.
 
 ## Boundary with A5
 
@@ -148,8 +148,12 @@ The current evidence chain is therefore:
 
 The first link is partly developed, but the concepts must remain separate. Relevance is not support. Support is not sufficiency. A source can be relevant without entailing a claim; multiple individually weak passages can jointly form sufficient evidence; and a supported passage can still come from an unreliable or outdated source.
 
-The first batch had almost no direct A4.2 coverage. It also lacked independent human ground truth for set-level sufficiency, multi-source conflict attribution, source provenance, temporal freshness, and adversarial or fabricated evidence. The second batch fills the measurement coverage for authority, pair-level sufficiency, and Web conflict organization, but the learned methods still show narrow verification behaviors and weak cross-domain/tool/time transfer.
+The first batch had almost no direct A4.2 coverage. It also lacked independent human ground truth for set-level sufficiency, multi-source conflict attribution, source provenance, temporal freshness, and adversarial or fabricated evidence. The second batch fills the measurement coverage for authority, pair-level sufficiency, and Web conflict organization, while the targeted third batch adds counterfactual convincingness and typed-conflict evidence. The learned methods still show narrow verification behaviors and weak cross-domain/tool/time transfer.
 
-## Status after the second batch
+## Status after the targeted third batch
 
-The A4 collection now has a compact ten-paper map with representative measurement anchors for all four sub-directions. A4.1 has the strongest training evidence; A4.2 and A4.4 have direct evaluation resources but limited post-training evidence; A4.3 has both process supervision and independent pair-level sufficiency measurement, but limited set-level ground truth. Broad A4 collection is now closed. Add more papers only for controlled perturbation, held-out verifier robustness, or direct cross-environment post-training transfer.
+The A4 collection now has a compact twelve-paper map with representative measurement anchors for all four sub-directions. A4.1 has the strongest training evidence; A4.2 and A4.4 now have stronger counterfactual and typed-conflict evaluation resources but limited direct post-training evidence; A4.3 has both process supervision and independent pair-level sufficiency measurement, but limited set-level ground truth. Broad A4 collection is now closed. Add more papers only for controlled perturbation, held-out verifier robustness, or direct cross-environment post-training transfer.
+
+The strongest bounded conclusion is:
+
+> Measurement has moved beyond relevance toward convincingness, source cues, sufficiency, and typed conflict handling. This does not yet establish a generalizable post-trained policy that separates relevance from reliability or resolves unseen conflicts under source and time shifts.

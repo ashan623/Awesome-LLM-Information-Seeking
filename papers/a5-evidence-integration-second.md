@@ -147,10 +147,10 @@ RAFT provides multi-domain and distractor variation; BRIEF tests compression bud
 
 ## A5.1–A5.3 closure decision
 
-A5.1–A5.3 can now be closed for broad collection at an eleven-paper map: six first-batch papers plus these five second-batch papers. The defensible negative boundary is:
+A5.1–A5.3 can now be closed for broad collection at a thirteen-paper evidence map: six first-batch papers plus five second-batch papers and the two targeted factuality/faithfulness and attribution-bias diagnostics in [`a5-evidence-integration-third.md`](./a5-evidence-integration-third.md). The defensible negative boundary is:
 
 > The current representative literature does not yet provide strict evidence that post-training teaches necessary multi-evidence dependence or process-level faithful evidence utilization that survives controlled perturbations and environment changes.
 
-This does **not** mean that models cannot use evidence, or that existing methods provide no value. The positive evidence supports useful evidence-conditioned answer behavior, multi-document composition heuristics, structured reasoning chains, context-fidelity training, and internal attribution diagnostics. The unresolved issue is whether these behaviors are causal, calibrated, and transferable rather than benchmark-specific or reward-specific.
+This does **not** mean that models cannot use evidence, or that existing methods provide no value. The positive evidence supports useful evidence-conditioned answer behavior, multi-document composition heuristics, structured reasoning chains, context-fidelity training, and increasingly precise factuality/faithfulness and attribution diagnostics. The unresolved issue is whether these behaviors are causal, calibrated, content-based, and transferable rather than benchmark-specific, metadata-driven, or reward-specific.
 
-A5.4 Persistent Information Integration & Memory Updating remains deferred to the Memory and State Update stage. The first six-paper pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md).
+A5.4 Cross-turn Information Persistence & State Updating is a bounded subdirection within A5 Evidence Integration. The six-paper pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md). The targeted factuality/faithfulness and attribution-bias supplement is documented in [`a5-evidence-integration-third.md`](./a5-evidence-integration-third.md).

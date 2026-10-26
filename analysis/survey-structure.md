@@ -147,8 +147,9 @@ Round 8 的定向机制核验已经完成，只纳入三篇 P0：SSPO、TRACE �
 2. retrieval utility measurement；
 3. ex-post utility-aware policy learning；
 4. cost-sensitive decision；
-5. capability isolation and ex-ante value gap；
-6. model/evidence/task/cost dependence。
+5. ex-post utility versus ex-ante value prediction；
+6. external calibration prior versus intrinsic LLM calibration；
+7. capability isolation and model/evidence/task/cost dependence。
 
 本章结论：
 
@@ -199,11 +200,11 @@ Round 8 的定向机制核验已经完成，只纳入三篇 P0：SSPO、TRACE �
 建议结构：
 
 1. relevance and claim support；
-2. source authority/reliability；
+2. source authority, convincingness, and reliability cues；
 3. evidence sufficiency and missing gaps；
-4. conflict and robustness；
+4. typed conflict and desired response behavior；
 5. measurement resources versus actual post-training；
-6. held-out verifier and controlled perturbation gap。
+6. source/order/time perturbation and held-out verifier gap。
 
 本章结论：
 
@@ -215,17 +216,19 @@ Round 8 的定向机制核验已经完成，只纳入三篇 P0：SSPO、TRACE �
 
 > Can the model faithfully integrate acquired and evaluated information into reasoning, belief, generation, decision, and persistent state?
 
-按三层 evidence reliance 组织：
+先区分 factuality 与 faithfulness，再按 evidence reliance 组织：
 
-1. Output Reliance；
-2. Compositional Reliance；
-3. Process-level Reliance。
+1. Factuality and Faithfulness；
+2. Output Reliance；
+3. Attribution Sensitivity；
+4. Compositional Reliance；
+5. Process-level Reliance。
 
 然后讨论：
 
 - parametric–external conflict and belief revision；
 - multi-evidence composition；
-- evidence-conditioned generation and citation；
+- evidence-conditioned generation, citation, and attribution shortcuts；
 - A5.4 cross-turn persistence/state updating。
 
 本章结论：
@@ -361,4 +364,5 @@ Deployment Information Parity 与 Generalization 是统一的横向诊断维度�
 - [Training–Capability Misalignment Taxonomy](./training-capability-misalignment.md)
 - [Generalization & Intervention Audit](./generalization-intervention-audit.md)
 - [How to Learn Information-Seeking Capabilities](./learning-mechanism-framework.md)
+- [A1/A4/A5 Claim–Evidence Audit](./a1-a4-a5-claim-evidence-audit.md)
 - [Unified Coding Protocol](../notes/coding-protocol.md)

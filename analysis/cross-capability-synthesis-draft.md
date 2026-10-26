@@ -32,7 +32,9 @@ Training Signal
 
 这一点首先在 A1 中体现得最清楚。早期方法用 answerability 或 uncertainty 近似“是否需要检索”：When to Retrieve 的 `<RET>` 标签直接编码触发行为，KBM 将 knowledge boundary 作为可预测对象，而 DRAGIN、SeaKR 使用模型内部不确定性控制检索（A1-01–A1-04）。这些方法证明 retrieval triggering 可以被显式建模，但目标仍是“模型是否答对”或“模型是否不确定”，不是检索带来的预期净收益。后续 LLM-Specific Utility、Cost-Aware Evidence Selection 和 UDCG 将评价对象移动到“同一证据对特定 LLM 是否有用”以及“收益是否值得成本”（A1-06–A1-09）。CoBRA 和 Calibrate-Then-Act 则进一步将 paired no-tool/tool margin、cost 和 calibrated prior 放进策略决策（A1-12–A1-13）。
 
-因此，A1 的正面结论是：**训练对象已经从 trigger proxy 逐步靠近 utility-aware decision**。但 C1 的 Supporting Evidence 同时表明，很多 utility signal 仍然是 ex-post realized outcome，不能证明模型在行动前已经学会了 calibrated value-of-information prediction。CoBRA 的 paired branch 是强的局部 boundary isolation，却仍然混入专家轨迹质量、retriever 质量和单次分支差异；Calibrate-Then-Act 的 calibrated prior 还是一个外部组件。A1 的 evidence alignment 因此是局部增强，而不是完整闭环。
+因此，A1 的正面结论是：**训练对象已经从 trigger proxy 逐步靠近 utility-aware decision**。但 C1 的 Supporting Evidence 同时表明，很多 utility signal 仍然是 ex-post realized outcome，不能证明模型在行动前已经学会了 calibrated value-of-information prediction。CoBRA 的 paired branch 是强的局部 boundary isolation，却仍然混入专家轨迹质量、retriever 质量和单次分支差异；Calibrate-Then-Act 的 calibrated prior 还是一个外部组件，不能把它的 RL 增益直接解释成 LLM 内生校准能力。A1 的 evidence alignment 因此是局部增强，而不是完整闭环。
+
+本节应明确区分三个命题：**retrieval triggering**（模型是否调用工具）、**ex-post utility optimization**（调用后是否带来收益）和 **ex-ante value prediction**（调用前是否预测净收益足以超过成本）。现有论文对前两个命题有较强的局部证据，但对第三个命题仍缺少在固定问题、可控检索收益和可变成本下的预测校准与 regret 测试。因此，A1 的章节结论应采用“utility-aware policy improvement”而不是“learned value-of-information calibration”。
 
 ### 4.1.2 Query utility is not semantic information-need formulation
 
@@ -58,7 +60,11 @@ A4 的训练信号最容易被误读。CRAG、RAGTruth、RAGChecker、AuthorityB
 
 真正的 post-training anchors 是 S2G-RAG、RLSeek 和 EAPO。S2G-RAG 训练 context-only sufficiency/gap judge，RLSeek 训练 source-span support/refute，EAPO 用 evidence utility reward 训练 long-context extraction/citation（A4-02、A4-05、A4-06）。这些方法构成 C1 的 Counterevidence：只要 target 足够窄，SFT/GRPO 确实可以塑造可观察的 verification behavior。
 
-但是它们也说明了 alignment 的边界。S2G-RAG 的 sufficiency truth 仍与 gold-title/Wikipedia multi-hop structure 相关；RLSeek 的 quote/LCS reward 可能被 copying 或 format shortcut 满足；EAPO 的 evidence reward 与 answer reward 和 reward-model co-evolution 耦合。即使结果改善，也不能自动推出模型学会了独立的 source reliability、conflict robustness 或 held-out verifier judgment。A4 因此最适合写成：
+但是它们也说明了 alignment 的边界。S2G-RAG 的 sufficiency truth 仍与 gold-title/Wikipedia multi-hop structure 相关；RLSeek 的 quote/LCS reward 可能被 copying 或 format shortcut 满足；EAPO 的 evidence reward 与 answer reward 和 reward-model co-evolution 耦合。即使结果改善，也不能自动推出模型学会了独立的 source reliability、conflict robustness 或 held-out verifier judgment。
+
+新增的 ConflictingQA 反事实分析（A4-11）进一步提供了关键的 counterevidence：模型可能高度依赖 query–website relevance，却忽略科学引用和中性语气等人类认为重要的可信度线索。CONFLICTS 则说明冲突不是单一标签，而是具有不同成因和期望行为的类型化问题；冲突类别提示可以改善回答，但这仍然是 prompting/behavior organization，不是跨来源、跨时间的 policy learning（A4-12）。由此，CONFACT、AuthorityBench、What Evidence Do Language Models Find Convincing? 和 (D)RAGged Into a Conflict 应被写成 measurement 与 counterevidence，而不是直接证明 LLM 通过 post-training 学会了 source reliability。
+
+A4 因此最适合写成：
 
 > **局部 evidence judgment 可以被训练，但从 narrow verification behavior 到 general evidence evaluation 的跃迁没有被证明。**
 
@@ -68,7 +74,11 @@ A5 的核心不是 evidence 是否出现在 context，而是模型是否用它�
 
 然而，Output Reliance 不等于 Compositional Reliance，更不等于 Process-level Reliance。RAFT、BRIEF、CARE 和 TRACE-the-Evidence 让模型选择、压缩、引用或组合多条证据（A5-07–A5-11）；它们因此展示了 evidence-conditioned composition behavior。但这些工作的主要限制是没有完成 necessary-evidence leave-one-out：删除某一个必要 hop 后，模型是否失去对应结论；或者模型是否只是生成了一个事后看起来合理的 chain。MIRAGE 的 attribution 更接近内部过程，但它是 post-hoc diagnostic，不是 causal process proof（A5-10）。
 
-GuarantRAG、Efficient Prior-Guided Reasoning 和 Source-balancing 是真正的 parameter-updating interventions，但它们的 target 仍有差异：GuarantRAG 的 DPO 偏好 retrieved answer，存在 external obedience 风险；Efficient Prior-Guided Reasoning 用 answer-F1 reward，可能通过 parametric prior 或 answer shortcut 获得收益；Source-balancing 主要改善 answer-level source arbitration。A5 的最稳健结论因此是：**evidence access 和 output sensitivity 已经有较强证据，compositional reliance 只有间接证据，process-level causal reliance 尚未建立。**
+GuarantRAG、Efficient Prior-Guided Reasoning 和 Source-balancing 是真正的 parameter-updating interventions，但它们的 target 仍有差异：GuarantRAG 的 DPO 偏好 retrieved answer，存在 external obedience 风险；Efficient Prior-Guided Reasoning 用 answer-F1 reward，可能通过 parametric prior 或 answer shortcut 获得收益；Source-balancing 主要改善 answer-level source arbitration。
+
+FRANQ 补上了一个不能省略的 measurement distinction：factuality 与 faithfulness 不是同一属性。一个答案可以是事实正确但没有被当前 retrieval 支持，也可以忠实复述一个错误的 retrieved claim（A5-18）。与此同时，Attribution Bias 的反事实作者元数据实验显示，引用/归因质量会在内容不变时因 authorship cue 而改变，说明 citation presence 不能直接当作 content-based evidence reliance（A5-19）。因而 A5 的证据层级应从 `factuality → faithfulness → output reliance → attribution sensitivity → compositional reliance → process-level reliance` 逐级审查，而不是用单一 faithfulness 或 citation 分数概括。
+
+A5 的最稳健结论因此是：**evidence access、factuality/faithfulness diagnostics 和 output sensitivity 已经有较强证据，compositional reliance 只有间接证据，process-level causal reliance 尚未建立；即使存在 citation，也不能排除答案或归因由上下文匹配、参数知识或元数据 shortcut 产生。**
 
 ### 4.1.6 Adaptive control is where credit and capability are most easily conflated
 

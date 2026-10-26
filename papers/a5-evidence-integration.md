@@ -1,6 +1,6 @@
 # A5 — Evidence Integration
 
-The second batch focuses on A5.2/A5.3 and is documented in [`a5-evidence-integration-second.md`](./a5-evidence-integration-second.md). Together, the two batches form the current eleven-paper A5.1–A5.3 map.
+The second batch focuses on A5.2/A5.3 and is documented in [`a5-evidence-integration-second.md`](./a5-evidence-integration-second.md). The targeted factuality/faithfulness and attribution-bias supplement is documented in [`a5-evidence-integration-third.md`](./a5-evidence-integration-third.md). The first two batches form the current eleven-paper A5.1–A5.3 method/evidence map; the supplement adds two diagnostic anchors without changing the taxonomy.
 
 ## Boundary with A4
 
@@ -26,7 +26,7 @@ This round covers A5.1–A5.3:
 
 - **A5.3 Faithful Evidence Utilization:** ensuring that the reasoning and conclusion genuinely depend on the supplied evidence.
 
-A5.4 **Persistent Information Integration & Memory Updating** is deferred to the dedicated Memory and State Update stage. Its scope is learned selective writing, revision, forgetting, and reuse across interactions, not a general survey of all agent-memory architectures. The first six-paper A5.4 pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md).
+A5.4 **Cross-turn Information Persistence & State Updating** is a bounded subdirection within A5 Evidence Integration. Its scope is learned selective persistence, revision, forgetting, and reuse across interactions; Memory is an implementation substrate, not a separate survey axis. The six-paper A5.4 pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md).
 
 Every entry records the following A5-specific fields:
 
