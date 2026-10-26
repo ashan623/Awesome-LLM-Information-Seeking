@@ -9,6 +9,8 @@ A curated paper list for understanding **what information-seeking abilities LLMs
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Papers](https://img.shields.io/badge/Papers-77-blue.svg)](./analysis/paper-catalog-by-category.md)
 [![Status](https://img.shields.io/badge/Status-Targeted%20Evidence%20Audit-orange.svg)](./notes/search-log-2026-10-26-round-10-targeted-a1-a4-a5.md)
+
+> **Counting note:** `77` is the deduplicated number of entries in the README catalog. The current Section 3 supplement contains **13 prioritized citations** (`9` must-add + `4` short additions), but these are a subset of the 77 papers rather than 13 new unique papers. The latest Section 3 writing commit therefore adds draft files, not another 13 papers.
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
