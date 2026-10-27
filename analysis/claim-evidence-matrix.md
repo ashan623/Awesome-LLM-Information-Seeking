@@ -43,13 +43,16 @@ Cross-Paper Matrix answers **what each paper establishes**. This matrix answers 
 | A4-12 (D)RAGged Into a Conflict | Partial Mitigation | Partial Mitigation | Not Established | Not Established | Typed conflict taxonomy and category-aware prompting improve measurement/behavior, but do not establish transferable policy learning |
 | A5-18 FRANQ | Partial Mitigation | Counterevidence to factuality = faithfulness | Not Established | Partial Mitigation | Separates factuality and faithfulness as diagnostics; no evidence-use policy intervention |
 | A5-19 Attribution Bias in Generator-Aware RAG | Counterevidence | Counterevidence to attribution = faithfulness | Not Established | Not Established | Metadata counterfactuals expose attribution shortcuts without proving process-level evidence reliance |
+| A3-08 GISA | Not Established | Partial Mitigation | Not Established | Partial Mitigation | Human-crafted/live tasks and trajectory-level metrics make useful exploration measurable, but do not train or isolate a transferable exploration policy |
+| A3-09 SearchOS-V1 | Partial Mitigation | Partial Mitigation | Not Established | Not Established | Coverage Map and Failure Memory show system-level gains from explicit state, which is a boundary against attributing all gains to LLM policy learning |
+| A5-20 Counterfactual RAG | Partial Mitigation | Partial Mitigation | Not Established | Partial Mitigation | Counterfactual evidence-space intervention tests selective support and distractor robustness, but frozen-generator inference does not establish learned process reliance |
 
 ## 4. What the matrix does and does not establish
 
 ### Established with relatively strong support
 
 1. Post-training and inference-time methods can change **specific observable information-seeking behaviors**: retrieval triggering, query dialect, evidence-span support, stopping depth, budget allocation, source balancing, or memory operations.
-2. More structured signals can improve **method effectiveness, behavior observability, or credit assignment** in controlled settings.
+2. More structured signals can improve **method effectiveness, behavior observability, or credit assignment** in controlled settings; GISA and SearchOS-V1 further show that coverage and state-management effects should be measured separately from policy learning.
 3. Some transfer exists: task OOD, model/backbone transfer, vertical/domain shifts, and unseen-budget transfer are not absent.
 4. Environment variables—especially corpus coverage, retriever dialect, tool inventory, reward format and budget—can materially change the apparent result.
 
@@ -59,7 +62,7 @@ Cross-Paper Matrix answers **what each paper establishes**. This matrix answers 
 2. A semantic-intent-preserving A2 query policy that also adapts to unseen retrievers;
 3. A3 policy that discovers useful evidence regions under unfamiliar source inventories or knowledge structures;
 4. A4 source-reliability/conflict judgment policy that survives source replacement, time shift and verifier changes;
-5. A5 process-level causal evidence reliance that survives necessary-evidence deletion and environment change;
+5. A5 process-level causal evidence reliance that survives necessary-evidence deletion and environment change; CF-RAG improves external evidence discrimination but does not close this learning gap;
 6. An A6 policy that changes its next action correctly under a fixed-history current-feedback intervention;
 7. A full-life-cycle A5.4 memory policy with operation-level correctness and causal future-utility attribution.
 

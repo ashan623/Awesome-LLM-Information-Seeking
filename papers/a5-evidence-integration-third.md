@@ -57,3 +57,8 @@ FRANQ strengthens the first measurement distinction: factuality and faithfulness
 [1]: https://aclanthology.org/2026.findings-acl.338/ "Faithfulness-Aware Uncertainty Quantification for Fact-Checking the Output of Retrieval-Augmented Generation"
 [2]: https://arxiv.org/html/2505.21072v3 "Faithfulness-Aware Uncertainty Quantification for Fact-Checking the Output of Retrieval-Augmented Generation"
 [3]: https://aclanthology.org/2025.findings-acl.1087/ "Evaluation of Attribution Bias in Generator-Aware Retrieval-Augmented Large Language Models"
+
+
+## Round 11 targeted supplement
+
+[Counterfactual Reasoning for Retrieval-Augmented Generation](./a5-counterfactual-evidence-supplement.md) is added as an inference-only counterfactual evidence-necessity boundary. It sharpens external evidence evaluation, but does not count as post-training evidence for process-level causal reliance.

@@ -1,30 +1,30 @@
 # Current Paper Catalog by Category
 
-> 更新时间：2026-10-26
+> 更新时间：2026-10-27
 >
 > 本清单严格依据当前 `README.md`、A1–A6论文池、Round 8机制核验和 Related-Survey Comparison 整理。它不是按“论文主题”简单罗列，而是按本 Survey 的 **What to Learn（A1–A6）× How to Learn（B1–B4）× Evidence Role** 组织。
 
 ## 0. 先看总览
 
-### 当前仓库 README 中的 79 条条目
+### 当前仓库 README 中的 82 条条目
 
 | 层级 | 数量 | 说明 |
 |---|---:|---|
 | 相邻综述 | 5 | 用于 Related Work 和 novelty positioning |
 | A1 Epistemic Awareness | 15 | 检索必要性、检索效用、价值预测和 utility-aware policy learning |
 | A2 Information Need Formulation | 7 | 查询改写、查询扩展、子问题分解、retriever-aware query policy |
-| A3 Information Space Exploration | 7 | 信息源/工具选择、探索覆盖和未见信息空间导航；当前作为跨能力维度，不单独扩展成完整章节 |
+| A3 Information Space Exploration | 9 | 信息源/工具选择、探索覆盖和未见信息空间导航；当前作为跨能力维度，不单独扩展成完整章节 |
 | A4 Evidence Evaluation | 12 | 相关性/支持、来源权威、证据充分性、冲突与鲁棒性 |
-| A5 Evidence Integration | 13 | belief revision、多证据组合、faithful evidence utilization |
+| A5 Evidence Integration | 14 | belief revision、多证据组合、faithful evidence utilization |
 | A5.4 Cross-turn Information Persistence | 6 | A5 内部的有界子方向，不是独立 Memory Survey |
 | A6 Adaptive Search Control | 4 | 搜索反馈适应、停止和预算控制、长程 credit |
 | How to Learn / B1–B4 | 3 | 跨能力机制核验：数据/信号、优化、更新位置、credit assignment |
 | Cross-cutting anchors | 7 | 跨多个能力的搜索策略、检索器—agent耦合和行为分析论文 |
-| **合计** | **79** | README中的全部条目，其中包含上面的5篇相邻综述 |
+| **合计** | **82** | README中的全部条目，其中包含上面的5篇相邻综述 |
 
 ### Related-Survey Comparison 中另外核验的 4 篇综述
 
-这4篇已用于 novelty comparison，但没有重复放入 README 的 79 条主目录，因此如果把所有相关综述也算入“当前使用的文献”，总数是 **83 篇工作**：
+这4篇已用于 novelty comparison，但没有重复放入 README 的 79 条主目录，因此如果把所有相关综述也算入“当前使用的文献”，总数是 **86 篇工作**：
 
 - [Reinforcement Learning Foundations for Deep Research Systems: A Survey](https://arxiv.org/abs/2509.06733) —— Deep Research 的 RL 数据、奖励、credit assignment 和训练系统。
 - [SoK: Agentic Retrieval-Augmented Generation (RAG): Taxonomy, Architectures, Evaluation, and Research Directions](https://arxiv.org/abs/2603.07379) —— Agentic RAG 的 POMDP、架构、控制环和评价。
@@ -116,6 +116,8 @@
 | [Restoring Exploration via Diversity-Driven Policy Optimization in Search-Based LLM Agents](https://www.sciencedirect.com/science/article/abs/pii/S0306457326004942) | A3.2；query/evidence diversity reward；需警惕多样性不等于有用信息增益 |
 | [Training Small Language Models for Transferable Tool Selection](https://arxiv.org/abs/2610.31483) | A3.1 boundary；跨Retriever/工具库迁移，但与一般tool selection有边界 |
 | [ToolSearcher: Optimizing Tool Selection at Scale via Reinforcement Learning](https://arxiv.org/abs/2609.30906) | A3.1 boundary；大规模工具库探索与event-level credit，需区分信息获取和一般功能调用 |
+| [GISA: A Benchmark for General Information-Seeking Assistant](https://arxiv.org/abs/2602.08543v2) | A3.2/A3.3 evaluation；真实信息寻求、结构化覆盖、live questions与human trajectories；不提供post-training policy证据 |
+| [SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration](https://arxiv.org/abs/2607.15257v1) | A3.2 boundary；Coverage Map、Evidence Graph、Failure Memory和停滞恢复；系统级增益不能直接归因于LLM探索能力 |
 
 ---
 
@@ -168,6 +170,7 @@
 | [Faithfulness-Aware Uncertainty Quantification for Fact-Checking the Output of Retrieval-Augmented Generation](https://aclanthology.org/2026.findings-acl.338/) | A5.3/A4.1；区分factuality与faithfulness的诊断方法 |
 | [Evaluation of Attribution Bias in Generator-Aware Retrieval-Augmented Large Language Models](https://aclanthology.org/2025.findings-acl.1087/) | A5.3/A4.2；反事实作者元数据扰动揭示attribution shortcut |
 | [TRACE the Evidence: Constructing Knowledge-Grounded Reasoning Chains for Retrieval-Augmented Generation](https://aclanthology.org/2024.findings-emnlp.496/) | A5.2/A5.3 inference-only；多跳证据链构造 |
+| [Counterfactual Reasoning for Retrieval-Augmented Generation](https://iclr.cc/virtual/2026/poster/10011109) | A5.3 boundary/A4.4 secondary；反事实查询和外部证据仲裁，纯inference-time，不是post-training evidence |
 
 **A5关键证据层级：** `Factuality → Faithfulness → Output Reliance → Attribution Sensitivity → Compositional Reliance → Process-level Reliance`。当前文献对前几层有越来越细的诊断，但严格的必要证据删除/替换和过程级因果依赖仍不足。
 

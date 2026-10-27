@@ -184,8 +184,10 @@ Round 8 的定向机制核验已经完成，只纳入三篇 P0：SSPO、TRACE �
 2. coverage state and unresolved regions；
 3. query diversity, evidence diversity, information gain, useful coverage；
 4. MARAG-R1 and DDPO as learning anchors；
-5. tool discovery as boundary contrast；
-6. unseen-environment navigation gap。
+5. GISA as trajectory-level useful-coverage evaluation；
+6. SearchOS-V1 as coverage-state and failure-recovery boundary evidence；
+7. tool discovery as boundary contrast；
+8. unseen-environment navigation gap。
 
 本章结论：
 
@@ -219,10 +221,11 @@ Round 8 的定向机制核验已经完成，只纳入三篇 P0：SSPO、TRACE �
 先区分 factuality 与 faithfulness，再按 evidence reliance 组织：
 
 1. Factuality and Faithfulness；
-2. Output Reliance；
-3. Attribution Sensitivity；
-4. Compositional Reliance；
-5. Process-level Reliance。
+2. Counterfactual evidence necessity and external intervention（CF-RAG）；
+3. Output Reliance；
+4. Attribution Sensitivity；
+5. Compositional Reliance；
+6. Process-level Reliance。
 
 然后讨论：
 

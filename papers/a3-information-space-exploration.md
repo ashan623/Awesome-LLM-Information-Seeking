@@ -189,3 +189,8 @@ The current A3 conclusion is therefore:
 > **Exploration can be trained when the reward measures coverage or diversity, but current evidence does not yet show a transferable policy for discovering useful information regions in unfamiliar information spaces.**
 
 The next stage is A6 Adaptive Search Control. No further broad A3 search is needed unless a new paper directly tests unseen source inventories, counterfactual coverage, or information-gain-based source selection.
+
+
+## Round 11 targeted supplement
+
+The bounded A3 pool is supplemented by [GISA and SearchOS-V1](./a3-targeted-evaluation-supplement.md). GISA strengthens trajectory-level measurement of useful coverage and realistic information seeking; SearchOS-V1 is retained as system-state boundary evidence. Neither expands A3 into a full independent learning chapter or establishes transferable exploration policy learning.
