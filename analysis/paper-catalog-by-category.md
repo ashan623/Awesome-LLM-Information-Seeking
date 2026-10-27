@@ -6,11 +6,11 @@
 
 ## 0. 先看总览
 
-### 当前仓库 README 中的 77 条条目
+### 当前仓库 README 中的 79 条条目
 
 | 层级 | 数量 | 说明 |
 |---|---:|---|
-| 相邻综述 | 3 | 用于 Related Work 和 novelty positioning |
+| 相邻综述 | 5 | 用于 Related Work 和 novelty positioning |
 | A1 Epistemic Awareness | 15 | 检索必要性、检索效用、价值预测和 utility-aware policy learning |
 | A2 Information Need Formulation | 7 | 查询改写、查询扩展、子问题分解、retriever-aware query policy |
 | A3 Information Space Exploration | 7 | 信息源/工具选择、探索覆盖和未见信息空间导航；当前作为跨能力维度，不单独扩展成完整章节 |
@@ -20,11 +20,11 @@
 | A6 Adaptive Search Control | 4 | 搜索反馈适应、停止和预算控制、长程 credit |
 | How to Learn / B1–B4 | 3 | 跨能力机制核验：数据/信号、优化、更新位置、credit assignment |
 | Cross-cutting anchors | 7 | 跨多个能力的搜索策略、检索器—agent耦合和行为分析论文 |
-| **合计** | **77** | README中的全部条目，其中包含上面的3篇相邻综述 |
+| **合计** | **79** | README中的全部条目，其中包含上面的5篇相邻综述 |
 
 ### Related-Survey Comparison 中另外核验的 4 篇综述
 
-这4篇已用于 novelty comparison，但没有重复放入 README 的 77 条主目录，因此如果把所有相关综述也算入“当前使用的文献”，总数是 **81 篇工作**：
+这4篇已用于 novelty comparison，但没有重复放入 README 的 79 条主目录，因此如果把所有相关综述也算入“当前使用的文献”，总数是 **83 篇工作**：
 
 - [Reinforcement Learning Foundations for Deep Research Systems: A Survey](https://arxiv.org/abs/2509.06733) —— Deep Research 的 RL 数据、奖励、credit assignment 和训练系统。
 - [SoK: Agentic Retrieval-Augmented Generation (RAG): Taxonomy, Architectures, Evaluation, and Research Directions](https://arxiv.org/abs/2603.07379) —— Agentic RAG 的 POMDP、架构、控制环和评价。
@@ -40,6 +40,8 @@
 1. [A Survey of LLM-based Deep Search Agents: Paradigm, Optimization, Evaluation, and Challenges](https://arxiv.org/html/2508.05668v3) —— Search Agent 的架构、优化、评价地图；与 A2/A3/A6 相邻。
 2. [A Comprehensive Survey on Reinforcement Learning-based Agentic Search: Foundations, Roles, Optimizations, Evaluations, and Applications](https://arxiv.org/html/2510.16724) —— RL 在检索控制、查询优化、检索—推理整合等方面的角色；与 A6 相邻。
 3. [Deep Research: A Survey of Autonomous Research Agents](https://arxiv.org/html/2508.12752v1) —— Planning、Question Developing、Web Exploration、Report Generation 四阶段；与 A2/A3/A5 相邻。
+4. [Towards Agentic RAG with Deep Reasoning: A Survey of RAG-Reasoning Systems in LLMs](https://arxiv.org/abs/2507.09477) —— Reasoning-Enhanced RAG、RAG-Enhanced Reasoning 和 agentic RAG-reasoning 协同；与 A4/A5/A6 相邻。
+5. [A Survey of Reasoning-Intensive Retrieval: Progress and Challenges](https://arxiv.org/abs/2605.00063) —— reasoning-integrated retrieval pipeline、RIR benchmark、retriever/reranker 与方法分类；与 A2/A4/A5 相邻。
 
 ---
 

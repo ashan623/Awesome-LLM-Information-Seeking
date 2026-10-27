@@ -7,7 +7,7 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-77-blue.svg)](./analysis/paper-catalog-by-category.md)
+[![Papers](https://img.shields.io/badge/Papers-79-blue.svg)](./analysis/paper-catalog-by-category.md)
 [![Status](https://img.shields.io/badge/Status-Targeted%20Evidence%20Audit-orange.svg)](./notes/search-log-2026-10-26-round-10-targeted-a1-a4-a5.md)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
@@ -123,6 +123,12 @@ Conference and publication badges use the same compact convention as the referen
 
 - **Deep Research: A Survey of Autonomous Research Agents**<br>
   *Wenlin Zhang et al.* [[paper](https://arxiv.org/html/2508.12752v1)] 2025. ![Survey](https://img.shields.io/badge/Survey-4c78a8.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A3](https://img.shields.io/badge/A3-f4a261.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **Towards Agentic RAG with Deep Reasoning: A Survey of RAG-Reasoning Systems in LLMs**<br>
+  *Yangning Li et al.* [[paper](https://arxiv.org/abs/2507.09477)] 2025. ![Survey](https://img.shields.io/badge/Survey-4c78a8.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![A6](https://img.shields.io/badge/A6-6c7576.svg) ![](https://img.shields.io/badge/Arxiv2025-orange.svg)
+
+- **A Survey of Reasoning-Intensive Retrieval: Progress and Challenges**<br>
+  *Yiyang Wei et al.* [[paper](https://arxiv.org/abs/2605.00063)] 2026. ![Survey](https://img.shields.io/badge/Survey-4c78a8.svg) ![A2](https://img.shields.io/badge/A2-457b9d.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
 ### A1 Search Necessity and Epistemic Awareness
 
@@ -397,6 +403,7 @@ The bibliography has now entered the analysis phase. No new longitudinal paper c
 - [`Section 3 Supplement BibTeX Key Map`](./analysis/section3-supplement-bibkey-map.md): proposed citation keys and paper-to-capability mapping for the new Section 3 references.
 - [`Final Cross-Paper Evidence Matrix`](./analysis/final-cross-paper-evidence-matrix.md): Round 9’s full paper coding using Evidence Role → Capability → Learning Signal → Optimizer → Update Locus → Credit Assignment → Observed Behavior → Behavior Measurement → Controlled Intervention → Privileged Supervision → Policy-input Leakage → Deployment Behavior Evidence → Generalization → Evidence Limitation.
 - [`Related-Survey Comparison`](./analysis/related-survey-comparison.md): formal comparison of seven adjacent Search Agent, Agentic Search, Deep Research, Agentic RAG, Agentic RL, and Credit Assignment surveys across Primary Unit, Learning Axis, Evidence Axis, Generalization, and Main Contribution.
+- [`Related-Surveys Bib Audit`](./analysis/related-surveys-bib-audit.md):逐条核对 `related_surveys.bib` 中的 9 篇综述，并记录本轮新增的两篇相邻综述。
 - [`Earlier Capability-Level Matrix`](./analysis/cross-paper-evidence-matrix.md): the prior compact capability-level matrix and Round 8 mechanism anchors.
 - [`Claim–Evidence Matrix`](./analysis/claim-evidence-matrix.md): four cross-capability claims, each separated into Supporting Evidence, Counterevidence, Partial Mitigation, and Not Established.
 - [`Cross-Capability Synthesis Draft`](./analysis/cross-capability-synthesis-draft.md): a bounded chapter draft answering What Was Actually Learned? without expanding into a full Survey.
