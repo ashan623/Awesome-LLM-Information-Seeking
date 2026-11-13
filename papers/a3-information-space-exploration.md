@@ -8,13 +8,13 @@ A3 is deliberately narrower than generic Browser Automation or Tool Use. It conc
 
 A2 asks how to express an information need as a query or sub-question. A3 asks where to explore and whether the agent is covering new information regions. A6 asks how to react to feedback by continuing, modifying, retrying, verifying, switching tools, or stopping.
 
-## First-round sub-directions
+## A3 sub-directions
 
 - **A3.1 Source / Tool Selection:** Can the agent choose the source or tool that is likely to contain the needed information rather than defaulting to generic Web Search?
 - **A3.2 Exploration and Coverage:** Can the agent acquire complementary, non-redundant evidence and cover unresolved regions of the information space rather than producing many semantically similar queries?
 - **A3.3 Unseen-Environment Navigation:** Can the agent discover effective search paths when the knowledge structure, source inventory, tool interface, or corpus is unfamiliar?
 
-The first round is an anchor map, not yet a final A3 core set. The main question is whether there is enough independent capability-learning evidence to keep A3 as a standalone chapter.
+The included studies define a selective evidence map for source choice, useful coverage, and navigation under unfamiliar information structures. Direct post-training evidence remains narrower than the conceptual capability definition.
 
 ---
 
@@ -75,35 +75,21 @@ The first round is an anchor map, not yet a final A3 core set. The main question
 
 ---
 
-## First-round synthesis
+## Evidence synthesis
 
-These anchors establish that A3 is not simply “more query diversity.” They expose three distinct objects of study:
+The literature establishes that A3 is not simply “more query diversity.” They expose three distinct objects of study:
 
 1. **Source choice:** selecting the right information channel among heterogeneous tools;
 2. **Coverage state:** identifying which candidate–constraint or evidence regions remain unresolved;
 3. **Trajectory exploration:** moving horizontally to new aspects without repeating already explored information.
 
-The current literature is much stronger on measurement and system support than on Post-training. InfoMosaic-Bench gives a realistic source/tool-selection benchmark. Table-as-Search provides an explicit state representation for pending information and long-horizon coverage. Agentic Search in the Wild provides real-trajectory labels and candidate metrics for exploration, repetition, and evidence-conditioned query evolution.
+Current literature is stronger on measurement and system support than on post-training. InfoMosaic-Bench gives a realistic source/tool-selection benchmark. Table-as-Search provides an explicit state representation for pending information and long-horizon coverage. Agentic Search in the Wild provides real-trajectory labels and candidate metrics for exploration, repetition, and evidence-conditioned query evolution.
 
 The key interim conclusion is:
 
-> **A3 has an independently meaningful capability definition, but the first anchor set does not yet demonstrate that SFT, RL, or preference optimization has taught a generalizable exploration policy.**
+> **A3 has an independently meaningful capability definition, but the current evidence does not yet demonstrate that SFT, RL, or preference optimization has taught a generalizable exploration policy.**
 
-This makes A3 a useful test of the survey’s central hypothesis. If the next targeted papers only optimize final answer reward in fixed search loops, then A3 will be mostly an evaluation/system chapter and may need to be merged with A2 and A6. If we find direct training of Source Selection, Exploration Diversity, Coverage Completion, or Unseen-Environment Navigation with behavior-level transfer tests, A3 should remain an independent capability chapter.
-
-## Next bounded search
-
-Only search for direct learning papers that add at least one of the following:
-
-- SFT or RL for source/tool selection;
-- rewards for non-redundant evidence coverage or unexplored-region discovery;
-- explicit exploration-state or coverage-state policy learning;
-- transfer to unseen tools, corpora, source inventories, or information structures;
-- counterfactual source removal or coverage intervention that isolates exploration behavior from final answer quality.
-
-Do not add generic browser automation, web navigation, tool-calling, or Search-R1 variants unless they isolate one of these A3 behaviors.
-
----
+The targeted learning studies below provide evidence for coverage- and diversity-oriented policy learning, but also show why query diversity, evidence diversity, information gain, and useful coverage must be separated.
 
 ## Targeted learning papers
 
@@ -164,9 +150,9 @@ Do not add generic browser automation, web navigation, tool-calling, or Search-R
 
 ---
 
-## A3 decision after targeted search
+## A3 classification
 
-The four targeted papers sharpen the distinction required by this survey:
+The representative learning and boundary papers sharpen the distinction required by this survey:
 
 - **MARAG-R1** directly learns multi-tool retrieval coordination and document coverage, but its source inventory is fixed;
 - **DDPO** directly trains query and retrieved-document diversity and reports independent coverage-oriented metrics, but its environment transfer is limited;
@@ -188,9 +174,9 @@ The current A3 conclusion is therefore:
 
 > **Exploration can be trained when the reward measures coverage or diversity, but current evidence does not yet show a transferable policy for discovering useful information regions in unfamiliar information spaces.**
 
-The next stage is A6 Adaptive Search Control. No further broad A3 search is needed unless a new paper directly tests unseen source inventories, counterfactual coverage, or information-gain-based source selection.
+A3 remains a cross-capability dimension with a dedicated subsection rather than a full standalone learning chapter.
 
 
-## Round 11 targeted supplement
+## Additional benchmark and system-level evidence
 
 The bounded A3 pool is supplemented by [GISA and SearchOS-V1](./a3-targeted-evaluation-supplement.md). GISA strengthens trajectory-level measurement of useful coverage and realistic information seeking; SearchOS-V1 is retained as system-state boundary evidence. Neither expands A3 into a full independent learning chapter or establishes transferable exploration policy learning.

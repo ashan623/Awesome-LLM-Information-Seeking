@@ -1,14 +1,14 @@
-# Round 8 — Learning Mechanism Verification
+# Learning Mechanisms for Search-Agent Post-training
 
 ## Scope
 
-本轮只核验三篇 P0 机制候选，不重新扩展 A1–A6，也不把 How to Learn 扩展成通用 Post-training Survey。统一使用六个字段：
+本文比较三类直接关联 search-agent policy learning 的机制研究，并用统一字段梳理训练信号、优化器、更新位置、credit、部署信息对齐和能力证据。
 
 `Learning Signal · Optimizer · Update Locus · Credit Assignment · Deployment Parity · Capability Evidence`
 
 最终分类只使用：`Core Mechanism`、`Supporting`、`Excluded`。
 
-## Executive decision
+## Evidence summary
 
 | Paper | Final decision | Why it matters for the survey | Main limitation |
 |---|---|---|---|
@@ -197,7 +197,7 @@ TRACE 的证据强于单纯 final QA comparison 的地方在于：
 
 ## 4. Preference / DPO gap check
 
-本轮没有新增 search-specific Preference/DPO 论文。现有文献池已经包含 GuarantRAG 的 contrastive DPO，但其 DPO 主要训练 evidence model / retrieved-vs-inner answer preference，并且存在偏向外部证据、缺乏 false-external-evidence test 的问题。它更适合放在 A5 Evidence Integration 的 supporting example，而不是作为 How to Learn 中 search-policy preference learning 的核心锚点。
+当前纳入的代表性工作中，没有直接以 search-specific Preference/DPO 为核心目标的研究。现有文献池已经包含 GuarantRAG 的 contrastive DPO，但其 DPO 主要训练 evidence model / retrieved-vs-inner answer preference，并且存在偏向外部证据、缺乏 false-external-evidence test 的问题。它更适合放在 A5 Evidence Integration 的 supporting example，而不是作为 How to Learn 中 search-policy preference learning 的核心锚点。
 
 因此当前判断是：
 
@@ -206,7 +206,7 @@ TRACE 的证据强于单纯 final QA comparison 的地方在于：
 - 暂不新增一篇仅使用 DPO、但没有直接 information-seeking behavior evidence 的论文；
 - 如果后续发现一篇直接用 preference 优化 query/tool/control behavior，并提供 behavior isolation，才值得加入机制核心集。
 
-## 5. Round 8 conclusion
+## Cross-paper synthesis
 
 三篇 P0 已经足以补强四个学习机制小节：
 

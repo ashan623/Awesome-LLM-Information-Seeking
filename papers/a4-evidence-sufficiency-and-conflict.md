@@ -1,6 +1,6 @@
-# A4 — Second Batch: Authority, Sufficiency, and Conflict
+# A4 — Evidence Sufficiency and Conflict Evaluation
 
-This second batch fills the main coverage gaps from the first A4 anchor pool. It does not change the four-layer taxonomy; it adds representative evaluation evidence for A4.2, A4.3, and A4.4.
+This supplement adds representative evaluation evidence for A4.2, A4.3, and A4.4. It covers source authority, evidence sufficiency, and multi-source conflict without changing the four-layer taxonomy.
 
 ## B1. AuthorityBench: Benchmarking LLM Authority Perception for Reliable Retrieval-Augmented Generation
 
@@ -87,13 +87,13 @@ This second batch fills the main coverage gaps from the first A4 anchor pool. It
 
 ---
 
-## Second-batch synthesis
+## Cross-paper synthesis
 
-The second batch changes the first-batch diagnosis in one important way: A4.2 is not a literature void. It was a coverage void in the initial pool. AuthorityBench directly measures authority perception, and CONFACT explicitly combines source credibility with support/refute evidence. However, neither provides strong evidence that an LLM has learned a generalizable source-reliability capability through post-training.
+The additional evidence changes an initial diagnosis in one important way: A4.2 is not a literature void. It was a coverage void in the initial pool. AuthorityBench directly measures authority perception, and CONFACT explicitly combines source credibility with support/refute evidence. However, neither provides strong evidence that an LLM has learned a generalizable source-reliability capability through post-training.
 
-The second batch also strengthens A4.3 and A4.4 measurement. Sufficient Context provides an independently human-labeled query–context sufficiency set, although it is small and pair-level. ConfRAG provides a realistic multi-source Web conflict benchmark with human-adjudicated viewpoint clusters and reason coverage, but it measures organization and coverage rather than conflict resolution or truth selection.
+The added papers also strengthen A4.3 and A4.4 measurement. Sufficient Context provides an independently human-labeled query–context sufficiency set, although it is small and pair-level. ConfRAG provides a realistic multi-source Web conflict benchmark with human-adjudicated viewpoint clusters and reason coverage, but it measures organization and coverage rather than conflict resolution or truth selection.
 
-## Final A4 map after two batches
+## A4 evidence map
 
 | Sub-direction | Representative papers | Evaluation status | Post-training status |
 |---|---|---|---|

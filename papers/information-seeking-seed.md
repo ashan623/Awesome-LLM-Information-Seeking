@@ -1,6 +1,6 @@
-# First-Round Seed Papers
+# Seed Papers and Cross-Cutting Anchors
 
-**Scope:** field-map and seed verification round, 2026-10-23. This file contains three neighboring surveys and seven representative method/evaluation papers. It is a curated starting set, not an exhaustive bibliography.
+**Scope:** three neighboring surveys and seven representative method/evaluation papers that anchor the information-seeking capability taxonomy. This is a curated reference set, not an exhaustive bibliography.
 
 ## How to read the annotations
 
@@ -244,7 +244,7 @@ The boundary between **A3 Information Space Exploration** and **A6 Adaptive Sear
 | Agentic-R | Retriever Optimization | Retriever–Agent Co-adaptation | Retriever-agent joint optimization | Medium–Strong | Medium | Limited | Partial: local relevance + downstream utility |
 | Bright-Pro | Evaluation | Evidence Utility | Agentic evaluation | Strong | Strong | Medium | Evaluation-oriented, not a training signal |
 
-## Immediate observations from round 1
+## Cross-cutting observations
 
 1. **A1 and A4 are more directly observable than A3 in current training papers.** Self-RAG explicitly teaches retrieval necessity and critique; Behavior Priming explicitly identifies verification and authority behaviors. Search-R1 and R1-Searcher often infer capability from final outcomes.
 2. **The central gap is not the absence of search training, but weak capability isolation.** Many methods train or evaluate a full search-and-answer loop, making it difficult to attribute gains to query quality, information-space exploration, evidence evaluation, or adaptive control.
@@ -253,10 +253,10 @@ The boundary between **A3 Information Space Exploration** and **A6 Adaptive Sear
 5. **Environment validity is under-studied.** ZeroSearch makes the search environment controllable and cheap, but the simulator-to-real gap should be treated as a first-class C5 Environment OOD question.
 6. **Current papers are heavily QA/web-centric.** Memory, scientific search, enterprise search, medical search, recommendation retrieval, and long-term state update should be added only when they test the same capability-learning questions rather than as disconnected application categories.
 
-## Inclusion status for next rounds
+## Inclusion and scope boundaries
 
 - **Include in core reading:** Self-RAG, Search-R1, R1-Searcher, Behavior Priming, Agentic-R, Bright-Pro.
 - **Include as field-map anchors:** Deep Search survey, RL-based Agentic Search survey, Deep Research survey.
 - **Do not yet treat as proof of general capability:** any paper reporting only final QA accuracy without behavior-level or transfer-level measurement.
 - **Do not force a primary A1–A6 label:** infrastructure, retriever optimization, and evaluation papers may be `Not Directly Trained` while remaining central to the survey.
-- **Next search boundary:** A1 epistemic awareness and retrieval necessity; A4 evidence evaluation/verification; memory/state-update papers; then C1–C7 transfer and evaluation evidence.
+- **Scope boundary:** prioritize A1 epistemic awareness, A4 evidence evaluation, persistent state use within A5, and cross-capability transfer evidence. Include adjacent domains only when they test the same capability-learning questions.

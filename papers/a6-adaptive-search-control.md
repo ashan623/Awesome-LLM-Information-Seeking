@@ -14,13 +14,13 @@ A1 asks whether information acquisition is worthwhile before or at the start of 
 - **A6.2 Search budget and stopping:** does the policy stop when the expected value of another search is low, continue when information is insufficient, and allocate different search depths under different budgets?
 - **A6.3 Long-horizon credit assignment:** can training attribute eventual success or failure to the specific search-control actions that caused it?
 
-The most important capability-isolation test is a controlled feedback intervention: hold the task and prior search history fixed, change the current retrieval feedback, and test whether the policy changes its next action in the expected direction. None of the four first-round papers fully establishes this test.
+The most important capability-isolation test is a controlled feedback intervention: hold the task and prior search history fixed, change the current retrieval feedback, and test whether the policy changes its next action in the expected direction. None of the included studies fully establishes this test.
 
 For consistent coding, each A6 paper is annotated with **Control Action**, **Observed Feedback**, **Feedback Dependence**, **Control Credit**, **Deployment Availability**, **Control Transfer**, and **Shortcut Risk**. These fields distinguish a policy that reacts to evidence from one that only learns a search-depth template, and distinguish online state information from hindsight or privileged training supervision.
 
 ---
 
-## First-round targeted papers
+## Representative learning papers
 
 ### A6-1. AutoSearch: Adaptive Search Depth for Efficient Agentic RAG via Reinforcement Learning
 
@@ -115,9 +115,9 @@ Current evidence is weaker. AutoSearch shows different search depths and efficie
 
 A6 currently has an uneven transfer profile. AnySearch provides strong evidence for **Budget / Cost Generalization**. CriticSearch and CW-GRPO provide mostly **Task OOD** results under fixed retriever/corpus settings. AutoSearch reports multiple benchmarks and model sizes but limited environment variation. Across the four papers, systematic **Retriever OOD**, **Tool OOD**, and **Environment OOD** remain largely untested.
 
-## A6 first-round decision
+## Evidence synthesis and classification
 
-The four candidates are sufficient to close the first A6 paper pass. A6 should remain an independent capability definition in the taxonomy, but its literature should be organized by **control object**, not by a generic “agentic search RL” label:
+The representative methods cover distinct **control objects** rather than a generic “agentic search RL” category:
 
 1. Search depth and stopping;
 2. Budget allocation;
@@ -128,4 +128,4 @@ The most important survey-level conclusion is:
 
 > **Training a policy with turn-level or contribution-aware rewards is not equivalent to proving that the policy has learned a feedback-conditioned control rule.**
 
-After this bounded A6 pass, stop longitudinal paper collection and begin the cross-capability analysis. Existing Search-R1, StepSearch, and Beneficial Reasoning Behaviors in Agentic Search can be reused as anchors; no duplicate entries are needed here.
+Search-R1, StepSearch, and Beneficial Reasoning Behaviors in Agentic Search are cross-cutting anchors elsewhere in the catalog; their reuse avoids duplicate entries.

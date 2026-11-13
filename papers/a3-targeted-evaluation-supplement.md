@@ -1,6 +1,6 @@
 # A3 — Targeted Evaluation Supplement
 
-本轮只补充两篇直接服务于 A3 `Information Space Exploration` 的论文。它们不是新的能力分支，而是分别补强 **真实信息寻求行为的评价** 与 **覆盖状态/失败恢复的系统边界**。
+本补充收录两篇直接服务于 A3 `Information Space Exploration` 的论文，不新增能力分支；GISA补强真实信息寻求行为评价，SearchOS-V1提供覆盖状态与失败恢复的系统边界证据。
 
 ## A3-08 GISA: A Benchmark for General Information-Seeking Assistant
 

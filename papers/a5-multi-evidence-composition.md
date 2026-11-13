@@ -1,15 +1,15 @@
-# A5 — Second Batch: Multi-evidence Composition and Faithful Utilization
+# A5 — Multi-Evidence Composition and Faithful Utilization
 
-This batch focuses on the two weaker directions identified in the first A5 batch:
+This note focuses on two complementary directions:
 
 - **A5.2 Multi-evidence Composition:** whether the model can combine multiple passages, hops, or partial facts into a valid inference;
 - **A5.3 Faithful Evidence Utilization:** whether the reasoning and conclusion genuinely depend on the evidence rather than merely improving final answer metrics or producing a plausible explanation afterward.
 
-The first-batch paper **Belief-R: Belief Revision: The Adaptability of Large Language Models Reasoning** must not be confused with **BRIEF: Bridging Retrieval and Inference for Multi-hop Reasoning via Compression**. They are different papers; BRIEF is included below as an A5.2 anchor.
+The paper **Belief-R: Belief Revision: The Adaptability of Large Language Models Reasoning** must not be confused with **BRIEF: Bridging Retrieval and Inference for Multi-hop Reasoning via Compression**. They are different papers; BRIEF is included below as an A5.2 anchor.
 
-## Three-level Evidence Reliance protocol
+## Three-level Evidence Reliance framework
 
-Every paper in this batch is coded at three levels:
+Each paper discussed here is coded at three levels:
 
 - **Output Reliance:** after replacing key evidence, does the final answer change appropriately?
 - **Compositional Reliance:** after deleting a necessary hop or passage, does the corresponding conclusion lose its basis?
@@ -110,18 +110,18 @@ Input perturbations can establish behavioral sensitivity, but output changes alo
 - **Training mechanism:** No parameter update. Frozen models construct document-grounded triples, rank and select them, and use beam search to compose 2–4-hop chains before answer generation.
 - **Training–capability alignment:** Not Applicable for post-training. The prompt and chain construction directly target A5.2 composition, but no learned policy or process reward is introduced.
 - **Output Reliance:** Medium behavioral reliance. Removing the constructor, KG generator, selector, or chain representation lowers QA performance, but no single key fact is replaced or deleted in a matched re-generation test.
-- **Compositional Reliance:** Medium but indirect. Autoregressive chains of linked triples and constructor-versus-top-T ablations provide the strongest composition behavior in this batch, but necessary-hop leave-one-out is absent.
+- **Compositional Reliance:** Medium but indirect. Autoregressive chains of linked triples and constructor-versus-top-T ablations provide the strongest composition behavior in this set, but necessary-hop leave-one-out is absent.
 - **Process-level Reliance:** Not Established. The chain is generated before the answer and is structurally grounded in retrieved documents, but there is no independent chain-quality annotation, internal attribution, causal chain intervention, or answer-without-chain counterfactual.
 - **Controlled perturbation:** Natural document error rates, all-document versus selected-chain contexts, and component substitutions are examined. Key deletion, evidence substitution, irrelevant invariance, order shift, conflict, source replacement, and temporal change are not tested.
 - **Parametric–External Balance:** Not Tested. No bidirectional parametric–external conflict or belief revision protocol is included.
 - **Evidence vector:** `Method Effectiveness: Strong`; `Capability Isolation: Medium`; `Generalization Evidence: Limited`.
-- **Main finding:** TRACE explicitly composes multi-hop evidence chains and improves QA over all-document RAG across three Wikipedia multi-hop datasets. It is the strongest indirect A5.2 behavior anchor in this batch, but not proof of faithful process-level reasoning.
+- **Main finding:** TRACE explicitly composes multi-hop evidence chains and improves QA over all-document RAG across three Wikipedia multi-hop datasets. It is the strongest indirect A5.2 behavior anchor in this set, but not proof of faithful process-level reasoning.
 - **Main limitation:** Results are ultimately judged mainly by EM/F1, use Wikipedia evidence, and lack independent chain correctness, cross-domain transfer, order robustness, conflict handling, and necessary-hop interventions.
 - **Decision:** Include Core.
 
 ---
 
-## Second-batch synthesis
+## Synthesis
 
 ### Strict necessary-evidence tests remain absent
 
@@ -139,18 +139,18 @@ MIRAGE and TRACE are valuable for diagnosis and inference-time evidence organiza
 
 ### Evidence Reliance hierarchy
 
-Across this batch, the evidence is generally strongest at **Output Reliance**, weaker at **Compositional Reliance**, and weakest at **Process-level Reliance**. CARE supplies limited process-oriented training signals; MIRAGE supplies a diagnostic signal related to model internals; TRACE supplies a structured intermediate chain. None provides a complete causal process-faithfulness test.
+Across this set, the evidence is generally strongest at **Output Reliance**, weaker at **Compositional Reliance**, and weakest at **Process-level Reliance**. CARE supplies limited process-oriented training signals; MIRAGE supplies a diagnostic signal related to model internals; TRACE supplies a structured intermediate chain. None provides a complete causal process-faithfulness test.
 
 ### Generalization remains incomplete
 
 RAFT provides multi-domain and distractor variation; BRIEF tests compression budgets and reader transfer; CARE tests multiple tasks, models, and limited parametric-conflict conditions; MIRAGE tests several tasks and models; TRACE tests several readers over Wikipedia multi-hop QA. None systematically establishes stable evidence dependence across domain, document order, controlled noise ratio, source replacement, temporal change, and bidirectional parametric–external conflict.
 
-## A5.1–A5.3 closure decision
+## A5.1–A5.3 Evidence Summary
 
-A5.1–A5.3 can now be closed for broad collection at a thirteen-paper evidence map: six first-batch papers plus five second-batch papers and the two targeted factuality/faithfulness and attribution-bias diagnostics in [`a5-evidence-integration-third.md`](./a5-evidence-integration-third.md). The defensible negative boundary is:
+Across the A5.1–A5.3 evidence map, the six belief-revision studies, five composition/use studies, and two diagnostics in [`a5-faithfulness-and-attribution.md`](./a5-faithfulness-and-attribution.md) support the following boundary:
 
 > The current representative literature does not yet provide strict evidence that post-training teaches necessary multi-evidence dependence or process-level faithful evidence utilization that survives controlled perturbations and environment changes.
 
 This does **not** mean that models cannot use evidence, or that existing methods provide no value. The positive evidence supports useful evidence-conditioned answer behavior, multi-document composition heuristics, structured reasoning chains, context-fidelity training, and increasingly precise factuality/faithfulness and attribution diagnostics. The unresolved issue is whether these behaviors are causal, calibrated, content-based, and transferable rather than benchmark-specific, metadata-driven, or reward-specific.
 
-A5.4 Cross-turn Information Persistence & State Updating is a bounded subdirection within A5 Evidence Integration. The six-paper pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md). The targeted factuality/faithfulness and attribution-bias supplement is documented in [`a5-evidence-integration-third.md`](./a5-evidence-integration-third.md).
+A5.4 Cross-turn Information Persistence & State Updating is a bounded subdirection within A5 Evidence Integration. The six-paper pool is documented in [`a5.4-memory-updating.md`](./a5.4-memory-updating.md). The targeted factuality/faithfulness and attribution-bias supplement is documented in [`a5-faithfulness-and-attribution.md`](./a5-faithfulness-and-attribution.md).

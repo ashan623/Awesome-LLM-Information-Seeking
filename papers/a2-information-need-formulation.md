@@ -75,7 +75,7 @@ The A2-specific fields are:
 - **Capability isolation:** Medium.
 - **Generalization evidence:** Medium.
 - **A2/A6 boundary:** A2 Core; the main action is pre-retrieval q→q′, not feedback-driven search control.
-- **Main finding:** DeepRetrieval is the strongest first-batch example of direct retrieval-gain reward for query learning. It demonstrates that LLMs can learn backend-specific query behavior, but multi-backend coverage should not be confused with cross-backend policy transfer.
+- **Main finding:** DeepRetrieval is the strongest example in this pool of direct retrieval-gain reward for query learning. It demonstrates that LLMs can learn backend-specific query behavior, but multi-backend coverage should not be confused with cross-backend policy transfer.
 - **Decision:** Include Core.
 
 ### A2-3. Beyond the limitation of a single query: Train your LLM for query expansion with Reinforcement Learning
@@ -138,7 +138,7 @@ The A2-specific fields are:
 - **Training mechanism:** StePPO, a PPO variant with step-wise reward, answer reward, query-key reward, information-gain reward, and redundancy penalty. MuSiQue-derived data are constructed with GPT-4o assistance.
 - **Learning target:** An end-to-end search policy that formulates queries aligned with the current sub-question and retrieves novel supporting evidence.
 - **Training signal:** Final answer F1; gold search-key token F1; marginal TF-IDF information gain against gold support documents; repeated-document penalty; format reward.
-- **Training–capability alignment:** Medium. It is the first batch’s closest example of process-level query/evidence alignment, but gold keys and TF-IDF support similarity are generated or defined proxies rather than independent human query-quality judgments.
+- **Training–capability alignment:** Medium. It is the clearest example in this pool of process-level query/evidence alignment, but gold keys and TF-IDF support similarity are generated or defined proxies rather than independent human query-quality judgments.
 - **Retriever dependence:** High. The main training setup uses E5, fixed local corpora, top-k=3, and max turns=5.
 - **Query reliance:** Not Tested. Reward and ablation evidence do not amount to query replacement, query shuffle, or fixed-evidence causal intervention.
 - **Generalization evidence:** Medium for task/model transfer. It trains from MuSiQue and evaluates HotpotQA, 2WikiMultiHopQA, Bamboogle, Qwen 3B/7B, and Base/Instruct variants. Cross-retriever, tool, budget, language, and dynamic-environment transfer are not tested.
@@ -147,7 +147,7 @@ The A2-specific fields are:
 - **Capability isolation:** Limited.
 - **Generalization evidence:** Medium for task/model transfer; Limited for environment transfer.
 - **A2/A6 boundary:** A2 Core with A6 secondary. The query/evidence process is trained jointly with continuation and stopping, but the distinctive contribution is step-level query/evidence credit.
-- **Main finding:** StepSearch is the strongest first-batch candidate for moving beyond global answer reward toward query-level and process-level credit assignment. Its central unresolved issue is whether the reward measures semantic information need or only lexical overlap with generated keys and support documents.
+- **Main finding:** StepSearch is the strongest representative candidate for moving beyond global answer reward toward query-level and process-level credit assignment. Its central unresolved issue is whether the reward measures semantic information need or only lexical overlap with generated keys and support documents.
 - **Decision:** Include Core.
 
 ### A2-6. Understanding the Behaviors of Environment-aware Information Retrieval
@@ -171,7 +171,7 @@ The A2-specific fields are:
 - **Capability isolation:** Medium.
 - **Generalization evidence:** Medium overall, with strong negative evidence for environment-independent transfer.
 - **A2/A6 boundary:** A2 Core. Two-turn refinement is A6-adjacent, but the main contribution is query formulation conditioned on retriever environment, not stopping or tool control.
-- **Main finding:** This paper is essential because it shows both learnability and non-generality. LLMs can learn retriever-specific query dialects, but a query policy that works for one retriever may not transfer to another. This is the clearest first-batch evidence that query quality is environment-dependent.
+- **Main finding:** This paper is essential because it shows both learnability and non-generality. LLMs can learn retriever-specific query dialects, but a query policy that works for one retriever may not transfer to another. This is the clearest evidence in the current A2 set that query quality is environment-dependent.
 - **Decision:** Include Core.
 
 ---
@@ -251,7 +251,7 @@ There is almost no systematic transfer to unseen web tools, APIs, dynamic corpor
 
 Query Rewriting and DeepRetrieval are primarily pre-retrieval, one-shot query policies. ParallelSearch and ExpandSearch include search count, multi-turn retrieval, or compression behavior, so their query gains are partly entangled with A6. StepSearch is the clearest original A2–A6 boundary case because it directly rewards query/evidence alignment while also learning feedback-conditioned continuation. QREF is A2-primary because Query Refinement is a separately trained module, but its per-step refinement still touches A6-style feedback. WebDancer belongs primarily to A6 because its query is simply one parameter of a complete web-agent action policy.
 
-## First-round conclusion
+## Cross-paper synthesis
 
 The original six-paper core map plus the targeted QREF exception is sufficient for A2 candidate collection. It covers the main training signals and capability forms without reopening a broad Search-RL crawl.
 

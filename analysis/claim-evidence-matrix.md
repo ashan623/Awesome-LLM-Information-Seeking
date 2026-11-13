@@ -1,4 +1,4 @@
-# Round 9 — Claim–Evidence Matrix
+# Claim–Evidence Matrix
 
 ## 1. Purpose
 

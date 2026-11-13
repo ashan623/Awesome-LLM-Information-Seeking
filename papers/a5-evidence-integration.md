@@ -1,6 +1,6 @@
 # A5 — Evidence Integration
 
-The second batch focuses on A5.2/A5.3 and is documented in [`a5-evidence-integration-second.md`](./a5-evidence-integration-second.md). The targeted factuality/faithfulness and attribution-bias supplement is documented in [`a5-evidence-integration-third.md`](./a5-evidence-integration-third.md). The first two batches form the current eleven-paper A5.1–A5.3 method/evidence map; the supplement adds two diagnostic anchors without changing the taxonomy.
+The multi-evidence composition papers are documented in [`a5-multi-evidence-composition.md`](./a5-multi-evidence-composition.md). Faithfulness, factuality, attribution bias, and counterfactual evidence diagnostics are documented in [`a5-faithfulness-and-attribution.md`](./a5-faithfulness-and-attribution.md). Together these files cover belief revision, evidence composition, and faithful use while preserving the A5 taxonomy.
 
 ## Boundary with A4
 
@@ -16,7 +16,7 @@ The first A5 batch uses three distinctions:
 
 Context presence, citation format, and final-answer improvement are not sufficient evidence of A5 capability acquisition.
 
-## First-round scope
+## Scope
 
 This round covers A5.1–A5.3:
 
@@ -122,7 +122,7 @@ Every entry records the following A5-specific fields:
 
 - **Main limitation:** Synthetic ATOMIC-derived commonsense patterns confound logical competence, knowledge recall, and instruction following. Final multiple-choice accuracy cannot establish faithful evidence use or real-world belief revision.
 
-- **Decision:** Include Supporting as a belief-revision diagnostic, not as a learned integration method. This paper is **Belief-R**, distinct from **BRIEF: Bridging Retrieval and Inference for Multi-hop Reasoning via Compression**, which is a separate A5.2 candidate for the second batch.
+- **Decision:** Include Supporting as a belief-revision diagnostic, not as a learned integration method. This paper is **Belief-R**, distinct from **BRIEF: Bridging Retrieval and Inference for Multi-hop Reasoning via Compression**, which is a separate A5.2 paper in the multi-evidence composition group.
 
 ## A5.2 Multi-evidence Composition and A5.3 Faithful Utilization
 
@@ -212,15 +212,15 @@ Every entry records the following A5-specific fields:
 
 ---
 
-## First-batch synthesis
+## Evidence synthesis
 
 ### A5.1 dominates the current evidence
 
-All six papers touch A5.1, while only GuarantRAG and Efficient Prior-Guided Reasoning substantially address A5.2 through multi-document fusion or conflict handling. A5.3 is usually measured indirectly through answer accuracy, hallucination, entity precision, output probability, or robustness to noise. No paper in this batch provides a complete reasoning-level causal protocol.
+All six papers touch A5.1, while only GuarantRAG and Efficient Prior-Guided Reasoning substantially address A5.2 through multi-document fusion or conflict handling. A5.3 is usually measured indirectly through answer accuracy, hallucination, entity precision, output probability, or robustness to noise. No paper in this group provides a complete reasoning-level causal protocol.
 
 ### Controlled evidence changes are uneven
 
-ClashEval and the source-balancing study provide the clearest Output Reliance probes. They manipulate the correctness of answer-bearing assertions and separately measure whether models should switch or retain an answer. Efficient Prior-Guided Reasoning adds noisy, conflicting, no-gold, and all-incorrect contexts. FaithfulRAG includes fact replacement and irrelevant contexts. GuarantRAG mainly tests irrelevant-document noise. Belief-R tests update versus maintenance after an additional premise. The second batch shows that Compositional Reliance and Process-level Reliance remain substantially less directly measured.
+ClashEval and the source-balancing study provide the clearest Output Reliance probes. They manipulate the correctness of answer-bearing assertions and separately measure whether models should switch or retain an answer. Efficient Prior-Guided Reasoning adds noisy, conflicting, no-gold, and all-incorrect contexts. FaithfulRAG includes fact replacement and irrelevant contexts. GuarantRAG mainly tests irrelevant-document noise. Belief-R tests update versus maintenance after an additional premise. The multi-evidence composition studies show that Compositional Reliance and Process-level Reliance remain substantially less directly measured.
 
 However, none combines all of the following in one controlled protocol: key-evidence deletion or leave-one-out, irrelevant-evidence invariance, evidence order variation, false external evidence, source-quality variation, and reasoning-level attribution. The current evidence therefore supports output sensitivity, not full causal faithfulness.
 
@@ -236,11 +236,11 @@ Three papers perform genuine parameter-updating interventions:
 
 ClashEval, FaithfulRAG, and Belief-R demonstrate useful inference-time integration or evaluation behavior, not learned capability acquisition.
 
-### Preliminary conclusion, not a field-wide claim
+### Bounded conclusion
 
-Within the selected A5 batches, **direct measurement evidence is richer for answer-level parametric–external conflict than for learned, reasoning-level, transferable evidence utilization**. This describes the evidence available in the selected representative papers; it is not a ranking of the models' actual capability strength and not a definitive conclusion about the entire field.
+Within the selected A5 studies, **direct measurement evidence is richer for answer-level parametric–external conflict than for learned, reasoning-level, transferable evidence utilization**. This describes the evidence available in the selected representative papers; it is not a ranking of the models' actual capability strength and not a definitive conclusion about the entire field.
 
-The three questions for the next batch are:
+Three cross-cutting questions remain open:
 
 1. **Measurement:** Does the evaluation distinguish evidence following, evidence-based reasoning, and genuine belief revision?
 
@@ -248,4 +248,4 @@ The three questions for the next batch are:
 
 1. **Generalization:** Does learned integration survive source replacement, evidence order changes, new domains, new tools, temporal change, and misleading external evidence?
 
-A5.4 Persistent Information Integration & Memory Updating remains outside these A5.1–A5.3 batches. It should be studied with explicit memory-write correctness, state consistency, retrieval-time reuse, future utility attribution, and stale-memory correction tests.
+A5.4 Persistent Information Integration & Memory Updating remains a bounded subdirection within A5, distinct from A5.1–A5.3. It should be studied with explicit memory-write correctness, state consistency, retrieval-time reuse, future utility attribution, and stale-memory correction tests.

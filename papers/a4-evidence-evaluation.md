@@ -1,6 +1,6 @@
 # A4 — Evidence Evaluation
 
-This first anchor batch is complemented by the four-paper gap-focused follow-up in [`a4-evidence-evaluation-second.md`](./a4-evidence-evaluation-second.md) and the targeted conflict/convincingness supplement in [`a4-evidence-evaluation-third.md`](./a4-evidence-evaluation-third.md). Together they form the current twelve-paper A4 map.
+The A4 map is complemented by dedicated analyses of evidence sufficiency/conflict in [`a4-evidence-sufficiency-and-conflict.md`](./a4-evidence-sufficiency-and-conflict.md) and source reliability/convincingness in [`a4-source-reliability-and-conflict.md`](./a4-source-reliability-and-conflict.md). Together, these papers cover the measurement and learning evidence without treating evaluation resources as proof of learned judgment.
 
 ## Boundary with A5
 
@@ -20,7 +20,7 @@ A5 asks whether the model correctly uses evaluated evidence to update reasoning,
 - **A4.3 Evidence Sufficiency:** set-level completeness, missing evidence, bridge facts, and stopping.
 - **A4.4 Conflict & Robustness:** contradiction, noise, misleading evidence, fabricated citations, and adversarial contexts.
 
-This is the first anchor batch. It is intentionally not an exhaustive collection of hallucination, fact-checking, or RAG-evaluation papers.
+This selective paper set is not an exhaustive collection of hallucination, fact-checking, or RAG-evaluation work.
 
 ---
 
@@ -59,7 +59,7 @@ This is the first anchor batch. It is intentionally not an exhaustive collection
 - **Learned behavior:** Continue searching when evidence is insufficient, identify missing bridge entities/attributes/relations, and stop only when the accumulated context is judged sufficient.
 - **Main limitation:** Sufficiency truth is still largely tied to gold-title coverage and Wikipedia multi-hop QA. There is no independent human set-level completeness truth, source reliability, temporal change, or explicit multi-source contradiction evaluation.
 - **Reward-hacking risk:** Low-to-Medium and not directly tested; teacher imitation may learn title-coverage shortcuts or become overly conservative.
-- **Decision:** Include Core as the strongest first-batch A4.3 anchor.
+- **Decision:** Include Core as the strongest A4.3 anchor.
 
 ### A4-3. RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models
 
@@ -133,7 +133,7 @@ This is the first anchor batch. It is intentionally not an exhaustive collection
 
 ---
 
-## First-batch synthesis
+## Evidence synthesis
 
 The six papers establish four different evidence-quality signals:
 
@@ -146,13 +146,13 @@ The current evidence chain is therefore:
 
 > **Evidence Quality Signal → Evaluation or Training → Verification Behavior → Generalization**
 
-The first link is partly developed, but the concepts must remain separate. Relevance is not support. Support is not sufficiency. A source can be relevant without entailing a claim; multiple individually weak passages can jointly form sufficient evidence; and a supported passage can still come from an unreliable or outdated source.
+The evidence-quality signals are partly developed, but the concepts must remain separate. Relevance is not support. Support is not sufficiency. A source can be relevant without entailing a claim; multiple individually weak passages can jointly form sufficient evidence; and a supported passage can still come from an unreliable or outdated source.
 
-The first batch had almost no direct A4.2 coverage. It also lacked independent human ground truth for set-level sufficiency, multi-source conflict attribution, source provenance, temporal freshness, and adversarial or fabricated evidence. The second batch fills the measurement coverage for authority, pair-level sufficiency, and Web conflict organization, while the targeted third batch adds counterfactual convincingness and typed-conflict evidence. The learned methods still show narrow verification behaviors and weak cross-domain/tool/time transfer.
+The core learning papers provide limited direct A4.2 coverage and lack independent human ground truth for set-level sufficiency, multi-source conflict attribution, source provenance, temporal freshness, and adversarial or fabricated evidence. Complementary studies measure authority, pair-level sufficiency, Web conflict organization, counterfactual convincingness, and typed conflicts. Learned methods still show narrow verification behaviors and weak cross-domain/tool/time transfer.
 
-## Status after the targeted third batch
+## Cross-paper synthesis
 
-The A4 collection now has a compact twelve-paper map with representative measurement anchors for all four sub-directions. A4.1 has the strongest training evidence; A4.2 and A4.4 now have stronger counterfactual and typed-conflict evaluation resources but limited direct post-training evidence; A4.3 has both process supervision and independent pair-level sufficiency measurement, but limited set-level ground truth. Broad A4 collection is now closed. Add more papers only for controlled perturbation, held-out verifier robustness, or direct cross-environment post-training transfer.
+The A4 collection now has a compact twelve-paper map with representative measurement anchors for all four sub-directions. A4.1 has the strongest training evidence; A4.2 and A4.4 now have stronger counterfactual and typed-conflict evaluation resources but limited direct post-training evidence; A4.3 has both process supervision and independent pair-level sufficiency measurement, but limited set-level ground truth. Further work would be most informative when it tests controlled perturbations, held-out verifier robustness, or direct cross-environment post-training transfer.
 
 The strongest bounded conclusion is:
 

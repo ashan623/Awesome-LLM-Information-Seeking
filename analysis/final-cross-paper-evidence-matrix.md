@@ -1,8 +1,8 @@
-# Round 9 — Final Cross-Paper Evidence Matrix
+# Final Cross-Paper Evidence Matrix
 
 ## 1. Purpose and scope
 
-这份矩阵是 Round 9 的第一份正式产物。它不对论文做“效果排名”，也不复述论文摘要，而是统一回答：
+这份矩阵不对论文做“效果排名”，也不复述论文摘要，而是统一回答：
 
 > **What signal was optimized, what component was updated, what behavior was actually observed, what intervention isolated that behavior, and what transfer evidence is really available?**
 
@@ -165,6 +165,6 @@ Across the matrix, the strongest reproducible claim is usually:
 
 The stronger claims—general capability acquisition, causal reliance on the intended information, online state-conditioned control, and transfer to a new information environment—require separate evidence and should not be inferred from the endpoint.
 
-### 3.4 Round 9 traceability rule
+### 3.4 Traceability rule
 
 The next Claim–Evidence Matrix must cite these row IDs rather than whole papers vaguely. A paper may play different roles for different claims: for example, `TRACE-turn` supports the existence of useful state-value credit but also supports the Hindsight–Deployment Gap; `AnySearch` is counterevidence to the claim that all budget behavior is fixed-template, while still being insufficient evidence for Retriever/Tool Transfer.

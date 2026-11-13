@@ -7,8 +7,7 @@
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Papers](https://img.shields.io/badge/Papers-82-blue.svg)](./analysis/paper-catalog-by-category.md)
-[![Status](https://img.shields.io/badge/Status-Round%2011%20Targeted%20Supplement-orange.svg)](./notes/search-log-2026-10-26-round-10-targeted-a1-a4-a5.md)
+[![Papers](https://img.shields.io/badge/Papers-82-blue.svg)](#papers)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
@@ -31,16 +30,15 @@ A curated paper list for understanding **what information-seeking abilities LLMs
   - [A2 Information Need Formulation](#a2-information-need-formulation)
   - [A3 Information Space Exploration](#a3-information-space-exploration)
   - [A4 Evidence Evaluation](#a4-evidence-evaluation)
-  - [A5 Evidence Integration — First Batch](#a5-evidence-integration--first-batch)
-  - [A5 Evidence Integration — Second Batch](#a5-evidence-integration--second-batch)
+  - [A5 Evidence Integration — Knowledge Revision](#a5-evidence-integration--knowledge-revision)
+  - [A5 Evidence Integration — Multi-Evidence and Faithful Use](#a5-evidence-integration--multi-evidence-and-faithful-use)
   - [A5.4 Cross-turn Information Persistence and State Updating](#a54-cross-turn-information-persistence-and-state-updating)
   - [A6 Adaptive Search Control](#a6-adaptive-search-control)
   - [Retrieval Necessity and Evidence Critique](#retrieval-necessity-and-evidence-critique)
   - [Search Policy and Reinforcement Learning](#search-policy-and-reinforcement-learning)
   - [Retriever--Agent Coupling and Evaluation](#retriever--agent-coupling-and-evaluation)
-- [Reading Notes](#reading-notes)
-- [Analysis Outputs](#analysis-outputs)
-- [Search Protocol](#search-protocol)
+- [Detailed Paper Notes](#detailed-paper-notes)
+- [Research Resources](#research-resources)
 - [Contributing](#contributing)
 
 ## Research Questions
@@ -271,7 +269,7 @@ Conference and publication badges use the same compact convention as the referen
 - **Benchmarking LLM’s Capability in Reasoning over Conflicting Web References**<br>
   *Yizhen Yuan et al.* [[paper](https://aclanthology.org/2026.acl-long.11/)] [[code](https://github.com/XaiverYuan/ConfRAG)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4.4](https://img.shields.io/badge/A4.4-e76f51.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
-### A5 Evidence Integration — First Batch
+### A5 Evidence Integration — Knowledge Revision
 
 - **ClashEval: Quantifying the Tug-of-War between an LLM’s Internal Prior and External Evidence**<br>
   *Kevin Wu et al.* [[paper](https://proceedings.neurips.cc/paper_files/paper/2024/hash/3aa291abc426d7a29fb08418c1244177-Abstract-Datasets_and_Benchmarks_Track.html)] [[code](https://github.com/kevinwu23/StanfordClashEval)] 2024. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.1](https://img.shields.io/badge/A5.1-8d5a97.svg) ![](https://img.shields.io/badge/NeurIPS2024-orange.svg)
@@ -291,7 +289,7 @@ Conference and publication badges use the same compact convention as the referen
 - **How Large Language Models Balance Internal Knowledge with User and Document Assertions**<br>
   *Shuowei Li et al.* [[paper](https://aclanthology.org/2026.findings-acl.1267/)] [[code](https://github.com/shuowl/llm-source-balancing)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A5.1](https://img.shields.io/badge/A5.1-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
-### A5 Evidence Integration — Second Batch
+### A5 Evidence Integration — Multi-Evidence and Faithful Use
 
 - **RAFT: Adapting Language Model to Domain Specific RAG**<br>
   *Tianjun Zhang et al.* [[paper](https://openreview.net/forum?id=rzQGHXNReU)] [[code](https://github.com/ShishirPatil/gorilla/tree/main/raft)] 2024. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A5.2](https://img.shields.io/badge/A5.2-8d5a97.svg) ![A5.3](https://img.shields.io/badge/A5.3-8d5a97.svg) ![](https://img.shields.io/badge/COLM2024-orange.svg)
@@ -351,7 +349,7 @@ Conference and publication badges use the same compact convention as the referen
 - **Enhancing LLM-based Search Agents via Contribution Weighted Group Relative Policy Optimization**<br>
   *Junzhe Wang et al.* [[paper](https://aclanthology.org/2026.acl-long.1462/)] [[code](https://github.com/zsxmwjz/CW-GRPO)] 2026. ![Method](https://img.shields.io/badge/Method-59a14f.svg) ![A6.1](https://img.shields.io/badge/A6.1-6c7576.svg) ![A6.3](https://img.shields.io/badge/A6.3-6c7576.svg) ![B1](https://img.shields.io/badge/B1-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
-### How to Learn — Round 8 Mechanism Verification
+### How to Learn — Cross-Capability Mechanisms
 
 - **Beyond Outcome Rewards: Step-Level Self-Distilled Policy Optimization for Deep Search Agents**<br>
   *Haoze Wu, Chuqiao Kuang, Tianyi Zhuang, Xiaoguang Li* [[paper](https://arxiv.org/abs/2608.12764)] 2026. ![Core Mechanism](https://img.shields.io/badge/Core%20Mechanism-59a14f.svg) ![B2](https://img.shields.io/badge/B2-8d5a97.svg) ![B4](https://img.shields.io/badge/B4-8d5a97.svg) ![](https://img.shields.io/badge/Arxiv2026-orange.svg)
@@ -389,74 +387,38 @@ Conference and publication badges use the same compact convention as the referen
 - **Rethinking Reasoning-Intensive Retrieval: Evaluating and Advancing Retrievers in Agentic Search Systems**<br>
   *Yilun Zhao et al.* [[paper](https://aclanthology.org/2026.acl-long.1705/)] 2026. ![Evaluation](https://img.shields.io/badge/Evaluation-e15759.svg) ![A4](https://img.shields.io/badge/A4-e76f51.svg) ![A5](https://img.shields.io/badge/A5-8d5a97.svg) ![](https://img.shields.io/badge/ACL2026-orange.svg)
 
-## Reading Notes
+## Detailed Paper Notes
 
-The detailed coding records for the current round are maintained in [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md), the [`A1 Search Necessity paper pool`](./papers/a1-search-necessity.md), the [`A1 Retrieval Utility sub-pool`](./papers/a1-retrieval-utility.md), the [`A1 Utility-aware Policy Learning sub-pool`](./papers/a1-utility-policy-learning.md), the [`A2 Information Need Formulation core map`](./papers/a2-information-need-formulation.md), the [`A2 QREF targeted exception log`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the [`A3 Information Space Exploration map and decision`](./papers/a3-information-space-exploration.md), the [`A3 bounded search plan`](./notes/a3-search-plan.md), the [`A3 anchor verification log`](./notes/search-log-2026-10-24-round-6-a3-anchors.md), the [`A3 targeted learning log`](./notes/search-log-2026-10-24-round-6-a3-learning.md), the [`A3 targeted evaluation supplement`](./papers/a3-targeted-evaluation-supplement.md), the [`A4 Evidence Evaluation anchor pool`](./papers/a4-evidence-evaluation.md), the [`A4 second-batch and closure analysis`](./papers/a4-evidence-evaluation-second.md), the [`A4 targeted conflict/convincingness supplement`](./papers/a4-evidence-evaluation-third.md), the [`A5 Evidence Integration first batch`](./papers/a5-evidence-integration.md), the [`A5 second batch and closure analysis`](./papers/a5-evidence-integration-second.md), the [`A5 targeted factuality/faithfulness supplement`](./papers/a5-evidence-integration-third.md), the [`A5 counterfactual evidence supplement`](./papers/a5-counterfactual-evidence-supplement.md), the [`A5.4 cross-turn information persistence first batch`](./papers/a5.4-memory-updating.md), the [`A6 Adaptive Search Control map`](./papers/a6-adaptive-search-control.md), the [`A6 bounded search plan`](./notes/a6-search-plan.md), the [`A6 first-batch verification log`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md), and the [`A2 first-round search plan`](./notes/a2-search-plan.md). Each entry records the research problem, contribution type, primary and secondary capabilities, learning mechanism, learning target, supervision, three-dimensional evidence, training–capability alignment, generalization regime, limitations, and research opportunities. The binding annotation rules are in [`notes/coding-protocol.md`](./notes/coding-protocol.md).
+The root README is the primary public catalog. These companion notes provide deeper paper-level evidence summaries and comparisons by capability:
 
-The current round has surfaced five working hypotheses:
+- [Seed papers and cross-cutting anchors](./papers/information-seeking-seed.md)
+- [A1: Search necessity](./papers/a1-search-necessity.md), [retrieval utility](./papers/a1-retrieval-utility.md), and [utility-aware policy learning](./papers/a1-utility-policy-learning.md)
+- [A2: Information need formulation](./papers/a2-information-need-formulation.md)
+- [A3: Information-space exploration](./papers/a3-information-space-exploration.md) and [targeted evaluation supplement](./papers/a3-targeted-evaluation-supplement.md)
+- [A4: Evidence evaluation](./papers/a4-evidence-evaluation.md), [source/conflict supplement](./papers/a4-source-reliability-and-conflict.md), and [additional evaluation work](./papers/a4-evidence-sufficiency-and-conflict.md)
+- [A5: Evidence integration](./papers/a5-evidence-integration.md), [multi-evidence and faithfulness](./papers/a5-multi-evidence-composition.md), [factuality and attribution](./papers/a5-faithfulness-and-attribution.md), and [counterfactual evidence](./papers/a5-counterfactual-evidence-supplement.md)
+- [A5.4: Cross-turn persistence and state updating](./papers/a5.4-memory-updating.md)
+- [A6: Adaptive search control](./papers/a6-adaptive-search-control.md)
+- [Cross-capability learning mechanisms](./papers/learning-mechanism-comparison.md)
 
-1. **Tool use is not capability.** Calling a search tool more often does not by itself demonstrate learned information-seeking.
-2. **Outcome reward is scalable but coarse.** It often improves final QA scores while providing weak credit assignment over multi-turn search behavior.
-3. **Evidence quality is downstream-dependent.** Local query–passage relevance does not guarantee utility for reasoning or final answer generation.
-4. **Environment shift is central.** Simulated search, fixed retrievers, and benchmark-specific APIs require explicit simulator-to-real and cross-tool tests.
-5. **Capability isolation is missing.** Many papers optimize a full search–reasoning loop without separately measuring search necessity, query quality, source choice, evidence sufficiency, and stopping.
+## Research Resources
 
-## Analysis Outputs
+These companion documents capture the consolidated evidence analysis, learning taxonomy, generalization framework, and positioning against adjacent surveys:
 
-The bibliography has now entered the analysis phase. No new longitudinal paper collection is planned unless the cross-capability comparison reveals a concrete empty cell that cannot be resolved from the current pool.
-
-- [`Paper Catalog by Category`](./analysis/paper-catalog-by-category.md): complete catalog of the current 82 README entries, grouped by neighboring surveys, A1–A6 capabilities, A5.4 bounded persistence, How to Learn mechanisms, and cross-cutting anchors; also records four additional surveys used only in the related-survey comparison.
-- [`A1/A4/A5 Claim–Evidence Audit`](./analysis/a1-a4-a5-claim-evidence-audit.md): targeted audit that separates observed behavior, local capability evidence, broader capability claims, and transfer claims for the three sections most in need of stronger argumentation.
-- [`Section 3 Citation Audit`](./analysis/section3-citation-audit.md): audit of citation completeness, missing papers, and recommended placement in the capability-centered Section 3.
-- [`Section 3 Supplemented LaTeX Draft`](./drafts/section3-supplemented.tex): paste-ready Section 3 with the prioritized additions for A1–A6.
-- [`Section 3 Supplement BibTeX Key Map`](./analysis/section3-supplement-bibkey-map.md): proposed citation keys and paper-to-capability mapping for the new Section 3 references.
-- [`Final Cross-Paper Evidence Matrix`](./analysis/final-cross-paper-evidence-matrix.md): Round 9’s full paper coding using Evidence Role → Capability → Learning Signal → Optimizer → Update Locus → Credit Assignment → Observed Behavior → Behavior Measurement → Controlled Intervention → Privileged Supervision → Policy-input Leakage → Deployment Behavior Evidence → Generalization → Evidence Limitation.
-- [`Related-Survey Comparison`](./analysis/related-survey-comparison.md): formal comparison of seven adjacent Search Agent, Agentic Search, Deep Research, Agentic RAG, Agentic RL, and Credit Assignment surveys across Primary Unit, Learning Axis, Evidence Axis, Generalization, and Main Contribution.
-- [`Related-Surveys Bib Audit`](./analysis/related-surveys-bib-audit.md):逐条核对 `related_surveys.bib` 中的 9 篇综述，并记录本轮新增的两篇相邻综述。
-- [`Earlier Capability-Level Matrix`](./analysis/cross-paper-evidence-matrix.md): the prior compact capability-level matrix and Round 8 mechanism anchors.
-- [`Claim–Evidence Matrix`](./analysis/claim-evidence-matrix.md): four cross-capability claims, each separated into Supporting Evidence, Counterevidence, Partial Mitigation, and Not Established.
-- [`Cross-Capability Synthesis Draft`](./analysis/cross-capability-synthesis-draft.md): a bounded chapter draft answering What Was Actually Learned? without expanding into a full Survey.
-- [`Training–Capability Misalignment Taxonomy`](./analysis/training-capability-misalignment.md): Objective–Capability Misalignment, Outcome–Behavior Confounding, Hindsight–Deployment Gap, and Environment-conditioned Learning vs Transferable Capability.
-- [`Generalization & Intervention Audit`](./analysis/generalization-intervention-audit.md): separates Task, Domain, Retriever, Tool, Corpus/Environment, Budget, Temporal Shift, and Behavior Transfer, while distinguishing Not Tested from Tested but Failed.
-- [`How to Learn Information-Seeking Capabilities`](./analysis/learning-mechanism-framework.md): adds four orthogonal mechanism dimensions—Data/Signals, Optimization, Update Locus, and Credit Assignment—while keeping Deployment Information Parity as a cross-capability diagnostic and leaving A1–A6 unchanged.
-- [`Survey Structure`](./analysis/survey-structure.md): the proposed title, central question, chapter organization, contribution claims, and future evaluation protocol.
-- [`Round 11 A3/A5 Targeted Supplement Log`](./notes/search-log-2026-10-27-round-11-a3-a5-targeted.md): formal verification and scope-preserving inclusion decisions for GISA, SearchOS-V1, and CF-RAG.
-
-## Search Protocol
-
-This bibliography is intentionally built in rounds rather than through one exhaustive crawl:
-
-1. **Round 1 — Field map:** neighboring surveys and a small seed set of methods/evaluation papers.
-2. **Round 2A — A1 Search Necessity:** knowledge boundaries, retrieval triggering, uncertainty, and self-knowledge evaluation.
-3. **Round 2B — A1 Retrieval Utility:** value of information, counterfactual retrieval benefit, cost-sensitive evidence selection, and LLM-specific utility.
-4. **Round 2C — A1 final utility-aware training check:** ex-post utility rewards, information-gain rewards, counterfactual margins, cost-aware policy learning, and historical baselines.
-5. **Round 3A — A4 anchor map:** relevance/support, source reliability, evidence sufficiency, conflict/robustness, and the A4/A5 boundary.
-6. **Round 3B — A4 gap-focused expansion and closure:** source credibility, human-verified sufficiency, multi-source conflict, Judgment Target, Ground Truth Quality, and Controlled Perturbation.
-7. **Round 4A — A5 Evidence Integration:** knowledge integration, belief revision, multi-evidence composition, and faithful utilization.
-8. **Round 4B — A5 gap-focused expansion and closure:** process-level evidence reliance, counterfactual interventions, reasoning-chain attribution, and parametric–external balance.
-9. **Round 5A — A5.4 Cross-turn Information Persistence:** six-paper bounded map; Memory is an implementation substrate, not an independent survey axis.
-10. **Round 5B — A5.4 targeted exceptions only:** direct policy post-training, operation-level credit assignment, counterfactual persisted-state utility, or strict cross-environment validation.
-11. **Round 6A — A2 Information Need Formulation:** seven-paper map covering query rewriting, retrieval-gain RL, multi-query expansion, parallel decomposition, process credit, retriever-aware formulation, and QREF’s original-versus-refined evidence-coverage reward.
-12. **Round 6B — A3 Information Space Exploration:** three anchors plus four targeted papers; retain as a cross-capability dimension, not yet a full independent learning chapter.
-13. **Round 6C — A6 Adaptive Search Control:** four-paper bounded map covering stopping, budget allocation, retrospective credit, and contribution-aware credit; now closed.
-14. **Round 7 — Cross-capability comparison:** completed as the initial six-capability and mechanism comparison.
-15. **Round 8 — Learning Mechanism Verification:** closed after three P0 papers—SSPO, TRACE, and a controlled training-protocol comparison; no quota-filling expansion was needed.
-16. **Round 9 — Cross-Paper Evidence Synthesis:** completed the final paper-level matrix, Claim–Evidence Matrix, and bounded What Was Actually Learned? chapter draft without adding papers.
-17. **Round 10 — Targeted A1/A4/A5 Evidence Audit:** added four high-value diagnostic papers and restructured the three sections around Supporting Evidence, Counterevidence, Partial Mitigation, and Not Established; no capability boundary was expanded.
-18. **Round 11 — Targeted A3/A5 supplement:** added GISA, SearchOS-V1, and Counterfactual RAG as evaluation/boundary evidence; EGR-FV remains excluded pending formal metadata.
-19. **Snowballing:** paused. Reopen only if the cross-capability matrix identifies a concrete unresolved cell that cannot be analyzed from the current paper pool.
-
-See the current A2 map in [`papers/a2-information-need-formulation.md`](./papers/a2-information-need-formulation.md), the targeted QREF record in [`notes/search-log-2026-10-24-round-6-a2-qref.md`](./notes/search-log-2026-10-24-round-6-a2-qref.md), the A3 final decision in [`notes/search-log-2026-10-24-round-6-a3-learning.md`](./notes/search-log-2026-10-24-round-6-a3-learning.md), the A6 first-round decision in [`notes/search-log-2026-10-24-round-6-a6-first-batch.md`](./notes/search-log-2026-10-24-round-6-a6-first-batch.md), the [`Round 8 mechanism verification`](./papers/round8-learning-mechanism-verification.md), and its [`search log`](./notes/search-log-2026-10-24-round-8-learning-mechanism.md), plus the [`Round 11 targeted supplement log`](./notes/search-log-2026-10-27-round-11-a3-a5-targeted.md). The completed A5.4 record is [`notes/search-log-2026-10-24-round-5-a5.4-first-batch.md`](./notes/search-log-2026-10-24-round-5-a5.4-first-batch.md).
-
-The search is deliberately convergent. The longitudinal capability collection, bounded Learning Mechanism Verification, and Round 9 Cross-Paper Evidence Synthesis phases are now complete. The next step is to refine the argument and write the Survey chapters, not to expand the bibliography. We will not add minor variants of existing Search-RL, OPD, Memory, or RAG methods unless a concrete unresolved evidence cell cannot be analyzed from the current pool. A paper that does not sharpen the central question should remain outside the core set or be recorded only as background.
+- [Paper catalog by category](./analysis/paper-catalog-by-category.md)
+- [Final cross-paper evidence matrix](./analysis/final-cross-paper-evidence-matrix.md)
+- [Claim–Evidence Matrix](./analysis/claim-evidence-matrix.md)
+- [Training–Capability Misalignment taxonomy](./analysis/training-capability-misalignment.md)
+- [Generalization and intervention audit](./analysis/generalization-intervention-audit.md)
+- [Related-survey comparison](./analysis/related-survey-comparison.md)
 
 ## Contributing
 
-Contributions are welcome. Please keep entries concise and use the following format:
+Contributions are welcome. Add papers that directly inform at least one A1–A6 information-seeking capability or a cross-capability learning mechanism. Please include a stable paper link and keep the entry concise:
 
 ```markdown
 - **Paper Title**<br>
   *Authors* [[paper](URL)] [[code](URL)] YEAR. ![](TYPE_BADGE) ![](CAPABILITY_BADGE) ![](VENUE_BADGE)
 ```
 
-For a new entry, also add a detailed annotation to [`papers/information-seeking-seed.md`](./papers/information-seeking-seed.md) or the relevant thematic file. At minimum, record the primary capability, learning mechanism, update target, supervision signal, evaluation evidence, generalization evidence, and one unresolved research question.
+Use the existing capability and contribution labels. Distinguish directly measured behavior from the capability a paper claims to teach; an in-domain score increase alone is not evidence of generalization. Add substantive paper-level context to the relevant thematic file under [`papers/`](./papers/) when useful. Do not add search logs, temporary drafts, or round-by-round status notes to the public catalog.

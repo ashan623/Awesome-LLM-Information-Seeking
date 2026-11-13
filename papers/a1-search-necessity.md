@@ -1,6 +1,6 @@
 # A1 — Search Necessity and Epistemic Awareness
 
-**Round 2, first sub-round.** This pool asks a narrow question:
+This paper pool asks a narrow question:
 
 > Can an LLM identify when its parametric knowledge is insufficient and decide whether external information is worth acquiring?
 

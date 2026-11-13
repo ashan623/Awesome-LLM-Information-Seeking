@@ -2,7 +2,7 @@
 
 > 更新时间：2026-10-27
 >
-> 本清单严格依据当前 `README.md`、A1–A6论文池、Round 8机制核验和 Related-Survey Comparison 整理。它不是按“论文主题”简单罗列，而是按本 Survey 的 **What to Learn（A1–A6）× How to Learn（B1–B4）× Evidence Role** 组织。
+> 本清单严格依据当前 `README.md`、A1–A6论文池、跨能力学习机制分析和 Related-Survey Comparison 整理。它不是按“论文主题”简单罗列，而是按本 Survey 的 **What to Learn（A1–A6）× How to Learn（B1–B4）× Evidence Role** 组织。
 
 ## 0. 先看总览
 
@@ -238,18 +238,3 @@
 | [Rethinking Reasoning-Intensive Retrieval: Evaluating and Advancing Retrievers in Agentic Search Systems](https://aclanthology.org/2026.acl-long.1705/) | A4/A5 | reasoning-intensive retrieval评价；区分retriever质量与证据整合/下游效用 |
 
 ---
-
-## 11. 最终使用建议：正文如何引用
-
-1. **正文主章节：** A1、A2、A4、A5、A6；A3作为跨能力维度和独立小节保留；A5.4作为A5内部bounded subdirection。
-2. **横向机制章节：** 不要再按B1–B4新增一套论文综述，而是把三篇Round 8机制论文映射到已有A1–A6，回答 `Learning Signal → Update Locus → Credit → Observed Behavior`。
-3. **Related Work：** 使用7篇相邻综述，但准确写成“本 Survey在已有系统/流程/RL/Agentic RAG/credit assignment地图之上，增加能力—机制—证据对齐”，不要声称首次采用capability视角。
-4. **证据强弱：** Evaluation/benchmark论文用于定义和测量能力，Learning论文用于分析post-training，Inference-only和Boundary论文用于提供对照；三类证据不能混写。
-5. **不要把标签当结论：** A1–A6是分析单位，不表示每篇论文已经证明相应能力被学会；最终判断必须回到行为测量、受控干预、特权监督、policy-input leakage、部署行为证据和泛化。
-
-## 12. 与仓库其他核心文件的关系
-
-- [Final Cross-Paper Evidence Matrix](./final-cross-paper-evidence-matrix.md)：逐篇记录训练信号、优化器、更新位置、credit、行为证据、干预、特权监督和泛化。
-- [Claim–Evidence Matrix](./claim-evidence-matrix.md)：把跨能力结论拆成 Supporting、Counterevidence、Partial Mitigation、Not Established。
-- [Cross-Capability Synthesis Draft](./cross-capability-synthesis-draft.md)：把以上论文转化成“实际学到了什么”的综合论证。
-- [Related-Survey Comparison](./related-survey-comparison.md)：7篇相邻综述的正式比较。
