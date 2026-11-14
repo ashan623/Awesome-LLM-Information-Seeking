@@ -2,12 +2,13 @@
 
 # Beyond Retrieval
 
-### Learning Information-Seeking Capabilities in Large Language Models
+### From Search to Decision: How Post-Training Shapes Information-Seeking Capabilities in Large Language Models
 
 A curated paper list for understanding **what information-seeking abilities LLMs should learn, how post-training teaches them, and whether those abilities generalize beyond specific search tasks and environments**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Papers](https://img.shields.io/badge/Papers-82-blue.svg)](#papers)
+[![Paper](https://img.shields.io/badge/Paper-arXiv%3A2611.14149v1-b31b1b.svg)](https://arxiv.org/abs/2611.14149v1)
 [![Contributions](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![Last Commit](https://img.shields.io/github/last-commit/ashan623/awesome/main?logo=github&color=blue)](https://github.com/ashan623/awesome/commits/main)
 
