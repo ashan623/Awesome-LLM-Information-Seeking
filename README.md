@@ -15,6 +15,7 @@ A curated paper list for understanding **what information-seeking abilities LLMs
 
 ## Content
 
+- [Our Survey Paper](#our-survey-paper)
 - [Research Questions](#research-questions)
 - [Taxonomy](#taxonomy)
   - [Capability: What to Learn](#capability-what-to-learn)
@@ -40,6 +41,12 @@ A curated paper list for understanding **what information-seeking abilities LLMs
 - [Detailed Paper Notes](#detailed-paper-notes)
 - [Research Resources](#research-resources)
 - [Contributing](#contributing)
+
+## Our Survey Paper
+
+**From Search to Decision: How Post-Training Shapes Information-Seeking Capabilities in Large Language Models**<br>
+Haohang Huang, Xuan Lu, Mingjin Kuai, Yuxuan Zhang, Wei Ji, and Haiyang Zhang.<br>
+[arXiv:2611.14149v1](https://arxiv.org/abs/2611.14149v1) · [PDF](https://arxiv.org/pdf/2611.14149v1)
 
 ## Research Questions
 
